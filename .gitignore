@@ -9,6 +9,8 @@ netrunner/Assets/StreamingAssets/**/*.bank.meta
 # =============== #
 Temp/
 Library/
+UserSettings/Layouts/
+UserSettings/Layouts/*
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #

@@ -24,6 +24,9 @@ obj/
 *.user
 *.unityproj
 *.booproj
+.vscode/
+.vscode/*
+
 
 # ============ #
 # OS generated #

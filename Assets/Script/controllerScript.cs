@@ -12,14 +12,16 @@ public class controllerScript : MonoBehaviour
     [SerializeField] float jumpForce = 8;
     [SerializeField] float gravity = 9.8f;
     [Header("parametre detection")]
-    [SerializeField] float distanceRaycast = 5;
     [SerializeField] float radiusSphere = 3;
     [Header("Souris")]
     [SerializeField] float CameraSensitivity = 50f;
     [Header("componente")]
-    [SerializeField] GameObject camera;
+    [SerializeField] Transform camera;
+    [SerializeField] Transform cameraPosition;
     [SerializeField] CharacterController CC;
     [SerializeField] Transform sphereColisionOrigin;
+    [Header("test perso")]
+    [SerializeField] float diviseurVitesse=2;
 
     // variable a ne pas touché
     Vector3 velocity = Vector3.zero;
@@ -27,27 +29,37 @@ public class controllerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Speed=Speed/60;
+        acceleration=acceleration/60;
+        friction=friction/60;
+        airFriction=airFriction/60;
+        jumpForce=jumpForce/60;
+        gravity=gravity/32.66f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isOnGround());
         Vector3 inputVector = getinputVector();
         Vector3 direction = getDirection(inputVector);
         applyMouvement(direction);
+        applyFriction(direction);
+        applyGravity();
+        jump();
+        CC.Move(velocity);
+        camera.position=cameraPosition.position;
+        
     }
     void FixedUpdate()
     {
-        CC.Move(velocity);
+        
     }
 
     Vector3 getinputVector()
     {
         Vector3 inputVector = Vector3.zero;
-        inputVector.x = Input.GetAxis("Horizontal");
-        inputVector.z = Input.GetAxis("Vertical");
+        inputVector.x = Input.GetAxisRaw("Horizontal");
+        inputVector.z = Input.GetAxisRaw("Vertical");
         return inputVector;
     }
     Vector3 getDirection(Vector3 inputVector)
@@ -65,9 +77,33 @@ public class controllerScript : MonoBehaviour
             velocity.z = Mathf.MoveTowards(velocity.z, direction.z * Speed, acceleration * Time.deltaTime);
         }
     }
+    void applyFriction(Vector3 direction){
+        if(direction == Vector3.zero){
+            if(isOnGround()){
+                velocity = Vector3.MoveTowards(velocity,Vector3.zero,friction *Time.deltaTime);
+            }else{
+                velocity.x = Mathf.MoveTowards(velocity.x,0,airFriction *Time.deltaTime);
+                velocity.z = Mathf.MoveTowards(velocity.z,0,airFriction *Time.deltaTime);
+            }
+        }
+    }
     void applyGravity()
     {
-
+        if(isOnGround()){
+            velocity.y=0;
+        }else{
+            velocity.y -= gravity * Time.deltaTime;
+        }
+        
+    }
+    void jump(){
+        if(Input.GetButtonDown("Jump") && isOnGround()){
+            velocity.y = jumpForce;
+            
+        }
+        if(Input.GetButtonUp("Jump") && velocity.y > jumpForce / 2){
+            velocity.y = jumpForce / 2;
+        }
     }
 
     bool isOnGround()

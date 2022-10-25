@@ -16,30 +16,45 @@ public class controllerScript : MonoBehaviour
     [Header("Souris")]
     [SerializeField] float CameraSensitivity = 50f;
     [Header("componente")]
-    [SerializeField] Transform camera;
+    [SerializeField] Transform cameraHolder;
     [SerializeField] Transform cameraPosition;
+    [SerializeField] GameObject cameraOrientation;
     [SerializeField] CharacterController CC;
     [SerializeField] Transform sphereColisionOrigin;
     [Header("test perso")]
-    [SerializeField] float diviseurVitesse=2;
+
 
     // variable a ne pas touché
     Vector3 velocity = Vector3.zero;
+    float mouseX;
+    float mouseY;
+    float xRotation;
+    float yRotation;
 
     // Start is called before the first frame update
     void Start()
     {
+        //je divise les valeur sinon les valeur a rentrer doivent etre tres petite
         Speed=Speed/60;
         acceleration=acceleration/60;
         friction=friction/60;
         airFriction=airFriction/60;
         jumpForce=jumpForce/60;
-        gravity=gravity/32.66f;
+        gravity=gravity/60;
+        CameraSensitivity=CameraSensitivity/60;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.M)){
+            if(Cursor.lockState == CursorLockMode.Locked){
+                Cursor.lockState=CursorLockMode.None;
+            }else{
+                Cursor.lockState=CursorLockMode.Locked;
+            }
+        }
+        cameraControle();
         Vector3 inputVector = getinputVector();
         Vector3 direction = getDirection(inputVector);
         applyMouvement(direction);
@@ -47,7 +62,7 @@ public class controllerScript : MonoBehaviour
         applyGravity();
         jump();
         CC.Move(velocity);
-        camera.position=cameraPosition.position;
+        
         
     }
     void FixedUpdate()
@@ -65,7 +80,7 @@ public class controllerScript : MonoBehaviour
     Vector3 getDirection(Vector3 inputVector)
     {
         Vector3 direction = Vector3.zero;
-        direction = (transform.forward * inputVector.z) + (transform.right * inputVector.x);
+        direction = (cameraOrientation.transform.forward * inputVector.z) + (cameraOrientation.transform.right * inputVector.x);
         return direction;
     }
 
@@ -121,6 +136,21 @@ public class controllerScript : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(sphereColisionOrigin.position,radiusSphere);
+    }
+
+    void cameraControle(){
+        cameraHolder.position=cameraPosition.position;
+
+        mouseX = Input.GetAxisRaw("Mouse X");
+        mouseY = Input.GetAxisRaw("Mouse Y");
+
+        yRotation += mouseX * CameraSensitivity;
+        xRotation -= mouseY * CameraSensitivity;
+
+        xRotation = Mathf.Clamp(xRotation,-90f,90f);
+
+        cameraHolder.transform.rotation = Quaternion.Euler(xRotation, yRotation,0);
+        cameraOrientation.transform.rotation = Quaternion.Euler(0,yRotation,0);
     }
 }
 

@@ -11,6 +11,8 @@ public class controllerScript : MonoBehaviour
     [SerializeField] float airFriction = 10;
     [SerializeField] float jumpForce = 8;
     [SerializeField] float gravity = 9.8f;
+    [SerializeField] float vitesseSpinAction=10;
+    [SerializeField] float dashForce=0.5f;
     [Header("parametre detection")]
     [SerializeField] float radiusSphere = 3;
     [Header("Souris")]
@@ -21,6 +23,7 @@ public class controllerScript : MonoBehaviour
     [SerializeField] GameObject cameraOrientation;
     [SerializeField] CharacterController CC;
     [SerializeField] Transform sphereColisionOrigin;
+    [SerializeField] GameObject projectil;
     [Header("test perso")]
 
 
@@ -62,7 +65,17 @@ public class controllerScript : MonoBehaviour
         applyGravity();
         jump();
         CC.Move(velocity);
-        
+
+        if(Input.GetButton("action5")){
+            yRotation += vitesseSpinAction;
+        }
+        if(Input.GetButtonDown("action1")){
+            Instantiate(projectil,cameraPosition.transform.position,Quaternion.Euler(cameraHolder.rotation.eulerAngles.x,cameraOrientation.transform.eulerAngles.y,0));
+        }
+        if(Input.GetButtonDown("action2")){
+            velocity*= dashForce;
+            print("test");
+        }
         
     }
     void FixedUpdate()

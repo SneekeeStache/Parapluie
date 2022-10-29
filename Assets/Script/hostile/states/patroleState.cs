@@ -31,15 +31,16 @@ public class patroleState : HostileBaseState
 
         foreach (GameObject uneCible in hostile.listCible)
         {
+            //Debug.DrawRay(hostile.agentTransform.position, (hostile.agentTransform.position - uneCible.transform.position) * 10, Color.red);
             float DistanceCibleHostile = Vector3.Distance(hostile.agentTransform.position, uneCible.transform.position);
             if (DistanceCibleHostile <= hostile.DistanceDetection)
             {
                 RaycastHit hit;
-                if (Physics.Raycast(hostile.agentTransform.position, cible.transform.position - hostile.agentTransform.position, out hit, hostile.DistanceDetection))
+                if (Physics.Raycast(hostile.agentTransform.position, uneCible.transform.position - hostile.agentTransform.position, out hit, hostile.DistanceDetection))
                 {
                     if (hit.collider.CompareTag("PlayerMonster"))
                     {
-                        float angleDetection = Vector3.Angle(hostile.agentTransform.position, cible.transform.position - hostile.agentTransform.position);
+                        float angleDetection = Vector3.Angle(hostile.agentTransform.position, uneCible.transform.position - hostile.agentTransform.position);
                         if (angleDetection <= hostile.maxAngleDetection && angleDetection >= -hostile.maxAngleDetection)
                         {
                             cible=uneCible;
@@ -51,7 +52,6 @@ public class patroleState : HostileBaseState
 
         }
 
-        Debug.DrawRay(hostile.agentTransform.position, (hostile.agentTransform.position - cible.transform.position) * 10, Color.red);
     }
     public override void onCollisionEnter(HostileBehavior hostile)
     {

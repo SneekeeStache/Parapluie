@@ -74,7 +74,6 @@ public class controllerScript : MonoBehaviour
         }
         if(Input.GetButtonDown("action2")){
             velocity*= dashForce;
-            print("test");
         }
         
     }

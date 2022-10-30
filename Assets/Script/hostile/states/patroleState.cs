@@ -20,6 +20,9 @@ public class patroleState : HostileBaseState
     }
     public override void updateState(HostileBehavior hostile)
     {
+        if(hostile.health <= 0){
+            hostile.changeState(hostile.deadState);
+        }
         //code de patrouille
         float listPositionFloat = (float)listPosition;
         float sizeWaypoint = (float)waypoints.Count;

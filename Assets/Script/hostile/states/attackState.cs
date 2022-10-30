@@ -6,13 +6,20 @@ public class attackState : HostileBaseState
 {
     public override void enterState(HostileBehavior hostile)
     {
-        
+
     }
     public override void updateState(HostileBehavior hostile)
     {
-        if(Vector3.Distance(hostile.agentTransform.position,hostile.cible.transform.position) <= hostile.distanceAttaque){
+        if (hostile.health <= 0)
+        {
+            hostile.changeState(hostile.deadState);
+        }
+        if (Vector3.Distance(hostile.agentTransform.position, hostile.cible.transform.position) <= hostile.distanceAttaque)
+        {
             Debug.Log("inserer animation attaque avec lancement du script degat pendant animation");
-        }else{
+        }
+        else
+        {
             hostile.changeState(hostile.chasingState);
         }
     }

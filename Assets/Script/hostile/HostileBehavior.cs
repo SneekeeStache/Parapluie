@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 public class HostileBehavior : MonoBehaviour
 {
+    //ce code prend en charge la gestion et le changement d'etat
     public List<GameObject> listCible = new List<GameObject>();
     HostileBaseState currentState;
     public attackState attackState = new attackState();
@@ -14,10 +15,15 @@ public class HostileBehavior : MonoBehaviour
     public List<Transform> waypoints = new List<Transform>();
     public NavMeshAgent agent;
     public Transform agentTransform;
+    public GameObject cible;
 
     [Header("Stats hostile")]
     public float DistanceDetection=10;
     public float maxAngleDetection=30;
+    public float durationTimerLostHostile=2;
+
+    public float durationTimerLooking=3;
+    public float numberlook=6;
 
     // Start is called before the first frame update
     void Start()

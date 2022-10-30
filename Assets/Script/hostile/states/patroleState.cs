@@ -37,7 +37,8 @@ public class patroleState : HostileBaseState
         //verifie si une cible est a porter
         foreach (GameObject uneCible in hostile.listCible)
         {
-            //Debug.DrawRay(hostile.agentTransform.position, (hostile.agentTransform.position - uneCible.transform.position) * 10, Color.red);
+            Debug.Log(Vector3.Angle(hostile.agentTransform.forward,uneCible.transform.position - hostile.agentTransform.position ));
+            Debug.DrawRay(hostile.agentTransform.position, (uneCible.transform.position - hostile.agentTransform.position) * hostile.DistanceDetection, Color.red);
             float DistanceCibleHostile = Vector3.Distance(hostile.agentTransform.position, uneCible.transform.position);
             if (DistanceCibleHostile <= hostile.DistanceDetection)
             {
@@ -46,7 +47,8 @@ public class patroleState : HostileBaseState
                 {
                     if (hit.collider.CompareTag("PlayerMonster"))
                     {
-                        float angleDetection = Vector3.Angle(hostile.agentTransform.position, uneCible.transform.position - hostile.agentTransform.position);
+                        
+                        float angleDetection = Vector3.Angle(hostile.agentTransform.forward,uneCible.transform.position - hostile.agentTransform.position );
                         if (angleDetection <= hostile.maxAngleDetection && angleDetection >= -hostile.maxAngleDetection)
                         {
                             hostile.cible=uneCible;

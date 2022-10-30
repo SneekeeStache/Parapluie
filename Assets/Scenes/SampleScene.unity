@@ -354,8 +354,9 @@ MonoBehaviour:
   agent: {fileID: 613765526}
   agentTransform: {fileID: 613765530}
   cible: {fileID: 0}
+  distanceAttaque: 2
   DistanceDetection: 10
-  maxAngleDetection: 30
+  maxAngleDetection: 60
   durationTimerLostHostile: 2
   durationTimerLooking: 3
   numberlook: 6
@@ -1584,7 +1585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7872812955892259401, guid: 2ccb5c868e5ba279780974d95c7f6333, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 8.84
       objectReference: {fileID: 0}
     - target: {fileID: 7872812955892259401, guid: 2ccb5c868e5ba279780974d95c7f6333, type: 3}
       propertyPath: m_LocalPosition.y

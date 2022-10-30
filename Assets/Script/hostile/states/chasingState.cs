@@ -15,6 +15,7 @@ public class chasingState : HostileBaseState
     }
     public override void updateState(HostileBehavior hostile)
     {
+        
         Debug.Log(timerLostHostile);
         hostile.agentTransform.rotation=Quaternion.LookRotation(hostile.cible.transform.position - hostile.agentTransform.position,Vector3.up);
         RaycastHit hit;

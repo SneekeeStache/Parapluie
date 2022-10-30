@@ -40,10 +40,19 @@ public class HostileBehavior : MonoBehaviour
     void Update()
     {
         currentState.updateState(this);
+        DebugFov(maxAngleDetection,DistanceDetection,Color.red,agentTransform);
     }
 
     public void changeState(HostileBaseState state){
         currentState = state;
         state.enterState(this);
     }
+
+    public void DebugFov(float angle, float dist, Color color,Transform objectTransform)
+{
+    Vector3 extentLeft = Quaternion.AngleAxis(angle, Vector3.up) * transform.forward;
+    Vector3 extentRight = Vector3.Reflect(extentLeft, objectTransform.right);
+    Debug.DrawRay(objectTransform.position, extentLeft * dist, color);
+    Debug.DrawRay(objectTransform.position, extentRight * dist, color);
+}
 }

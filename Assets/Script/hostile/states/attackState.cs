@@ -10,7 +10,9 @@ public class attackState : HostileBaseState
     }
     public override void updateState(HostileBehavior hostile)
     {
-        throw new System.NotImplementedException();
+        if(Vector3.Distance(hostile.agentTransform.position,hostile.cible.transform.position) <= hostile.distanceAttaque){
+            Debug.Log("inserer animation attaque avec lancement du script degat pendant animation");
+        }
     }
     public override void onCollisionEnter(HostileBehavior hostile)
     {

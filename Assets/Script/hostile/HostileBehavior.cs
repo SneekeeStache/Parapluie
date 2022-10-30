@@ -18,6 +18,7 @@ public class HostileBehavior : MonoBehaviour
     public GameObject cible;
 
     [Header("Stats hostile")]
+    public float distanceAttaque=20;
     public float DistanceDetection=10;
     public float maxAngleDetection=30;
     public float durationTimerLostHostile=2;

@@ -15,7 +15,7 @@ public class chasingState : HostileBaseState
     }
     public override void updateState(HostileBehavior hostile)
     {
-        
+        //poursuit la cible temps que le raycast touche la cible
         Debug.Log(timerLostHostile);
         hostile.agentTransform.rotation=Quaternion.LookRotation(hostile.cible.transform.position - hostile.agentTransform.position,Vector3.up);
         RaycastHit hit;
@@ -38,6 +38,7 @@ public class chasingState : HostileBaseState
                 }
             }
         }else{
+            //passe a l'etat attaque si la cible est a porter
                 if(timerLostHostile < hostile.durationTimerLostHostile){
                     timerLostHostile += Time.deltaTime;
                 }else{

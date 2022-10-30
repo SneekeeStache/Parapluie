@@ -10,6 +10,7 @@ public class patroleState : HostileBaseState
     //code se lançant a l'entrer dans l'etat
     public override void enterState(HostileBehavior hostile)
     {
+        //change la vitesse et la distance de stop
         hostile.agent.speed=2f;
         hostile.agent.stoppingDistance=0;
 
@@ -22,6 +23,7 @@ public class patroleState : HostileBaseState
         //code de patrouille
         float listPositionFloat = (float)listPosition;
         float sizeWaypoint = (float)waypoints.Count;
+        //change de waypoint quand il a atteint sa desitnation
         if (hostile.agent.remainingDistance <= 0)
         {
             if (listPosition >= waypoints.Count - 1)

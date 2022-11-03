@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class deadState : HostileBaseState
+public class HostileDeadState : HostileBaseState
 {
     public override void enterState(HostileBehavior hostile)
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class patroleState : HostileBaseState
+public class HostilePatroleState : HostileBaseState
 {
 
     [SerializeField] int listPosition = 0;
@@ -11,8 +11,8 @@ public class patroleState : HostileBaseState
     public override void enterState(HostileBehavior hostile)
     {
         //change la vitesse et la distance de stop
-        hostile.agent.speed=2f;
-        hostile.agent.stoppingDistance=0;
+        hostile.agent.speed = 2f;
+        hostile.agent.stoppingDistance = 0;
 
         //prend la liste des waypoints assigner dans l'editeur
         waypoints = hostile.waypoints;
@@ -20,8 +20,9 @@ public class patroleState : HostileBaseState
     }
     public override void updateState(HostileBehavior hostile)
     {
-        if(hostile.health <= 0){
-            hostile.changeState(hostile.deadState);
+        if (hostile.health <= 0)
+        {
+            hostile.changeState(hostile.HostileDeadState);
         }
         //code de patrouille
         float listPositionFloat = (float)listPosition;
@@ -42,7 +43,7 @@ public class patroleState : HostileBaseState
         //verifie si une cible est a porter
         foreach (GameObject uneCible in hostile.listCible)
         {
-            Debug.Log(Vector3.Angle(hostile.agentTransform.forward,uneCible.transform.position - hostile.agentTransform.position ));
+            Debug.Log(Vector3.Angle(hostile.agentTransform.forward, uneCible.transform.position - hostile.agentTransform.position));
             Debug.DrawRay(hostile.agentTransform.position, (uneCible.transform.position - hostile.agentTransform.position) * hostile.DistanceDetection, Color.red);
             float DistanceCibleHostile = Vector3.Distance(hostile.agentTransform.position, uneCible.transform.position);
             if (DistanceCibleHostile <= hostile.DistanceDetection)
@@ -52,12 +53,21 @@ public class patroleState : HostileBaseState
                 {
                     if (hit.collider.CompareTag("PlayerMonster"))
                     {
-                        
-                        float angleDetection = Vector3.Angle(hostile.agentTransform.forward,uneCible.transform.position - hostile.agentTransform.position );
+
+                        float angleDetection = Vector3.Angle(hostile.agentTransform.forward, uneCible.transform.position - hostile.agentTransform.position);
                         if (angleDetection <= hostile.maxAngleDetection && angleDetection >= -hostile.maxAngleDetection)
                         {
-                            hostile.cible=uneCible;
-                            hostile.changeState(hostile.chasingState);
+                            if (hostile.catLike)
+                            {
+                                hostile.cible = uneCible;
+                                hostile.changeState(hostile.HostileChasingState);
+                            }
+                            else if (hostile.hunger <= hostile.maxHunger / 2)
+                            {
+                                hostile.cible = uneCible;
+                                hostile.changeState(hostile.HostileChasingState);
+                            }
+
                         }
                     }
                 }

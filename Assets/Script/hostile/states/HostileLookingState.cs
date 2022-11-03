@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class lookingState : HostileBaseState
+public class HostileLookingState : HostileBaseState
 {
     float timerLooking = 0;
     float numberlook = 0;
@@ -16,7 +16,7 @@ public class lookingState : HostileBaseState
     {
         if (hostile.health <= 0)
         {
-            hostile.changeState(hostile.deadState);
+            hostile.changeState(hostile.HostileDeadState);
         }
         if (timerLooking < hostile.durationTimerLooking)
         {
@@ -30,7 +30,7 @@ public class lookingState : HostileBaseState
 
         if (numberlook >= hostile.numberlook)
         {
-            hostile.changeState(hostile.patroleState);
+            hostile.changeState(hostile.HostilePatroleState);
         }
         //si trouve la cible, repasse en etat chasse
         RaycastHit hit;
@@ -42,7 +42,7 @@ public class lookingState : HostileBaseState
                 float angleDetection = Vector3.Angle(hostile.agentTransform.forward, hostile.cible.transform.position - hostile.agentTransform.position);
                 if (angleDetection <= hostile.maxAngleDetection && angleDetection >= -hostile.maxAngleDetection)
                 {
-                    hostile.changeState(hostile.chasingState);
+                    hostile.changeState(hostile.HostileChasingState);
                 }
             }
         }

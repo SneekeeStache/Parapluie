@@ -7,19 +7,21 @@ public class HostileBehavior : MonoBehaviour
     //ce code prend en charge la gestion et le changement d'etat
     public List<GameObject> listCible = new List<GameObject>();
     HostileBaseState currentState;
-    public attackState attackState = new attackState();
-    public chasingState chasingState = new chasingState();
-    public lookingState lookingState = new lookingState();
-    public patroleState patroleState = new patroleState();
-    public deadState deadState = new deadState();
+    [HideInInspector] public HostileAttackState HostileAttackState = new HostileAttackState();
+    [HideInInspector] public HostileChasingState HostileChasingState = new HostileChasingState();
+    [HideInInspector] public HostileLookingState HostileLookingState = new HostileLookingState();
+    [HideInInspector] public HostilePatroleState HostilePatroleState = new HostilePatroleState();
+    [HideInInspector] public HostileDeadState HostileDeadState = new HostileDeadState();
+    [HideInInspector] public HostileEatingState HostileEatingState = new HostileEatingState();
     public List<Transform> waypoints = new List<Transform>();
     public NavMeshAgent agent;
     public Transform agentTransform;
-    public GameObject cible;
+    [HideInInspector] public GameObject cible;
 
     [Header("Stats hostile")]
 
     public float health = 10;
+    public float damage=5;
     //distance a la quel l'hostile attaque
     public float distanceAttaque = 20;
     //distance de detection des cible de la liste
@@ -33,6 +35,15 @@ public class HostileBehavior : MonoBehaviour
     //compteur de position avant de reprendre la patrouille
     public float numberlook = 6;
 
+    public float maxHunger = 100;
+    public float hunger = 100;
+    public float hungerDepletion = 2;
+    public float durationTimerHunger = 5;
+    float timerHunger = 0;
+    public bool catLike = false;
+
+
+
     public bool StartDead = false;
     // Start is called before the first frame update
     void Start()
@@ -44,13 +55,13 @@ public class HostileBehavior : MonoBehaviour
         if (!StartDead)
         {
             //definir etat patrouille au demarage
-            currentState = patroleState;
+            currentState = HostilePatroleState;
             //application etat patrouille
 
         }
         else
         {
-            currentState = deadState;
+            currentState = HostileDeadState;
         }
         currentState.enterState(this);
 
@@ -63,7 +74,15 @@ public class HostileBehavior : MonoBehaviour
         //applique la fonction update aux etats
         currentState.updateState(this);
         DebugFov(maxAngleDetection, DistanceDetection, Color.red, agentTransform);
-
+        if (timerHunger < durationTimerHunger)
+        {
+            timerHunger += Time.deltaTime;
+        }
+        else
+        {
+            hunger -= hungerDepletion;
+            timerHunger = 0;
+        }
     }
 
     //change d'etat

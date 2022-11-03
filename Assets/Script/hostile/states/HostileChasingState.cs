@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class chasingState : HostileBaseState
+public class HostileChasingState : HostileBaseState
 {
 
     float timer = 0;
@@ -17,7 +17,7 @@ public class chasingState : HostileBaseState
     {
         if (hostile.health <= 0)
         {
-            hostile.changeState(hostile.deadState);
+            hostile.changeState(hostile.HostileDeadState);
         }
         //poursuit la cible temps que le raycast touche la cible
         Debug.Log(timerLostHostile);
@@ -48,7 +48,7 @@ public class chasingState : HostileBaseState
                 {
                     Debug.Log("changement looking");
                     hostile.agent.destination = hostile.cible.transform.position;
-                    hostile.changeState(hostile.lookingState);
+                    hostile.changeState(hostile.HostileLookingState);
                 }
             }
         }
@@ -62,13 +62,13 @@ public class chasingState : HostileBaseState
             else
             {
                 Debug.Log("changement looking");
-                hostile.changeState(hostile.lookingState);
+                hostile.changeState(hostile.HostileLookingState);
             }
         }
 
         if (Vector3.Distance(hostile.agentTransform.position, hostile.cible.transform.position) <= hostile.distanceAttaque)
         {
-            hostile.changeState(hostile.attackState);
+            hostile.changeState(hostile.HostileAttackState);
         }
     }
     public override void onCollisionEnter(HostileBehavior hostile)

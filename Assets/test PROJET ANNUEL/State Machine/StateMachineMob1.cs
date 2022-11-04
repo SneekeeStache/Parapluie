@@ -23,6 +23,8 @@ public class StateMachineMob1 : MonoBehaviour
     {
         state = idleState;
         state.StartState(this);
+        Player = GameObject.Find("Player").transform;
+        CameraM = GameObject.Find("Main Camera").transform;
     }
 
 

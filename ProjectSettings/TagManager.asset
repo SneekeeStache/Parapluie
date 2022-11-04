@@ -7,6 +7,9 @@ TagManager:
   - Ground
   - PlayerMonster
   - pacifiqueMonster
+  - Mob1
+  - Mob2
+  - Mob3
   layers:
   - Default
   - TransparentFX

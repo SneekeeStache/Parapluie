@@ -68,7 +68,7 @@ public class HostileChasingState : HostileBaseState
 
         if (Vector3.Distance(hostile.agentTransform.position, hostile.cible.transform.position) <= hostile.distanceAttaque)
         {
-            hostile.changeState(hostile.HostileAttackState);
+            //hostile.changeState(hostile.HostileAttackState);
         }
     }
     public override void onCollisionEnter(HostileBehavior hostile)

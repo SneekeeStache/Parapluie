@@ -16,7 +16,7 @@ public class HostileBehavior : MonoBehaviour
     public List<Transform> waypoints = new List<Transform>();
     public NavMeshAgent agent;
     public Transform agentTransform;
-    [HideInInspector] public GameObject cible;
+    public GameObject cible;
 
     [Header("Stats hostile")]
 
@@ -49,7 +49,8 @@ public class HostileBehavior : MonoBehaviour
     void Start()
     {
         //ajoute des cible a la liste
-        listCible.AddRange(GameObject.FindGameObjectsWithTag("pacifiqueMonster"));
+        listCible.AddRange(GameObject.FindGameObjectsWithTag("Mob1"));
+        listCible.AddRange(GameObject.FindGameObjectsWithTag("Mob2"));
         listCible.AddRange(GameObject.FindGameObjectsWithTag("PlayerMonster"));
 
         if (!StartDead)
@@ -74,7 +75,7 @@ public class HostileBehavior : MonoBehaviour
         //applique la fonction update aux etats
         currentState.updateState(this);
         DebugFov(maxAngleDetection, DistanceDetection, Color.red, agentTransform);
-        if (timerHunger < durationTimerHunger)
+        /*if (timerHunger < durationTimerHunger)
         {
             timerHunger += Time.deltaTime;
         }
@@ -82,7 +83,7 @@ public class HostileBehavior : MonoBehaviour
         {
             hunger -= hungerDepletion;
             timerHunger = 0;
-        }
+        }*/
     }
 
     //change d'etat

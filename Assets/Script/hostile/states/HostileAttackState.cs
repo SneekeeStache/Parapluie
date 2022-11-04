@@ -8,10 +8,11 @@ public class HostileAttackState : HostileBaseState
     float cibleHealth;
     public override void enterState(HostileBehavior hostile)
     {
-        cibleHealth=hostile.cible.GetComponent<testDummy>().health;
+        //cibleHealth=hostile.cible.GetComponent<testDummy>().health;
     }
     public override void updateState(HostileBehavior hostile)
     {
+        /*
         if (hostile.health <= 0)
         {
             hostile.changeState(hostile.HostileDeadState);
@@ -33,6 +34,7 @@ public class HostileAttackState : HostileBaseState
         {
             hostile.changeState(hostile.HostileChasingState);
         }
+        */
     }
     public override void onCollisionEnter(HostileBehavior hostile)
     {

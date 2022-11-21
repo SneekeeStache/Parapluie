@@ -11,7 +11,7 @@ public class player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.DORotateQuaternion(Quaternion.Euler(-90,0,285),1);
+        transform.DORotateQuaternion(Quaternion.Euler(0,0,0),1);
         rb=GetComponent<Rigidbody>();
         animatorPlayer=GetComponent<Animator>();
     }
@@ -20,11 +20,13 @@ public class player : MonoBehaviour
     void Update()
     {
         rb.AddForce(Input.GetAxis("Horizontal"),0,Input.GetAxis("Vertical"),ForceMode.Impulse);
+        
         Debug.Log(Collision);
         if(Collision){
             rb.freezeRotation=false;
         }else{
             rb.freezeRotation=true;
+            transform.DORotateQuaternion(Quaternion.Euler(60*Input.GetAxis("Vertical"),0,-60*Input.GetAxis("Horizontal")),1);
         }
         
     }
@@ -37,6 +39,6 @@ public class player : MonoBehaviour
 
     private void OnCollisionExit(Collision other) {
         Collision=false;
-        transform.DORotateQuaternion(Quaternion.Euler(-90,0,285),1);
+        transform.DORotateQuaternion(Quaternion.Euler(0,0,0),1);
     }
 }

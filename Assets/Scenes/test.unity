@@ -550,11 +550,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38189f57323c978179bfc7f785d9123d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fermer: 0
   drag: 7
   dragFermer: 0
   ImpulseOrientationPlayer: 2
   forceOrientationAnimation: 20
-  OrientationVent: {x: 0, y: 0, z: 0}
+  OrientationVent: {x: 0, y: 2, z: 1}
+  orientationModif: {x: 0, y: 0, z: 0}
+  orientationAnim: {x: 0, y: 0, z: 0}
 --- !u!54 &3218663088141246435
 Rigidbody:
   m_ObjectHideFlags: 0

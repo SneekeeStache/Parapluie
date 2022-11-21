@@ -33,9 +33,8 @@ public class player : MonoBehaviour
         orientationAnim=OrientationVent+ new Vector3(Input.GetAxis("Horizontal"),0,Input.GetAxis("Vertical"));
         if(Input.GetButtonDown("Jump")){
             fermer=true;
-        }else{
-            fermer=false;
-        }
+            orientationAnim=Vector3.zero;
+            orientationModif=Vector3.zero;
 
         if(fermer){
             rb.drag=dragFermer;

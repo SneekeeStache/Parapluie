@@ -5,10 +5,19 @@ using DG.Tweening;
 
 public class player : MonoBehaviour
 {
+    [Header("Temporaire")]
+    public GameObject Cone;
+
+    [Header("Composants à récupérer")]
+    public GameObject OrietationJump;
     bool Collision = false;
     public bool fermer = false;
     Rigidbody rb;
     Animator animatorPlayer;
+    [Header("Variables changeants les controles")]
+    [SerializeField] float ForceJump;
+    [SerializeField] float TimerOrientation;
+    [SerializeField] float TimerStabilisation;
     [SerializeField] float drag = 7;
     [SerializeField] float dragFermer = 0;
     [SerializeField] float ImpulseOrientationPlayer;
@@ -18,7 +27,8 @@ public class player : MonoBehaviour
 
     [SerializeField] Vector3 orientationModif;
     [SerializeField] Vector3 orientationAnim;
-    // Start is called before the first frame update
+
+
     void Start()
     {
         transform.DORotateQuaternion(Quaternion.Euler(0, 0, 0), 1);
@@ -26,16 +36,26 @@ public class player : MonoBehaviour
         animatorPlayer = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            fermer = true;
+            rb.AddForce((OrietationJump.transform.position - transform.position) * ForceJump, ForceMode.Impulse);
+            Cone.SetActive(false);
+        }
+        else if (Input.GetButtonUp("Jump"))
+        {
+            fermer = false;
+            Cone.SetActive(true);
+        }
+    }
+
+    void FixedUpdate()
     {
         orientationModif = OrientationVent + new Vector3(Input.GetAxis("Horizontal") * ImpulseOrientationPlayer, 0, Input.GetAxis("Vertical") * ImpulseOrientationPlayer);
         orientationAnim = OrientationVent + new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        if(Input.GetButtonDown("Jump")){
-            fermer=true;
-        }else if(Input.GetButtonUp("Jump")){
-            fermer=false;
-        }
+
 
         if (fermer)
         {
@@ -46,9 +66,9 @@ public class player : MonoBehaviour
             rb.drag = drag;
             rb.AddForce(orientationModif, ForceMode.Impulse);
         }
-        
 
-        Debug.Log(Collision);
+
+        //Debug.Log(Collision);
         if (Collision)
         {
             rb.freezeRotation = false;
@@ -56,7 +76,11 @@ public class player : MonoBehaviour
         else
         {
             rb.freezeRotation = true;
-            transform.DORotateQuaternion(Quaternion.Euler(orientationAnim.z * forceOrientationAnimation, 0, -orientationAnim.x * forceOrientationAnimation), 1);
+            if (Input.GetAxisRaw("Horizontal") > 0f || Input.GetAxisRaw("Horizontal") < 0f || Input.GetAxisRaw("Vertical") > 0f || Input.GetAxisRaw("Vertical") < 0f)
+            {
+                transform.DORotateQuaternion(Quaternion.Euler(orientationAnim.z * forceOrientationAnimation, 0, -orientationAnim.x * forceOrientationAnimation), TimerOrientation);
+            }
+            transform.DORotateQuaternion(Quaternion.Euler(orientationAnim.z * forceOrientationAnimation, 0, -orientationAnim.x * forceOrientationAnimation), TimerStabilisation);
         }
 
     }

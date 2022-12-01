@@ -22,13 +22,13 @@ public class CameraZoom : MonoBehaviour
         {
             transform.position = new Vector3(0,0,transform.position.z - 5f);
         }*/
-        Debug.Log(Vector3.Distance(CameraController.transform.position, transform.position));
-        if (Input.mouseScrollDelta.y > 0f && Vector3.Distance(CameraController.transform.position, transform.position) < maxC)
+        //Debug.Log(Vector3.Distance(CameraController.transform.position, transform.position));
+        if (Input.mouseScrollDelta.y > 0f /*&& Vector3.Distance(CameraController.transform.position, transform.position) < maxC*/)
         {
             
             transform.position += transform.forward;
         }
-        if (Input.mouseScrollDelta.y < 0f && Vector3.Distance(CameraController.transform.position, transform.position) > minC)
+        if (Input.mouseScrollDelta.y < 0f /*&& Vector3.Distance(CameraController.transform.position, transform.position) > minC*/)
         {
             transform.position += -transform.forward;
         }

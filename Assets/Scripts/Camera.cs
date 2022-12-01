@@ -36,8 +36,12 @@ public class Camera : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(xRotation, transform.localRotation.eulerAngles.y, 0);
         transform.Rotate(Vector3.up * mouseX);
+        //transform.Rotate(Vector3.up * Vertical);
+        //transform.Rotate(Vector3.right * horizontal);
+
 
         transform.DOMove(ParapluieTransform.position, 01f);
+        if( Input.GetKeyDown(KeyCode.F5)) SceneManager.LoadScene("test");
 
         /*if (Input.mouseScrollDelta.y > 0f)
         {

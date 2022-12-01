@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class player : MonoBehaviour
@@ -14,7 +15,14 @@ public class player : MonoBehaviour
     public bool fermer = false;
     Rigidbody rb;
     Animator animatorPlayer;
+
+    public Text NombreFlapText;
+
     [Header("Variables changeants les controles")]
+
+    [SerializeField] float NombreFlap;
+
+    private float FlapingNumber;
     [SerializeField] float ForceJump;
     [SerializeField] float TimerOrientation;
     [SerializeField] float TimerStabilisation;
@@ -28,27 +36,53 @@ public class player : MonoBehaviour
     [SerializeField] Vector3 orientationModif;
     [SerializeField] Vector3 orientationAnim;
 
+    private float timer = 0.3f;
+    private float timerReset = 0.3f;
+    private bool ActiveTimer;
+
 
     void Start()
     {
         transform.DORotateQuaternion(Quaternion.Euler(0, 0, 0), 1);
         rb = GetComponent<Rigidbody>();
         animatorPlayer = GetComponent<Animator>();
+        FlapingNumber = NombreFlap;
+        NombreFlapText.text=FlapingNumber.ToString();
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && FlapingNumber >= 1f)
         {
-            fermer = true;
+            //fermer = true;
             rb.AddForce((OrietationJump.transform.position - transform.position) * ForceJump, ForceMode.Impulse);
             Cone.SetActive(false);
+            FlapingNumber  = FlapingNumber - 1f;
+            ActiveTimer = true;
         }
-        else if (Input.GetButtonUp("Jump"))
+        /*else if (Input.GetButtonUp("Jump"))
+        {
+            fermer = false;
+            Cone.SetActive(true);
+        }*/
+        if (Input.GetButtonDown("Fire1"))
+        {
+            fermer = true;
+            Cone.SetActive(false);
+        }
+        else if (Input.GetButtonUp("Fire1"))
         {
             fermer = false;
             Cone.SetActive(true);
         }
+
+        if (ActiveTimer) timer -= Time.deltaTime;
+        if (timer<=0f){
+            Cone.SetActive(true);
+            timer = timerReset;
+            ActiveTimer = false;
+        }
+        NombreFlapText.text=FlapingNumber.ToString();
     }
 
     void FixedUpdate()
@@ -72,6 +106,7 @@ public class player : MonoBehaviour
         if (Collision)
         {
             rb.freezeRotation = false;
+            FlapingNumber = NombreFlap;
         }
         else
         {

@@ -6,7 +6,7 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class CameraFDP : MonoBehaviour
+public class CameraRotate : MonoBehaviour
 {
     [SerializeField] private float mouseSFDP = 50f;
     [SerializeField] private float minC = -70f, maxC = 80f;

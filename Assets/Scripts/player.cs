@@ -16,6 +16,7 @@ public class player : MonoBehaviour
     Rigidbody rb;
     Animator animatorPlayer;
 
+    private Transform cameraTransform;
     public Text NombreFlapText;
 
     [Header("Variables changeants les controles")]
@@ -48,11 +49,12 @@ public class player : MonoBehaviour
         animatorPlayer = GetComponent<Animator>();
         FlapingNumber = NombreFlap;
         NombreFlapText.text=FlapingNumber.ToString();
+        cameraTransform = GameObject.Find("Main Camera").transform;
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Jump") && FlapingNumber >= 1f)
+        if (Input.GetButtonDown("Jump") && FlapingNumber >= 1f && !fermer)
         {
             //fermer = true;
             rb.AddForce((OrietationJump.transform.position - transform.position) * ForceJump, ForceMode.Impulse);
@@ -67,14 +69,16 @@ public class player : MonoBehaviour
         }*/
         if (Input.GetButtonDown("Fire1"))
         {
-            fermer = true;
-            Cone.SetActive(false);
+            fermer = !fermer;
+            if (fermer)Cone.SetActive(false);
+            else Cone.SetActive(true);
+            
         }
-        else if (Input.GetButtonUp("Fire1"))
+        /*else if (Input.GetButtonUp("Fire1"))
         {
             fermer = false;
             Cone.SetActive(true);
-        }
+        }*/
 
         if (ActiveTimer) timer -= Time.deltaTime;
         if (timer<=0f){
@@ -87,8 +91,8 @@ public class player : MonoBehaviour
 
     void FixedUpdate()
     {
-        orientationModif = OrientationVent + new Vector3(Input.GetAxis("Horizontal") * ImpulseOrientationPlayer, 0, Input.GetAxis("Vertical") * ImpulseOrientationPlayer);
-        orientationAnim = OrientationVent + new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        orientationModif = OrientationVent + ((cameraTransform.right* Input.GetAxis("Horizontal") + cameraTransform.forward *  Input.GetAxis("Vertical")) * ImpulseOrientationPlayer);
+        orientationAnim = OrientationVent + cameraTransform.right *Input.GetAxis("Horizontal")+ cameraTransform.forward*Input.GetAxis("Vertical");
 
 
         if (fermer)

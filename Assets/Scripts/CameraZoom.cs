@@ -6,6 +6,7 @@ public class CameraZoom : MonoBehaviour
 {
     public GameObject CameraController;
     public float minC, maxC;
+    public float Cvalue;
     void Start()
     {
 
@@ -23,14 +24,16 @@ public class CameraZoom : MonoBehaviour
             transform.position = new Vector3(0,0,transform.position.z - 5f);
         }*/
         //Debug.Log(Vector3.Distance(CameraController.transform.position, transform.position));
-        if (Input.mouseScrollDelta.y > 0f /*&& Vector3.Distance(CameraController.transform.position, transform.position) < maxC*/)
+        if (Input.mouseScrollDelta.y > 0f && Cvalue<maxC/*&& Vector3.Distance(CameraController.transform.position, transform.position) < maxC*/)
         {
             
             transform.position += transform.forward;
+            Cvalue += 0.5f;
         }
-        if (Input.mouseScrollDelta.y < 0f /*&& Vector3.Distance(CameraController.transform.position, transform.position) > minC*/)
+        if (Input.mouseScrollDelta.y < 0f && Cvalue>minC/*&& Vector3.Distance(CameraController.transform.position, transform.position) > minC*/)
         {
             transform.position += -transform.forward;
+            Cvalue -= 0.5f;
         }
     }
 }

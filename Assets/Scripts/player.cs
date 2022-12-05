@@ -54,6 +54,7 @@ public class player : MonoBehaviour
 
     void Update()
     {
+        print(transform.rotation.eulerAngles);
         if (Input.GetButtonDown("Jump") && FlapingNumber >= 1f && !fermer)
         {
             //fermer = true;
@@ -117,9 +118,9 @@ public class player : MonoBehaviour
             rb.freezeRotation = true;
             if (Input.GetAxisRaw("Horizontal") > 0f || Input.GetAxisRaw("Horizontal") < 0f || Input.GetAxisRaw("Vertical") > 0f || Input.GetAxisRaw("Vertical") < 0f)
             {
-                transform.DORotateQuaternion(Quaternion.Euler(orientationAnim.z * forceOrientationAnimation, 0, -orientationAnim.x * forceOrientationAnimation), TimerOrientation);
+                 transform.DORotateQuaternion(Quaternion.Euler(orientationAnim.z * forceOrientationAnimation, 0, -orientationAnim.x * forceOrientationAnimation), TimerOrientation);
             }
-            transform.DORotateQuaternion(Quaternion.Euler(orientationAnim.z * forceOrientationAnimation, 0, -orientationAnim.x * forceOrientationAnimation), TimerStabilisation);
+            transform.DORotateQuaternion(Quaternion.Euler(orientationAnim.z * forceOrientationAnimation, 0, -orientationAnim.x * forceOrientationAnimation), TimerOrientation);
         }
 
     }

@@ -31,7 +31,8 @@ obj/
 .vscode/
 .vscode/*
 
-
+.idea/
+.idea/*
 # ============ #
 # OS generated #
 # ============ #

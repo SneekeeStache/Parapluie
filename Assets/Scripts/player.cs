@@ -136,6 +136,7 @@ public class player : MonoBehaviour
             }
             else
             {
+                rb.angularVelocity = Vector3.zero;
                 //transform.DORotateQuaternion(Quaternion.Euler(0,0,0), TimerOrientation);
             }
             

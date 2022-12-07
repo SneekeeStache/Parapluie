@@ -54,6 +54,7 @@ public class player : MonoBehaviour
 
     void Update()
     {
+        //rb.AddTorque(-cameraTransform.forward,ForceMode.VelocityChange);
         print(transform.rotation.eulerAngles);
         if (Input.GetButtonDown("Jump") && FlapingNumber >= 1f && !fermer)
         {
@@ -118,9 +119,26 @@ public class player : MonoBehaviour
             rb.freezeRotation = true;
             if (Input.GetAxisRaw("Horizontal") > 0f || Input.GetAxisRaw("Horizontal") < 0f || Input.GetAxisRaw("Vertical") > 0f || Input.GetAxisRaw("Vertical") < 0f)
             {
-                 transform.DORotateQuaternion(Quaternion.Euler(orientationAnim.z * forceOrientationAnimation, 0, -orientationAnim.x * forceOrientationAnimation), TimerOrientation);
+                if (Input.GetAxisRaw("Horizontal") > 0f)
+                {
+                    rb.AddTorque(-cameraTransform.forward,ForceMode.Acceleration);
+                }else if (Input.GetAxisRaw("Horizontal") < 0f)
+                {
+                    rb.AddTorque(cameraTransform.forward,ForceMode.Acceleration);
+                }
+                if(Input.GetAxisRaw("Vertical") > 0f)
+                {
+                    rb.AddTorque(cameraTransform.right,ForceMode.Acceleration);
+                } else if(Input.GetAxisRaw("Vertical") < 0f)
+                {
+                    rb.AddTorque(-cameraTransform.right,ForceMode.Acceleration);
+                }
             }
-            transform.DORotateQuaternion(Quaternion.Euler(orientationAnim.z * forceOrientationAnimation, 0, -orientationAnim.x * forceOrientationAnimation), TimerOrientation);
+            else
+            {
+                //transform.DORotateQuaternion(Quaternion.Euler(0,0,0), TimerOrientation);
+            }
+            
         }
 
     }

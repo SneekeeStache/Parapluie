@@ -2,9 +2,9 @@
 # =============== #
 # Fmod cache #
 # =============== #
-netrunner/Assets/Plugins/FMOD/Cache/*
-netrunner/Assets/StreamingAssets/**/*.bank
-netrunner/Assets/StreamingAssets/**/*.bank.meta
+Assets/Plugins/FMOD/Cache/*
+Assets/StreamingAssets/**/*.bank
+Assets/StreamingAssets/**/*.bank.meta
 # =============== #
 # Unity generated #
 # =============== #
@@ -31,7 +31,8 @@ obj/
 .vscode/
 .vscode/*
 
-
+.idea/
+.idea/*
 # ============ #
 # OS generated #
 # ============ #
@@ -43,7 +44,7 @@ obj/
 ehthumbs.db
 Thumbs.db
 
-netrunner/Logs/*
+Logs/*
 *.log
 *.csproj
 .sln

@@ -21,9 +21,9 @@ public class player : MonoBehaviour
 
     [Header("Variables changeants les controles")]
 
-    [SerializeField] float NombreFlap;
+    [SerializeField] public float NombreFlap;
 
-    private float FlapingNumber;
+    public float FlapingNumber;
     [SerializeField] float ForceJump;
     [SerializeField] float TimerOrientation;
     [SerializeField] float TimerStabilisation;
@@ -39,7 +39,7 @@ public class player : MonoBehaviour
 
     private float timer = 0.3f;
     private float timerReset = 0.3f;
-    private bool ActiveTimer;
+    public bool ActiveTimer;
 
 
     void Start()
@@ -61,7 +61,7 @@ public class player : MonoBehaviour
             FlapingNumber  = FlapingNumber - 1f;
             ActiveTimer = true;
         }
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && ActiveTimer == false)
         {
             fermer = !fermer;
             if (fermer)Cone.SetActive(false);
@@ -94,7 +94,7 @@ public class player : MonoBehaviour
         if (Collision)
         {
             rb.freezeRotation = false;
-            FlapingNumber = NombreFlap;
+            //FlapingNumber = NombreFlap;
         }
         else
         {

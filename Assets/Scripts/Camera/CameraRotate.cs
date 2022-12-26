@@ -8,11 +8,11 @@ using UnityEngine.SceneManagement;
 
 public class CameraRotate : MonoBehaviour
 {
-    [Header ("souris")]
+    [Header("souris")]
     [SerializeField] private float mouseSFDP = 50f;
     [SerializeField] private float minC = -70f, maxC = 80f;
 
-    [Header ("Components")]
+    [Header("Components")]
     public Transform ParapluieTransform;
     public GameObject cameraFDP;
     public GameObject JumpOrientation;
@@ -21,44 +21,44 @@ public class CameraRotate : MonoBehaviour
     private float xRotation = 0f;
     private Vector3 playerVelo;
 
-    [Header ("Réglages camera")]
+    [Header("Réglages camera")]
     public float CameraRotationAutoHaut = 0.5f;
     public float CameraRotationAutobas = 1f;
 
-    public GameObject rotationReference;
-
+    public Transform rotationReference;
+    public float speedRotationHorizontale;
     public float upRotation;
-    
+
     void Start()
     {
-       Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
-        if( Input.GetKeyDown(KeyCode.F5)) SceneManager.LoadScene("test");
+        if (Input.GetKeyDown(KeyCode.F5)) SceneManager.LoadScene("test");
 
         //fait bouger le cam automatiquement en fonction du parapluie
         if (JumpOrientation.transform.position.y - gameObject.transform.position.y >= 2 && (transform.rotation.eulerAngles.x <= 280f || transform.rotation.eulerAngles.x >= 330f))
         {
-            xRotation -= (JumpOrientation.transform.position.y - gameObject.transform.position.y) * CameraRotationAutoHaut/10;
+            xRotation -= (JumpOrientation.transform.position.y - gameObject.transform.position.y) * CameraRotationAutoHaut / 10;
         }
 
         if (JumpOrientation.transform.position.y - gameObject.transform.position.y <= -0.1f && (transform.rotation.eulerAngles.x <= 10f || transform.rotation.eulerAngles.x >= 80f))
         {
-            xRotation += (JumpOrientation.transform.position.y - gameObject.transform.position.y) * -CameraRotationAutobas/10;
+            xRotation += (JumpOrientation.transform.position.y - gameObject.transform.position.y) * -CameraRotationAutobas / 10;
         }
         else if (JumpOrientation.transform.position.y - gameObject.transform.position.y <= -1f)
         {
-            xRotation += (JumpOrientation.transform.position.y - gameObject.transform.position.y) * -CameraRotationAutobas/10;
+            xRotation += (JumpOrientation.transform.position.y - gameObject.transform.position.y) * -CameraRotationAutobas / 10;
         }
         Debug.Log(transform.rotation.eulerAngles.x);
 
-        if (JumpOrientation.transform.position.z - gameObject.transform.position.z >= 2) 
+        if (JumpOrientation.transform.position.z - gameObject.transform.position.z >= 2)
         {
-            
+
         }
-        
+
 
         //fait bouger le cam avec input
         float mouseX = Input.GetAxis("Mouse X") * mouseSFDP * Time.deltaTime;
@@ -69,5 +69,12 @@ public class CameraRotate : MonoBehaviour
         transform.localRotation = Quaternion.Euler(xRotation, transform.localRotation.eulerAngles.y, 0);
         transform.Rotate(Vector3.up * mouseX);
         transform.DOMove(ParapluieTransform.position, 01f);
+        
+
+        //tentative de look horizontal
+        /*Vector3 direction = rotationReference.position - transform.position;
+        Quaternion toRotation = Quaternion.FromToRotation(transform.forward, direction);
+        transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, speedRotationHorizontale * Time.time);*/
+        //transform.LookAt(rotationReference, Vector3.up);
     }
 }

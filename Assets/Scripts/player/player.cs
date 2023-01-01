@@ -7,9 +7,12 @@ using DG.Tweening;
 public class player : MonoBehaviour
 {
     [Header("Temporaire")]
-    public GameObject Cone;
+    public GameObject parapluieFerme;
+    public GameObject parapluieOuvert;
 
     [Header("Composants à récupérer")]
+
+    public Animator ParapluieRenderer;
     public GameObject OrietationJump;
     bool Collision = false;
     public bool fermer = false;
@@ -48,7 +51,7 @@ public class player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animatorPlayer = GetComponent<Animator>();
         FlapingNumber = NombreFlap;
-        NombreFlapText.text=FlapingNumber.ToString();
+        NombreFlapText.text = FlapingNumber.ToString();
         cameraTransform = GameObject.Find("Main Camera").transform;
     }
 
@@ -57,29 +60,43 @@ public class player : MonoBehaviour
         if (Input.GetButtonDown("Jump") && FlapingNumber >= 1f && !fermer)
         {
             rb.AddForce((OrietationJump.transform.position - transform.position) * ForceJump, ForceMode.Impulse);
-            Cone.SetActive(false);
-            FlapingNumber  = FlapingNumber - 1f;
+            parapluieFerme.SetActive(true);
+            parapluieOuvert.SetActive(false);
+            ParapluieRenderer.Play("Fermeture");
+            FlapingNumber = FlapingNumber - 1f;
             ActiveTimer = true;
         }
         if (Input.GetButtonDown("Fire1") && ActiveTimer == false)
         {
             fermer = !fermer;
-            if (fermer)Cone.SetActive(false);
-            else Cone.SetActive(true);
+            if (fermer)
+            {
+                parapluieFerme.SetActive(true);
+                parapluieOuvert.SetActive(false);
+            }
+
+            else
+            {
+                parapluieFerme.SetActive(false);
+                parapluieOuvert.SetActive(true);
+            }
+
         }
         if (ActiveTimer) timer -= Time.deltaTime;
-        if (timer<=0f){
-            Cone.SetActive(true);
+        if (timer <= 0f)
+        {
+            parapluieFerme.SetActive(false);
+            parapluieOuvert.SetActive(true);
             timer = timerReset;
             ActiveTimer = false;
         }
-        NombreFlapText.text=FlapingNumber.ToString();
+        NombreFlapText.text = FlapingNumber.ToString();
     }
 
     void FixedUpdate()
     {
-        orientationModif = OrientationVent + ((cameraTransform.right* Input.GetAxis("Horizontal") + cameraTransform.forward *  Input.GetAxis("Vertical")) * ImpulseOrientationPlayer);
-        orientationAnim = OrientationVent + cameraTransform.right *Input.GetAxis("Horizontal")+ cameraTransform.forward*Input.GetAxis("Vertical");
+        orientationModif = OrientationVent + ((cameraTransform.right * Input.GetAxis("Horizontal") + cameraTransform.forward * Input.GetAxis("Vertical")) * ImpulseOrientationPlayer);
+        orientationAnim = OrientationVent + cameraTransform.right * Input.GetAxis("Horizontal") + cameraTransform.forward * Input.GetAxis("Vertical");
 
 
         if (fermer)
@@ -103,23 +120,25 @@ public class player : MonoBehaviour
             {
                 if (Input.GetAxisRaw("Horizontal") > 0f)
                 {
-                    rb.AddTorque(-cameraTransform.forward*forceOrientationAnimation,ForceMode.Acceleration);
-                }else if (Input.GetAxisRaw("Horizontal") < 0f)
-                {
-                    rb.AddTorque(cameraTransform.forward*forceOrientationAnimation,ForceMode.Acceleration);
+                    rb.AddTorque(-cameraTransform.forward * forceOrientationAnimation, ForceMode.Acceleration);
                 }
-                if(Input.GetAxisRaw("Vertical") > 0f)
+                else if (Input.GetAxisRaw("Horizontal") < 0f)
                 {
-                    rb.AddTorque(cameraTransform.right*forceOrientationAnimation,ForceMode.Acceleration);
-                } else if(Input.GetAxisRaw("Vertical") < 0f)
+                    rb.AddTorque(cameraTransform.forward * forceOrientationAnimation, ForceMode.Acceleration);
+                }
+                if (Input.GetAxisRaw("Vertical") > 0f)
                 {
-                    rb.AddTorque(-cameraTransform.right*forceOrientationAnimation,ForceMode.Acceleration);
+                    rb.AddTorque(cameraTransform.right * forceOrientationAnimation, ForceMode.Acceleration);
+                }
+                else if (Input.GetAxisRaw("Vertical") < 0f)
+                {
+                    rb.AddTorque(-cameraTransform.right * forceOrientationAnimation, ForceMode.Acceleration);
                 }
             }
             else
             {
                 rb.angularVelocity = Vector3.zero;
-            } 
+            }
         }
     }
     private void OnCollisionEnter(Collision other)

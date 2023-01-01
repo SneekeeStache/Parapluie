@@ -17,6 +17,7 @@ public class ResetFlap : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
+        //si le ActiveTimer n'est pas là, il joue la condition la frame après le saut donc il reset le nombre de saut juste après le premier saut
         if (other.CompareTag("Ground") && Parapluie.ActiveTimer == false)
         {
             Parapluie.FlapingNumber = Parapluie.NombreFlap;

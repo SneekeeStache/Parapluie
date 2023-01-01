@@ -27,11 +27,14 @@ public class CameraRotate : MonoBehaviour
 
     public Transform rotationReference;
     public float speedRotationHorizontale;
+    public float TimerAvantRotation;
+    private float TimerRotation;
     public float upRotation;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        TimerRotation = TimerAvantRotation;
     }
 
     void Update()
@@ -52,7 +55,7 @@ public class CameraRotate : MonoBehaviour
         {
             xRotation += (JumpOrientation.transform.position.y - gameObject.transform.position.y) * -CameraRotationAutobas / 10;
         }
-        Debug.Log(transform.rotation.eulerAngles.x);
+        //Debug.Log(transform.rotation.eulerAngles.x);
 
         if (JumpOrientation.transform.position.z - gameObject.transform.position.z >= 2)
         {
@@ -69,7 +72,21 @@ public class CameraRotate : MonoBehaviour
         transform.localRotation = Quaternion.Euler(xRotation, transform.localRotation.eulerAngles.y, 0);
         transform.Rotate(Vector3.up * mouseX);
         transform.DOMove(ParapluieTransform.position, 01f);
-        
+
+        if (mouseX != 0f || mouseY != 0f)
+        {
+            TimerRotation = TimerAvantRotation;
+        }
+        TimerRotation -= Time.deltaTime;
+        if (TimerRotation <= 0f)
+        {
+            var lookPos = rotationReference.position - transform.position;
+            lookPos.y = 0;
+            var rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speedRotationHorizontale);
+        }
+
+
 
         //tentative de look horizontal
         /*Vector3 direction = rotationReference.position - transform.position;

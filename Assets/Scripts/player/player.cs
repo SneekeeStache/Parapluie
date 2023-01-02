@@ -56,6 +56,7 @@ public class player : MonoBehaviour
         FlapingNumber = NombreFlap;
         NombreFlapText.text = FlapingNumber.ToString();
         cameraTransform = GameObject.Find("Main Camera").transform;
+        Application.targetFrameRate = 60;
     }
 
     void Update()

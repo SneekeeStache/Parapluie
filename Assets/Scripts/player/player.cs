@@ -44,6 +44,8 @@ public class player : MonoBehaviour
     private float timer = 0.3f;
     private float timerReset = 0.3f;
     public bool ActiveTimer;
+    [HideInInspector] public bool onGround = false;
+    [HideInInspector] public Vector3 groundPosition;
 
 
     void Start()
@@ -58,8 +60,34 @@ public class player : MonoBehaviour
 
     void Update()
     {
+        if (onGround)
+        {
+            transform.position = new Vector3(groundPosition.x, transform.position.y, groundPosition.z);
+            if (Input.GetAxisRaw("Horizontal") > 0f || Input.GetAxisRaw("Horizontal") < 0f || Input.GetAxisRaw("Vertical") > 0f || Input.GetAxisRaw("Vertical") < 0f)
+            {
+                if (Input.GetAxisRaw("Horizontal") > 0f)
+                {
+                    transform.RotateAround(groundPosition, -cameraTransform.forward, forceOrientationAnimation *20* Time.deltaTime);
+                }
+                else if (Input.GetAxisRaw("Horizontal") < 0f)
+                {
+                    transform.RotateAround(groundPosition,cameraTransform.forward,forceOrientationAnimation*20*Time.deltaTime);
+                }
+                if (Input.GetAxisRaw("Vertical") > 0f)
+                {
+                    transform.RotateAround(groundPosition,cameraTransform.right,forceOrientationAnimation*20*Time.deltaTime);
+                }
+                else if (Input.GetAxisRaw("Vertical") < 0f)
+                {
+                    transform.RotateAround(groundPosition,-cameraTransform.right,forceOrientationAnimation*20*Time.deltaTime);
+                }
+            }
+
+        }
+        
         if (Input.GetButtonDown("Jump") && FlapingNumber >= 1f && !fermer)
         {
+            onGround = false;
             rb.AddForce((OrietationJump.transform.position - transform.position) * ForceJump, ForceMode.Impulse);
             parapluieFerme.SetActive(true);
             parapluieOuvert.SetActive(false);
@@ -107,7 +135,7 @@ public class player : MonoBehaviour
         else
         {
             rb.drag = drag;
-            rb.AddForce(orientationModif, ForceMode.Impulse);
+            //rb.AddForce(orientationModif, ForceMode.Impulse);
         }
         if (Collision)
         {
@@ -154,6 +182,6 @@ public class player : MonoBehaviour
     private void OnCollisionExit(Collision other)
     {
         Collision = false;
-        transform.DORotateQuaternion(Quaternion.Euler(0, 0, 0), 1);
+        //transform.DORotateQuaternion(Quaternion.Euler(0, 0, 0), 1);
     }
 }

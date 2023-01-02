@@ -4658,7 +4658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 519d625fa4d95e04d9b02066bfc277fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NombreDeFlapEnBonus: 1
+  NombreDeFlapEnBonus: 2
 --- !u!1001 &1324697918
 PrefabInstance:
   m_ObjectHideFlags: 0

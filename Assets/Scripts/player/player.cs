@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class player : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class player : MonoBehaviour
     Animator animatorPlayer;
 
     private Transform cameraTransform;
-    public Text NombreFlapText;
+    public TextMeshProUGUI NombreFlapText;
 
     [Header("Variables changeants les controles")]
 

@@ -7652,7 +7652,7 @@ MonoBehaviour:
   ParapluieRenderer: {fileID: 1212898177}
   OrietationJump: {fileID: 1395700892}
   fermer: 0
-  NombreFlapText: {fileID: 0}
+  NombreFlapText: {fileID: 507302617}
   NombreFlap: 3
   FlapingNumber: 0
   ForceJump: 160

@@ -62,7 +62,7 @@ public class player : MonoBehaviour
     {
         if (onGround)
         {
-            transform.position = new Vector3(groundPosition.x, transform.position.y, groundPosition.z);
+            transform.position = groundPosition;
             if (Input.GetAxisRaw("Horizontal") > 0f || Input.GetAxisRaw("Horizontal") < 0f || Input.GetAxisRaw("Vertical") > 0f || Input.GetAxisRaw("Vertical") < 0f)
             {
                 if (Input.GetAxisRaw("Horizontal") > 0f)

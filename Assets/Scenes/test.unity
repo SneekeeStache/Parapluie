@@ -2127,7 +2127,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 515216930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa9ced1cab93ccc4994e42b677f1f9d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 617ea0b55c90ee1d39b896dd3cdf6d8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CameraPivot: {fileID: 2144191344}
@@ -4270,7 +4270,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1229297908}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b5c7e8a843898044ababbaeae4ecda3, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b98697e435ac181aa47fc864e0587ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Parapluie: {fileID: 3218663088141246434}

@@ -10,42 +10,29 @@ public class shaderControls : MonoBehaviour
     Material wallMaterial;
 
     public Camera mainCamera;
-    public Transform player;
+    public GameObject colliderMur;
+    public shaderCollider ScriptColliderMur;
 
     public LayerMask mask;
     // Start is called before the first frame update
     void Start()
     {
         wallMaterial = GetComponent<Renderer>().material;
+        ScriptColliderMur = colliderMur.GetComponent<shaderCollider>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        var dir =  mainCamera.transform.position - transform.position;
-        var ray = new Ray(transform.position, dir.normalized);
-        RaycastHit hit;
-        Debug.DrawRay(transform.position, dir.normalized * 30, Color.red);
-
-        if (Physics.Raycast(transform.position,dir.normalized,out hit,30))
+        if (ScriptColliderMur.CameraIn)
         {
-            if (hit.collider.CompareTag("MainCamera"))
-            {
-                wallMaterial.SetFloat(sizeID,1);
-                print("test");
-            }
-            else
-            {
-                wallMaterial.SetFloat(sizeID,0);
-            }
-            
+            wallMaterial.SetFloat(sizeID,1);
         }
         else
         {
             wallMaterial.SetFloat(sizeID,0);
         }
 
-        var view = mainCamera.WorldToViewportPoint(transform.position);
     }
 }

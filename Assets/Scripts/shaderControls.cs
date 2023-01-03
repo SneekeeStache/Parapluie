@@ -6,18 +6,16 @@ public class shaderControls : MonoBehaviour
 {
     public static int posID = Shader.PropertyToID("_position");
     public static int sizeID = Shader.PropertyToID("_size");
-
-    [Range(0, 10)] [SerializeField] private float taille;
     
     Material wallMaterial;
 
-
     public shaderCollider ScriptColliderMur;
+
+    public LayerMask mask;
     // Start is called before the first frame update
     void Start()
     {
         wallMaterial = GetComponent<Renderer>().material;
-
     }
 
     // Update is called once per frame
@@ -25,7 +23,7 @@ public class shaderControls : MonoBehaviour
     {
         if (ScriptColliderMur.CameraIn)
         {
-            wallMaterial.SetFloat(sizeID,taille);
+            wallMaterial.SetFloat(sizeID,1);
         }
         else
         {

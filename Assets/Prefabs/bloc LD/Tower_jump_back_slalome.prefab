@@ -1016,7 +1016,6 @@ GameObject:
   - component: {fileID: 1387478355543960456}
   - component: {fileID: 1722601958493119230}
   - component: {fileID: 6342996832265296736}
-  - component: {fileID: 6616025026283214938}
   m_Layer: 0
   m_Name: Cube (7)
   m_TagString: Ground
@@ -1102,20 +1101,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6616025026283214938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7090774155222715843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8bad8206a90700bdaff76c113ceca68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  taille: 2
-  ScriptColliderMur: {fileID: 0}
 --- !u!1 &8604977050831534848
 GameObject:
   m_ObjectHideFlags: 0

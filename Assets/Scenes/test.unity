@@ -6531,11 +6531,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1363393464}
   m_CullTransparentMesh: 1
---- !u!1 &1395700892 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7769628328538832177, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
-  m_PrefabInstance: {fileID: 7769628329831745965}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1413655309
 GameObject:
   m_ObjectHideFlags: 0
@@ -9537,12 +9532,12 @@ MonoBehaviour:
   maxC: 80
   ParapluieTransform: {fileID: 3218663088141246433}
   cameraFDP: {fileID: 589855149}
-  JumpOrientation: {fileID: 1395700892}
-  CameraRotationAutoHaut: 0.5
-  CameraRotationAutobas: 1
+  JumpOrientation: {fileID: 7769628329831745966}
+  CameraRotationAutoHaut: 3
+  CameraRotationAutobas: 3
   rotationReference: {fileID: 515216935}
   speedRotationHorizontale: 1
-  TimerAvantRotation: 1.5
+  TimerAvantRotation: 2
   upRotation: 0
 --- !u!1 &2146598093
 GameObject:
@@ -9724,12 +9719,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5150357425684797007, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
       propertyPath: NombreFlap
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5150357425684797007, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
       propertyPath: NombreFlapText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 792338463}
     - target: {fileID: 5490572283884637430, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
       propertyPath: m_Name
       value: parapluie
@@ -9740,3 +9735,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+--- !u!1 &7769628329831745966 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1818951555388754965, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+  m_PrefabInstance: {fileID: 7769628329831745965}
+  m_PrefabAsset: {fileID: 0}

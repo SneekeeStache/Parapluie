@@ -9,8 +9,6 @@ public class shaderControls : MonoBehaviour
     
     Material wallMaterial;
 
-    public Camera mainCamera;
-    public GameObject colliderMur;
     public shaderCollider ScriptColliderMur;
 
     public LayerMask mask;
@@ -18,8 +16,6 @@ public class shaderControls : MonoBehaviour
     void Start()
     {
         wallMaterial = GetComponent<Renderer>().material;
-        ScriptColliderMur = colliderMur.GetComponent<shaderCollider>();
-
     }
 
     // Update is called once per frame

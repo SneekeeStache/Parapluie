@@ -68,31 +68,38 @@ public class player : MonoBehaviour
             {
                 if (Input.GetAxisRaw("Horizontal") > 0f)
                 {
-                    transform.RotateAround(groundPosition, -cameraTransform.forward, forceOrientationAnimation *20* Time.deltaTime);
+                    transform.RotateAround(groundPosition, -cameraTransform.forward, forceOrientationAnimation * 20 * Time.deltaTime);
                 }
                 else if (Input.GetAxisRaw("Horizontal") < 0f)
                 {
-                    transform.RotateAround(groundPosition,cameraTransform.forward,forceOrientationAnimation*20*Time.deltaTime);
+                    transform.RotateAround(groundPosition, cameraTransform.forward, forceOrientationAnimation * 20 * Time.deltaTime);
                 }
                 if (Input.GetAxisRaw("Vertical") > 0f)
                 {
-                    transform.RotateAround(groundPosition,cameraTransform.right,forceOrientationAnimation*20*Time.deltaTime);
+                    transform.RotateAround(groundPosition, cameraTransform.right, forceOrientationAnimation * 20 * Time.deltaTime);
                 }
                 else if (Input.GetAxisRaw("Vertical") < 0f)
                 {
-                    transform.RotateAround(groundPosition,-cameraTransform.right,forceOrientationAnimation*20*Time.deltaTime);
+                    transform.RotateAround(groundPosition, -cameraTransform.right, forceOrientationAnimation * 20 * Time.deltaTime);
                 }
             }
-
         }
-        
+
+
+        //tentative d'arreter le planage selon la rotaton ca marche pas
+        if (gameObject.transform.rotation.x >= 40f || gameObject.transform.rotation.x <= -40f || gameObject.transform.localRotation.z >= 40f || gameObject.transform.localRotation.z <= -40f)
+        {
+            Debug.Log("bite");
+        }
+
+
         if (Input.GetButtonDown("Jump") && FlapingNumber >= 1f && !fermer)
         {
             onGround = false;
             rb.AddForce((OrietationJump.transform.position - transform.position) * ForceJump, ForceMode.Impulse);
             parapluieFerme.SetActive(true);
             parapluieOuvert.SetActive(false);
-            ParapluieRenderer.Play("Fermeture");
+            //ParapluieRenderer.Play("Fermeture");
             FlapingNumber = FlapingNumber - 1f;
             ActiveTimer = true;
         }
@@ -110,7 +117,6 @@ public class player : MonoBehaviour
                 parapluieFerme.SetActive(false);
                 parapluieOuvert.SetActive(true);
             }
-
         }
         if (ActiveTimer) timer -= Time.deltaTime;
         if (timer <= 0f)
@@ -121,6 +127,12 @@ public class player : MonoBehaviour
             ActiveTimer = false;
         }
         NombreFlapText.text = FlapingNumber.ToString();
+
+        if (Input.GetButtonDown("Fire3"))
+        {
+
+            FlapingNumber += 1f;
+        }
     }
 
     void FixedUpdate()

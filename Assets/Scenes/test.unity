@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.15692714, g: 0.0061844243, b: 0.6442463, a: 1}
+  m_IndirectSpecularColor: {r: 0.15701373, g: 0.006209803, b: 0.6442483, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1641,12 +1641,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8bad8206a90700bdaff76c113ceca68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 589855152}
-  colliderMur: {fileID: 248457676}
-  ScriptColliderMur: {fileID: 0}
-  mask:
-    serializedVersion: 2
-    m_Bits: 0
+  taille: 0
+  ScriptColliderMur: {fileID: 248457679}
 --- !u!65 &314461382
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1734,7 +1730,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5500752290401910318, guid: 1acda0c186447544e8ef7fee8475a142, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5500752290401910318, guid: 1acda0c186447544e8ef7fee8475a142, type: 3}
       propertyPath: m_LocalScale.x
@@ -1990,7 +1986,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8146095986151912368, guid: 5f4de8a6d415aef4999f8bd8fefb3f36, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8146095986151912368, guid: 5f4de8a6d415aef4999f8bd8fefb3f36, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2172,12 +2168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8bad8206a90700bdaff76c113ceca68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 589855152}
-  colliderMur: {fileID: 1871423925}
-  ScriptColliderMur: {fileID: 0}
-  mask:
-    serializedVersion: 2
-    m_Bits: 0
+  taille: 0
+  ScriptColliderMur: {fileID: 1871423928}
 --- !u!65 &415259196
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2502,7 +2494,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6063753904251898070, guid: 5ff60793504b4e6499f92e1217b7e613, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6063753904251898070, guid: 5ff60793504b4e6499f92e1217b7e613, type: 3}
       propertyPath: m_LocalScale.x
@@ -2707,7 +2699,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4522713388722370428, guid: a7fd11ea00dc2154fb4bc4fa768bcc07, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4522713388722370428, guid: a7fd11ea00dc2154fb4bc4fa768bcc07, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4045,12 +4037,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8bad8206a90700bdaff76c113ceca68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 589855152}
-  colliderMur: {fileID: 1871423925}
-  ScriptColliderMur: {fileID: 0}
-  mask:
-    serializedVersion: 2
-    m_Bits: 0
+  taille: 0
+  ScriptColliderMur: {fileID: 1871423928}
 --- !u!65 &1023497491
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4890,12 +4878,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8bad8206a90700bdaff76c113ceca68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 589855152}
-  colliderMur: {fileID: 248457676}
-  ScriptColliderMur: {fileID: 0}
-  mask:
-    serializedVersion: 2
-    m_Bits: 0
+  taille: 0
+  ScriptColliderMur: {fileID: 248457679}
 --- !u!65 &1221701629
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5832,7 +5816,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5500752290401910318, guid: 1acda0c186447544e8ef7fee8475a142, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5500752290401910318, guid: 1acda0c186447544e8ef7fee8475a142, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6089,7 +6073,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5500752290401910318, guid: 1acda0c186447544e8ef7fee8475a142, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5500752290401910318, guid: 1acda0c186447544e8ef7fee8475a142, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7218,7 +7202,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7039575509636547418, guid: bdea6c32e172dea479b6a08b4933bd1f, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7039575509636547418, guid: bdea6c32e172dea479b6a08b4933bd1f, type: 3}
       propertyPath: m_LocalPosition.x

@@ -7874,6 +7874,67 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2146598093}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &160360647146246284
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 160360648418329445, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 160360648418329445, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.346649
+      objectReference: {fileID: 0}
+    - target: {fileID: 160360648418329445, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 44.63601
+      objectReference: {fileID: 0}
+    - target: {fileID: 160360648418329445, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 29.14605
+      objectReference: {fileID: 0}
+    - target: {fileID: 160360648418329445, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 160360648418329445, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 160360648418329445, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 160360648418329445, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 160360648418329445, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 160360648418329445, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 160360648418329445, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 160360648418329448, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
+      propertyPath: m_Name
+      value: triggerVent
+      objectReference: {fileID: 0}
+    - target: {fileID: 160360648418329449, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
+      propertyPath: PlayerScript
+      value: 
+      objectReference: {fileID: 3218663088141246434}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
 --- !u!1 &2873628245924922715 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5490572283884637430, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
@@ -7884,6 +7945,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5150357425684797004, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
   m_PrefabInstance: {fileID: 7769628329831745965}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3218663088141246434 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5150357425684797007, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+  m_PrefabInstance: {fileID: 7769628329831745965}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2873628245924922715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38189f57323c978179bfc7f785d9123d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7769628329831745965
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7963,6 +8035,10 @@ PrefabInstance:
       propertyPath: NombreFlapText
       value: 
       objectReference: {fileID: 507302617}
+    - target: {fileID: 5150357425684797007, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+      propertyPath: OrientationVent.y
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5490572283884637430, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
       propertyPath: m_Name
       value: parapluie

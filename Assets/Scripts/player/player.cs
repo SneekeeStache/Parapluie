@@ -35,7 +35,8 @@ public class player : MonoBehaviour
     [SerializeField] float dragFermer = 0;
     [SerializeField] float ImpulseOrientationPlayer;
     [SerializeField] float forceOrientationAnimation;
-    [SerializeField] Vector3 OrientationVent = Vector3.zero;
+    [SerializeField] public Vector3 OrientationVent = Vector3.zero;
+    [SerializeField] public Vector3 DefaultOrientationVent=Vector3.zero;
 
 
     [SerializeField] Vector3 orientationModif;
@@ -61,6 +62,7 @@ public class player : MonoBehaviour
 
     void Update()
     {
+        rb.AddForce(OrientationVent,ForceMode.Impulse);
         if (onGround)
         {
             transform.position = groundPosition;

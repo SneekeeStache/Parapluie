@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DAWProject" id="{1202861e-43cf-4c99-b135-dc007ebd4c3f}">
+		<property name="assetPath">
+			<value>fly-consolidated-consolidated.rpp.link/</value>
+		</property>
+		<property name="dawProjectPath">
+			<value>C:/Users/Etudiant/Desktop/fly-consolidated-consolidated.rpp</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e080a40b-77e9-4217-93b5-4b1885145034}</destination>
+		</relationship>
+	</object>
+</objects>

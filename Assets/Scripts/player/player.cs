@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
 
+
 public class player : MonoBehaviour
 {
     [Header("Temporaire")]
@@ -44,6 +45,7 @@ public class player : MonoBehaviour
     private float timer = 0.3f;
     private float timerReset = 0.3f;
     public bool ActiveTimer;
+    private bool onGroundFMOD = true;
     [HideInInspector] public bool onGround = false;
     [HideInInspector] public Vector3 groundPosition;
 
@@ -63,6 +65,8 @@ public class player : MonoBehaviour
     {
         if (onGround)
         {
+            if (onGroundFMOD) FMODUnity.RuntimeManager.PlayOneShot("event:/player/landing");
+            onGroundFMOD = false;
             transform.position = groundPosition;
             if (Input.GetAxisRaw("Horizontal") > 0f || Input.GetAxisRaw("Horizontal") < 0f || Input.GetAxisRaw("Vertical") > 0f || Input.GetAxisRaw("Vertical") < 0f)
             {
@@ -89,20 +93,25 @@ public class player : MonoBehaviour
         //tentative d'arreter le planage selon la rotaton ca marche pas
         if (gameObject.transform.rotation.x >= 40f || gameObject.transform.rotation.x <= -40f || gameObject.transform.localRotation.z >= 40f || gameObject.transform.localRotation.z <= -40f)
         {
-            Debug.Log("bite");
+            Debug.Log("Le parapluie tombe");
         }
 
-
+        if ((Input.GetButtonDown("Jump") && FlapingNumber <= 0f) || (Input.GetButtonDown("Jump") && fermer)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/no_flap");
         if (Input.GetButtonDown("Jump") && FlapingNumber >= 1f && !fermer)
         {
             onGround = false;
+            onGroundFMOD = true;
             rb.AddForce((OrietationJump.transform.position - transform.position) * ForceJump, ForceMode.Impulse);
             parapluieFerme.SetActive(true);
             parapluieOuvert.SetActive(false);
             //ParapluieRenderer.Play("Fermeture");
             FlapingNumber = FlapingNumber - 1f;
             ActiveTimer = true;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/player/flap");
         }
+
+
+
         if (Input.GetButtonDown("Fire1") && ActiveTimer == false)
         {
             fermer = !fermer;
@@ -110,10 +119,12 @@ public class player : MonoBehaviour
             {
                 parapluieFerme.SetActive(true);
                 parapluieOuvert.SetActive(false);
+                FMODUnity.RuntimeManager.PlayOneShot("event:/player/close");
             }
 
             else
             {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/player/open");
                 parapluieFerme.SetActive(false);
                 parapluieOuvert.SetActive(true);
             }

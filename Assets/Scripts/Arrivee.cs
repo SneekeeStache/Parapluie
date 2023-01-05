@@ -10,6 +10,10 @@ public class Arrivee : MonoBehaviour
     private float TimerReloadBonusReset = 5f;
     private Renderer triggerRenderer;
 
+    private void Start()
+    {
+        mesh = gameObject.GetComponent<MeshRenderer>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

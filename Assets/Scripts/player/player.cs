@@ -96,7 +96,7 @@ public class player : MonoBehaviour
             Debug.Log("Le parapluie tombe");
         }
 
-        if ((Input.GetButtonDown("Jump") && FlapingNumber <= 0f) || (Input.GetButtonDown("Jump") && fermer)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/no_flap");
+        if ((Input.GetButtonDown("Jump") && FlapingNumber <= 0f) || (Input.GetButtonDown("Jump") && fermer)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
         if (Input.GetButtonDown("Jump") && FlapingNumber >= 1f && !fermer)
         {
             onGround = false;

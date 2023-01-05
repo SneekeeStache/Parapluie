@@ -28,7 +28,7 @@ public class BonusFlap : MonoBehaviour
             if (!BonusPris)
             {
                 other.GetComponent<player>().FlapingNumber += NombreDeFlapEnBonus;
-                FMODUnity.RuntimeManager.PlayOneShot("event:/player/regenate_flap");
+                FMODUnity.RuntimeManager.PlayOneShot("event:/player/bonus");
                 BonusPris = true;
             }
         }

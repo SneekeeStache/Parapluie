@@ -60,8 +60,8 @@ public class player : MonoBehaviour
         NombreFlapText.text = FlapingNumber.ToString();
         cameraTransform = GameObject.Find("Main Camera").transform;
         Application.targetFrameRate = 60;
-        FMODUnity.RuntimeManager.PlayOneShot("chute");
-        FMODUnity.RuntimeManager.PlayOneShot("fly");
+        //FMODUnity.RuntimeManager.PlayOneShot("chute");
+        //FMODUnity.RuntimeManager.PlayOneShot("fly");
     }
 
     void Update()
@@ -90,13 +90,6 @@ public class player : MonoBehaviour
                     transform.RotateAround(groundPosition, -cameraTransform.right, forceOrientationAnimation * 20 * Time.deltaTime);
                 }
             }
-        }
-
-
-        //tentative d'arreter le planage selon la rotaton ca marche pas
-        if (gameObject.transform.rotation.x >= 40f || gameObject.transform.rotation.x <= -40f || gameObject.transform.localRotation.z >= 40f || gameObject.transform.localRotation.z <= -40f)
-        {
-            Debug.Log("Le parapluie tombe");
         }
 
         if ((Input.GetButtonDown("Jump") && FlapingNumber <= 0f) || (Input.GetButtonDown("Jump") && fermer)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
@@ -153,16 +146,21 @@ public class player : MonoBehaviour
         orientationModif = OrientationVent + ((cameraTransform.right * Input.GetAxis("Horizontal") + cameraTransform.forward * Input.GetAxis("Vertical")) * ImpulseOrientationPlayer);
         orientationAnim = OrientationVent + cameraTransform.right * Input.GetAxis("Horizontal") + cameraTransform.forward * Input.GetAxis("Vertical");
 
+        //Debug.Log(gameObject.transform.rotation.eulerAngles.x);
 
-        if (fermer)
+        //la rotation du parapluie le fait chuter
+
+        if(ActiveTimer)rb.drag = drag;
+        else if (fermer || (gameObject.transform.rotation.eulerAngles.x >= 40f && gameObject.transform.rotation.eulerAngles.x <= 320f) || (gameObject.transform.rotation.eulerAngles.z >= 40f && gameObject.transform.rotation.eulerAngles.z <= 320f) /*|| gameObject.transform.localRotation.eulerAngles.z >= 40f || gameObject.transform.localRotation.eulerAngles.z <= -40f*/)
         {
-            rb.drag = dragFermer;
+            rb.drag = drag/2;
         }
         else
         {
             rb.drag = drag;
             //rb.AddForce(orientationModif, ForceMode.Impulse);
         }
+
         if (Collision)
         {
             rb.freezeRotation = false;

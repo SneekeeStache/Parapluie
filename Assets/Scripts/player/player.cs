@@ -49,7 +49,6 @@ public class player : MonoBehaviour
     [HideInInspector] public bool onGround = false;
     [HideInInspector] public Vector3 groundPosition;
     public float FlapNumberCheat;
-**************
 
 
     void Start()

@@ -48,6 +48,8 @@ public class player : MonoBehaviour
     private bool onGroundFMOD = true;
     [HideInInspector] public bool onGround = false;
     [HideInInspector] public Vector3 groundPosition;
+    public float FlapNumberCheat;
+**************
 
 
     void Start()
@@ -59,6 +61,8 @@ public class player : MonoBehaviour
         NombreFlapText.text = FlapingNumber.ToString();
         cameraTransform = GameObject.Find("Main Camera").transform;
         Application.targetFrameRate = 60;
+        FMODUnity.RuntimeManager.PlayOneShot("chute");
+        FMODUnity.RuntimeManager.PlayOneShot("fly");
     }
 
     void Update()
@@ -141,8 +145,7 @@ public class player : MonoBehaviour
 
         if (Input.GetButtonDown("Fire3"))
         {
-
-            FlapingNumber += 1f;
+            FlapingNumber += FlapNumberCheat;
         }
     }
 

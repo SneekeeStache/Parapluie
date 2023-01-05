@@ -19,5 +19,12 @@ public class SpawnRaccourci : MonoBehaviour
             Parapluie.GetComponent<player>().FlapingNumber = Parapluie.GetComponent<player>().NombreFlap;
             if(AtelierTeleport > Ateliers.Count-1) AtelierTeleport = 0;
         }
+        if(Input.GetKeyDown(KeyCode.U))
+        {
+            Parapluie.transform.position = Ateliers[AtelierTeleport].transform.position;
+            AtelierTeleport -= 1;
+            Parapluie.GetComponent<player>().FlapingNumber = Parapluie.GetComponent<player>().NombreFlap;
+            if(AtelierTeleport <= -1) AtelierTeleport = Ateliers.Count-1;
+        }
     }
 }

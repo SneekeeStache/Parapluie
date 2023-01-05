@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Arrivee : MonoBehaviour
 {
+    public GameObject Validation;
     private MeshRenderer mesh;
     private bool BonusPris;
     private float TimerReloadBonus;
@@ -13,6 +14,7 @@ public class Arrivee : MonoBehaviour
     private void Start()
     {
         mesh = gameObject.GetComponent<MeshRenderer>();
+        Validation.SetActive(false);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -22,6 +24,8 @@ public class Arrivee : MonoBehaviour
             {
                 FMODUnity.RuntimeManager.PlayOneShot("event:/player/checkpoint");
                 BonusPris = true;
+                other.transform.position = new Vector3(0f,20f,0f);
+                Validation.SetActive(true);
             }
         }
     }

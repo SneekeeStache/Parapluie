@@ -150,10 +150,14 @@ public class player : MonoBehaviour
 
         //la rotation du parapluie le fait chuter
 
-        if(ActiveTimer)rb.drag = drag;
-        else if (fermer || (gameObject.transform.rotation.eulerAngles.x >= 40f && gameObject.transform.rotation.eulerAngles.x <= 320f) || (gameObject.transform.rotation.eulerAngles.z >= 40f && gameObject.transform.rotation.eulerAngles.z <= 320f) /*|| gameObject.transform.localRotation.eulerAngles.z >= 40f || gameObject.transform.localRotation.eulerAngles.z <= -40f*/)
+        if (ActiveTimer) rb.drag = drag;
+        else if (fermer)
         {
-            rb.drag = drag/2;
+            rb.drag = dragFermer;
+        }
+        else if ((gameObject.transform.rotation.eulerAngles.x >= 40f && gameObject.transform.rotation.eulerAngles.x <= 320f) || (gameObject.transform.rotation.eulerAngles.z >= 40f && gameObject.transform.rotation.eulerAngles.z <= 320f) /*|| gameObject.transform.localRotation.eulerAngles.z >= 40f || gameObject.transform.localRotation.eulerAngles.z <= -40f*/)
+        {
+            rb.drag = drag / 2;
         }
         else
         {

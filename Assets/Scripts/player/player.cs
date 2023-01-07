@@ -49,7 +49,8 @@ public class player : MonoBehaviour
     [HideInInspector] public bool onGround = false;
     [HideInInspector] public Vector3 groundPosition;
     public float FlapNumberCheat;
-
+    private FMOD.Studio.EventInstance chuteFMOD;
+    private FMOD.Studio.EventInstance flyFMOD;
 
     void Start()
     {
@@ -60,14 +61,22 @@ public class player : MonoBehaviour
         NombreFlapText.text = FlapingNumber.ToString();
         cameraTransform = GameObject.Find("Main Camera").transform;
         Application.targetFrameRate = 60;
-        //FMODUnity.RuntimeManager.PlayOneShot("chute");
-        //FMODUnity.RuntimeManager.PlayOneShot("fly");
+        //FMODUnity.RuntimeManager.PlayOneShot("event:/player/fly");
+        //FMODUnity.RuntimeManager.PlayOneShot("event:/player/chute");
+        chuteFMOD = FMODUnity.RuntimeManager.CreateInstance("event:/player/chute");
+        flyFMOD = FMODUnity.RuntimeManager.CreateInstance("event:/player/fly");
+        flyFMOD.start();
+        //chuteFMOD.setParameterByName("Parameter 1", 0.0F);
     }
 
     void Update()
     {
         if (onGround)
         {
+            chuteFMOD.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            flyFMOD.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            //FMODUnity.RuntimeManager.StudioSystem.setParameterByName("chute", 0);
+            //FMODUnity.RuntimeManager.StudioSystem.setParameterByName("fly", 0);
             if (onGroundFMOD) FMODUnity.RuntimeManager.PlayOneShot("event:/player/landing");
             onGroundFMOD = false;
             transform.position = groundPosition;
@@ -104,6 +113,7 @@ public class player : MonoBehaviour
             FlapingNumber = FlapingNumber - 1f;
             ActiveTimer = true;
             FMODUnity.RuntimeManager.PlayOneShot("event:/player/flap");
+            flyFMOD.start();
         }
 
 
@@ -116,11 +126,15 @@ public class player : MonoBehaviour
                 parapluieFerme.SetActive(true);
                 parapluieOuvert.SetActive(false);
                 FMODUnity.RuntimeManager.PlayOneShot("event:/player/close");
+                chuteFMOD.start();
+                flyFMOD.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             }
 
             else
             {
                 FMODUnity.RuntimeManager.PlayOneShot("event:/player/open");
+                chuteFMOD.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                flyFMOD.start();
                 parapluieFerme.SetActive(false);
                 parapluieOuvert.SetActive(true);
             }

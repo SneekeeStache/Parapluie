@@ -95,6 +95,9 @@
 		<relationship name="automators">
 			<destination>{a0f32877-ebd4-4532-9791-949655e04125}</destination>
 		</relationship>
+		<relationship name="modulators">
+			<destination>{81a320b4-41f4-4d44-9cca-bbe01c09ae71}</destination>
+		</relationship>
 		<relationship name="effectChain">
 			<destination>{ed2b5578-b42d-4160-9f02-2a26742a5974}</destination>
 		</relationship>
@@ -151,6 +154,17 @@
 			<destination>{daa96c23-c33e-4bd1-9b2e-84e1bdbcd8fa}</destination>
 		</relationship>
 	</object>
+	<object class="ADSRModulator" id="{81a320b4-41f4-4d44-9cca-bbe01c09ae71}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>volume</value>
+		</property>
+		<property name="initialValue">
+			<value>-80</value>
+		</property>
+		<property name="finalValue">
+			<value>-80</value>
+		</property>
+	</object>
 	<object class="MixerBusEffectChain" id="{ed2b5578-b42d-4160-9f02-2a26742a5974}">
 		<relationship name="effects">
 			<destination>{dc35d0b0-0fa2-4d79-9841-585ad20f7028}</destination>
@@ -175,22 +189,22 @@
 		</relationship>
 		<relationship name="automationPoints">
 			<destination>{0c09c2db-b0f6-4a2c-be8b-a7f4dfe48405}</destination>
-			<destination>{7d195238-a6bc-45ca-97d3-8072413a6031}</destination>
+			<destination>{2953ec83-2fd4-4f37-ba4e-62781da885b6}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{dc35d0b0-0fa2-4d79-9841-585ad20f7028}" />
 	<object class="MixerBusFader" id="{f0f27eed-afeb-405b-bf34-2b688d8751fc}" />
 	<object class="AutomationPoint" id="{0c09c2db-b0f6-4a2c-be8b-a7f4dfe48405}">
 		<property name="position">
-			<value>0.42444550492610833</value>
+			<value>0.42999999999999999</value>
 		</property>
 		<property name="value">
-			<value>-80</value>
+			<value>0</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{7d195238-a6bc-45ca-97d3-8072413a6031}">
+	<object class="AutomationPoint" id="{2953ec83-2fd4-4f37-ba4e-62781da885b6}">
 		<property name="position">
-			<value>0.42446633825944169</value>
+			<value>0.43002083333333335</value>
 		</property>
 		<property name="value">
 			<value>0</value>

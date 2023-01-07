@@ -12,7 +12,7 @@ public class ResetFlap : MonoBehaviour
         //si le ActiveTimer n'est pas là, il joue la condition la frame après le saut donc il reset le nombre de saut juste après le premier saut
         if (other.CompareTag("Ground") && Parapluie.ActiveTimer == false)
         {
-            if (triggerOnceFmod) FMODUnity.RuntimeManager.PlayOneShot("event:/player/regenate_flap");
+            //if (triggerOnceFmod) FMODUnity.RuntimeManager.PlayOneShot("event:/player/regenate_flap");
             if (Parapluie.NombreFlap >= Parapluie.FlapingNumber) Parapluie.FlapingNumber = Parapluie.NombreFlap;
             triggerOnceFmod = false;
 

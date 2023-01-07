@@ -23,7 +23,7 @@ public class shaderControls : MonoBehaviour
     {
         if (ScriptColliderMur.CameraIn)
         {
-            wallMaterial.SetFloat(sizeID,1);
+            wallMaterial.SetFloat(sizeID,5);
         }
         else
         {

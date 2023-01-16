@@ -29,6 +29,8 @@ public class CameraRotate : MonoBehaviour
     public float speedRotationHorizontale;
     public float TimerAvantRotation;
     private float TimerRotation;
+    public float TimerAvantRotationVerticale;
+    private float TimerRotationVerticale;
     public float upRotation;
 
     void Start()
@@ -42,25 +44,29 @@ public class CameraRotate : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F5)) SceneManager.LoadScene("test");
 
         //fait bouger le cam automatiquement en fonction du parapluie
-        if (JumpOrientation.transform.position.y - gameObject.transform.position.y >= 2 && (transform.rotation.eulerAngles.x <= 280f || transform.rotation.eulerAngles.x >= 330f))
+        if (TimerRotationVerticale <= 0f)
         {
-            xRotation -= (JumpOrientation.transform.position.y - gameObject.transform.position.y) * CameraRotationAutoHaut / 10;
+            if (JumpOrientation.transform.position.y - gameObject.transform.position.y >= 2 && (transform.rotation.eulerAngles.x <= 280f || transform.rotation.eulerAngles.x >= 330f))
+            {
+                xRotation -= (JumpOrientation.transform.position.y - gameObject.transform.position.y) * CameraRotationAutoHaut / 10;
+            }
+
+            if (JumpOrientation.transform.position.y - gameObject.transform.position.y <= -0.1f && (transform.rotation.eulerAngles.x <= 10f || transform.rotation.eulerAngles.x >= 80f))
+            {
+                xRotation += (JumpOrientation.transform.position.y - gameObject.transform.position.y) * -CameraRotationAutobas / 10;
+            }
+            else if (JumpOrientation.transform.position.y - gameObject.transform.position.y <= -1f)
+            {
+                xRotation += (JumpOrientation.transform.position.y - gameObject.transform.position.y) * -CameraRotationAutobas / 10;
+            }
+            //Debug.Log(transform.rotation.eulerAngles.x);
+
+            if (JumpOrientation.transform.position.z - gameObject.transform.position.z >= 2)
+            {
+
+            }
         }
 
-        if (JumpOrientation.transform.position.y - gameObject.transform.position.y <= -0.1f && (transform.rotation.eulerAngles.x <= 10f || transform.rotation.eulerAngles.x >= 80f))
-        {
-            xRotation += (JumpOrientation.transform.position.y - gameObject.transform.position.y) * -CameraRotationAutobas / 10;
-        }
-        else if (JumpOrientation.transform.position.y - gameObject.transform.position.y <= -1f)
-        {
-            xRotation += (JumpOrientation.transform.position.y - gameObject.transform.position.y) * -CameraRotationAutobas / 10;
-        }
-        //Debug.Log(transform.rotation.eulerAngles.x);
-
-        if (JumpOrientation.transform.position.z - gameObject.transform.position.z >= 2)
-        {
-
-        }
 
 
         //fait bouger le cam avec input
@@ -76,7 +82,9 @@ public class CameraRotate : MonoBehaviour
         if (mouseX != 0f || mouseY != 0f)
         {
             TimerRotation = TimerAvantRotation;
+            TimerRotationVerticale = TimerAvantRotationVerticale;
         }
+        TimerRotationVerticale -= Time.deltaTime;
         TimerRotation -= Time.deltaTime;
         if (TimerRotation <= 0f)
         {

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
 
+
 public class player : MonoBehaviour
 {
     [Header("Temporaire")]
@@ -45,9 +46,12 @@ public class player : MonoBehaviour
     private float timer = 0.3f;
     private float timerReset = 0.3f;
     public bool ActiveTimer;
+    private bool onGroundFMOD = true;
     [HideInInspector] public bool onGround = false;
     [HideInInspector] public Vector3 groundPosition;
-
+    public float FlapNumberCheat;
+    private FMOD.Studio.EventInstance chuteFMOD;
+    private FMOD.Studio.EventInstance flyFMOD;
 
     void Start()
     {
@@ -58,6 +62,12 @@ public class player : MonoBehaviour
         NombreFlapText.text = FlapingNumber.ToString();
         cameraTransform = GameObject.Find("Main Camera").transform;
         Application.targetFrameRate = 60;
+        //FMODUnity.RuntimeManager.PlayOneShot("event:/player/fly");
+        //FMODUnity.RuntimeManager.PlayOneShot("event:/player/chute");
+        chuteFMOD = FMODUnity.RuntimeManager.CreateInstance("event:/player/chute");
+        flyFMOD = FMODUnity.RuntimeManager.CreateInstance("event:/player/fly");
+        flyFMOD.start();
+        //chuteFMOD.setParameterByName("Parameter 1", 0.0F);
     }
 
     void Update()
@@ -65,39 +75,51 @@ public class player : MonoBehaviour
         rb.AddForce(OrientationVent,ForceMode.Impulse);
         if (onGround)
         {
+            chuteFMOD.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            flyFMOD.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            //FMODUnity.RuntimeManager.StudioSystem.setParameterByName("chute", 0);
+            //FMODUnity.RuntimeManager.StudioSystem.setParameterByName("fly", 0);
+            if (onGroundFMOD) FMODUnity.RuntimeManager.PlayOneShot("event:/player/landing");
+            onGroundFMOD = false;
             transform.position = groundPosition;
             if (Input.GetAxisRaw("Horizontal") > 0f || Input.GetAxisRaw("Horizontal") < 0f || Input.GetAxisRaw("Vertical") > 0f || Input.GetAxisRaw("Vertical") < 0f)
             {
                 if (Input.GetAxisRaw("Horizontal") > 0f)
                 {
-                    transform.RotateAround(groundPosition, -cameraTransform.forward, forceOrientationAnimation *20* Time.deltaTime);
+                    transform.RotateAround(groundPosition, -cameraTransform.forward, forceOrientationAnimation * 20 * Time.deltaTime);
                 }
                 else if (Input.GetAxisRaw("Horizontal") < 0f)
                 {
-                    transform.RotateAround(groundPosition,cameraTransform.forward,forceOrientationAnimation*20*Time.deltaTime);
+                    transform.RotateAround(groundPosition, cameraTransform.forward, forceOrientationAnimation * 20 * Time.deltaTime);
                 }
                 if (Input.GetAxisRaw("Vertical") > 0f)
                 {
-                    transform.RotateAround(groundPosition,cameraTransform.right,forceOrientationAnimation*20*Time.deltaTime);
+                    transform.RotateAround(groundPosition, cameraTransform.right, forceOrientationAnimation * 20 * Time.deltaTime);
                 }
                 else if (Input.GetAxisRaw("Vertical") < 0f)
                 {
-                    transform.RotateAround(groundPosition,-cameraTransform.right,forceOrientationAnimation*20*Time.deltaTime);
+                    transform.RotateAround(groundPosition, -cameraTransform.right, forceOrientationAnimation * 20 * Time.deltaTime);
                 }
             }
-
         }
-        
+
+        if ((Input.GetButtonDown("Jump") && FlapingNumber <= 0f) || (Input.GetButtonDown("Jump") && fermer)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
         if (Input.GetButtonDown("Jump") && FlapingNumber >= 1f && !fermer)
         {
             onGround = false;
+            onGroundFMOD = true;
             rb.AddForce((OrietationJump.transform.position - transform.position) * ForceJump, ForceMode.Impulse);
             parapluieFerme.SetActive(true);
             parapluieOuvert.SetActive(false);
-            ParapluieRenderer.Play("Fermeture");
+            //ParapluieRenderer.Play("Fermeture");
             FlapingNumber = FlapingNumber - 1f;
             ActiveTimer = true;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/player/flap");
+            flyFMOD.start();
         }
+
+
+
         if (Input.GetButtonDown("Fire1") && ActiveTimer == false)
         {
             fermer = !fermer;
@@ -105,14 +127,19 @@ public class player : MonoBehaviour
             {
                 parapluieFerme.SetActive(true);
                 parapluieOuvert.SetActive(false);
+                FMODUnity.RuntimeManager.PlayOneShot("event:/player/close");
+                chuteFMOD.start();
+                flyFMOD.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             }
 
             else
             {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/player/open");
+                chuteFMOD.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                flyFMOD.start();
                 parapluieFerme.SetActive(false);
                 parapluieOuvert.SetActive(true);
             }
-
         }
         if (ActiveTimer) timer -= Time.deltaTime;
         if (timer <= 0f)
@@ -123,6 +150,11 @@ public class player : MonoBehaviour
             ActiveTimer = false;
         }
         NombreFlapText.text = FlapingNumber.ToString();
+
+        if (Input.GetButtonDown("Fire3"))
+        {
+            FlapingNumber += FlapNumberCheat;
+        }
     }
 
     void FixedUpdate()
@@ -130,16 +162,25 @@ public class player : MonoBehaviour
         orientationModif = OrientationVent + ((cameraTransform.right * Input.GetAxis("Horizontal") + cameraTransform.forward * Input.GetAxis("Vertical")) * ImpulseOrientationPlayer);
         orientationAnim = OrientationVent + cameraTransform.right * Input.GetAxis("Horizontal") + cameraTransform.forward * Input.GetAxis("Vertical");
 
+        //Debug.Log(gameObject.transform.rotation.eulerAngles.x);
 
-        if (fermer)
+        //la rotation du parapluie le fait chuter
+
+        if (ActiveTimer) rb.drag = drag;
+        else if (fermer)
         {
             rb.drag = dragFermer;
+        }
+        else if ((gameObject.transform.rotation.eulerAngles.x >= 40f && gameObject.transform.rotation.eulerAngles.x <= 320f) || (gameObject.transform.rotation.eulerAngles.z >= 40f && gameObject.transform.rotation.eulerAngles.z <= 320f) /*|| gameObject.transform.localRotation.eulerAngles.z >= 40f || gameObject.transform.localRotation.eulerAngles.z <= -40f*/)
+        {
+            rb.drag = drag / 2;
         }
         else
         {
             rb.drag = drag;
             //rb.AddForce(orientationModif, ForceMode.Impulse);
         }
+
         if (Collision)
         {
             rb.freezeRotation = false;

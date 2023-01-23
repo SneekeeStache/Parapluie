@@ -23,11 +23,18 @@ public class player : MonoBehaviour
 
     private Transform cameraTransform;
     public TextMeshProUGUI NombreFlapText;
+    public Slider SliderE;
+    public Image SliderBG;
 
     [Header("Variables changeants les controles")]
 
+    [SerializeField] public float EnergieFlap;
+    [SerializeField] private bool EnergieDown;
+    [SerializeField] public float SpeedResetFlap;
+    [SerializeField] public float CostFlap;
+    [SerializeField] public Color ColorSliderUp;
+    [SerializeField] public Color ColorSliderDown;
     [SerializeField] public float NombreFlap;
-
     public float FlapingNumber;
     [SerializeField] float ForceJump;
     [SerializeField] float TimerOrientation;
@@ -101,8 +108,8 @@ public class player : MonoBehaviour
             }
         }
 
-        if ((Input.GetButtonDown("Jump") && FlapingNumber <= 0f) || (Input.GetButtonDown("Jump") && fermer)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
-        if (Input.GetButtonDown("Jump") && FlapingNumber >= 1f && !fermer)
+        if ((Input.GetButtonDown("Jump") && FlapingNumber <= 0f) || (Input.GetButtonDown("Jump") && fermer) || (Input.GetButtonDown("Jump") && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
+        if (Input.GetButtonDown("Jump") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer)
         {
             onGround = false;
             onGroundFMOD = true;
@@ -114,6 +121,15 @@ public class player : MonoBehaviour
             ActiveTimer = true;
             FMODUnity.RuntimeManager.PlayOneShot("event:/player/flap");
             flyFMOD.start();
+            if (EnergieFlap <= 25f && EnergieFlap >= 20f) EnergieFlap = 1f;
+            else EnergieFlap -= CostFlap;
+
+            if (EnergieFlap <= 0)
+            {
+                EnergieFlap = 0f;
+                EnergieDown = true;
+                SliderBG.color = ColorSliderDown;
+            }
         }
 
 
@@ -152,6 +168,15 @@ public class player : MonoBehaviour
         if (Input.GetButtonDown("Fire3"))
         {
             FlapingNumber += FlapNumberCheat;
+            EnergieFlap = 100f;
+        }
+        EnergieFlap += SpeedResetFlap * Time.deltaTime;
+        SliderE.value = EnergieFlap;
+        if (EnergieFlap >= 100)
+        {
+            EnergieDown = false;
+            SliderBG.color = ColorSliderUp;
+            EnergieFlap = 100f;
         }
     }
 

@@ -12,6 +12,7 @@ TagManager:
   - Mob3
   - test
   - noTouch
+  - direction
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - UI
   - Player
   - ignorePlayer
-  - 
+  - directionBox
   - 
   - 
   - 

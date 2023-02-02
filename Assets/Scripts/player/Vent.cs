@@ -5,23 +5,86 @@ using UnityEngine;
 public class Vent : MonoBehaviour
 {
     [SerializeField] Vector3 ajoutVent;
+    private Vector3 vent;
+    [SerializeField] GameObject player;
     [SerializeField] player PlayerScript;
     [SerializeField] float timerImpulseVent;
     [SerializeField] float timerResetValue = 0.5f;
     [SerializeField] bool ventContinue = false;
 
+    [SerializeField] float multiplicateurFlap;
+    [SerializeField] float multiplicateurVent;
+
     float timer;
     float timerReset = 0;
 
+    private void Start()
+    {
+        vent = ajoutVent;
+    }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            //determine la puissance du vent en fonction de l'orientation du parapluie
+            if (ajoutVent.y > 0)
+            {
+                if(PlayerScript.up){
+                    PlayerScript.ForceJump=PlayerScript.DefaultForceJump*multiplicateurFlap;
+                }else if(PlayerScript.down){
+                    
+                }
+            }
+            else if (ajoutVent.y < 0)
+            {
+                if(PlayerScript.down){
+                    
+                }else if(PlayerScript.up){
+                    PlayerScript.ForceJump=PlayerScript.DefaultForceJump/multiplicateurFlap;
+                }
+            }
+
+            if (ajoutVent.x > 0)
+            {
+                if(PlayerScript.right){
+                    vent.x=ajoutVent.x*multiplicateurVent;
+                }else if(PlayerScript.left){
+                    vent.z=ajoutVent.z/multiplicateurVent;
+                }
+            }
+            else if (ajoutVent.x < 0)
+            {
+                if(PlayerScript.left){
+                    vent.x=ajoutVent.x*multiplicateurVent;
+                }else if(PlayerScript.right){
+                    vent.z=ajoutVent.z/multiplicateurVent;
+                }
+            }
+
+            if (ajoutVent.z > 0)
+            {
+                if(PlayerScript.forward){
+                    vent.z=ajoutVent.z*multiplicateurVent;
+                }else if(PlayerScript.backward){
+                    vent.z=ajoutVent.z/multiplicateurVent;
+                }
+            }
+            else if (ajoutVent.z < 0)
+            {
+                if(PlayerScript.backward){
+                    vent.z=ajoutVent.z*multiplicateurVent;
+                }else if(PlayerScript.forward){
+                    vent.z=ajoutVent.z/multiplicateurVent;
+                }
+            }
+            //applique une force continue dans l'orientation du vent
             if (ventContinue)
             {
-                PlayerScript.OrientationVent = PlayerScript.DefaultOrientationVent;
+
+                PlayerScript.OrientationVent = vent;
             }
+            //applique une force tout les x temps pendant y secondes
             else
             {
                 if (timer < timerImpulseVent)
@@ -31,7 +94,7 @@ public class Vent : MonoBehaviour
                 }
                 else
                 {
-                    PlayerScript.OrientationVent = ajoutVent;
+                    PlayerScript.OrientationVent = vent;
                     if (timerReset < timerResetValue)
                     {
                         timerReset += Time.deltaTime;
@@ -50,6 +113,8 @@ public class Vent : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        vent=ajoutVent;
         PlayerScript.OrientationVent = PlayerScript.DefaultOrientationVent;
+        PlayerScript.ForceJump=PlayerScript.DefaultForceJump;
     }
 }

@@ -29,7 +29,8 @@ public class player : MonoBehaviour
     [SerializeField] public float NombreFlap;
 
     public float FlapingNumber;
-    [SerializeField] float ForceJump;
+    [HideInInspector] public float DefaultForceJump;
+    [SerializeField] public float ForceJump;
     [SerializeField] float TimerOrientation;
     [SerializeField] float TimerStabilisation;
     [SerializeField] float drag = 7;
@@ -53,8 +54,17 @@ public class player : MonoBehaviour
     private FMOD.Studio.EventInstance chuteFMOD;
     private FMOD.Studio.EventInstance flyFMOD;
 
+//a utiliser pour avoir la direction du parapluie
+    [HideInInspector] public bool forward;
+    [HideInInspector] public bool backward;
+    [HideInInspector] public bool left;
+    [HideInInspector] public bool right;
+    [HideInInspector] public bool up;
+    [HideInInspector] public bool down;
+
     void Start()
     {
+        DefaultForceJump=ForceJump;
         transform.DORotateQuaternion(Quaternion.Euler(0, 0, 0), 1);
         rb = GetComponent<Rigidbody>();
         animatorPlayer = GetComponent<Animator>();
@@ -72,6 +82,7 @@ public class player : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(ForceJump);
         rb.AddForce(OrientationVent,ForceMode.Impulse);
         if (onGround)
         {

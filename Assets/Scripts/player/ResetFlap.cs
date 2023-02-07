@@ -13,7 +13,12 @@ public class ResetFlap : MonoBehaviour
         if (other.CompareTag("Ground") && Parapluie.ActiveTimer == false)
         {
             //if (triggerOnceFmod) FMODUnity.RuntimeManager.PlayOneShot("event:/player/regenate_flap");
-            if (Parapluie.NombreFlap >= Parapluie.FlapingNumber) Parapluie.FlapingNumber = Parapluie.NombreFlap;
+            if (Parapluie.NombreFlap >= Parapluie.FlapingNumber)
+            {
+                Parapluie.FlapingNumber = Parapluie.NombreFlap;
+                
+            }
+            Parapluie.EnergieFlap = 100f;
             triggerOnceFmod = false;
 
             if (!Parapluie.onGround)

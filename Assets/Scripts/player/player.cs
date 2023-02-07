@@ -23,14 +23,27 @@ public class player : MonoBehaviour
 
     private Transform cameraTransform;
     public TextMeshProUGUI NombreFlapText;
+    public Slider SliderE;
+    public Image SliderBG;
 
     [Header("Variables changeants les controles")]
 
+    [SerializeField] public float EnergieFlap;
+    [SerializeField] private bool EnergieDown;
+    [SerializeField] public float SpeedResetFlap;
+    [SerializeField] public float CostFlap;
+    [SerializeField] public float CostMegaFlap;
+    [SerializeField] public Color ColorSliderUp;
+    [SerializeField] public Color ColorSliderDown;
     [SerializeField] public float NombreFlap;
-
     public float FlapingNumber;
+<<<<<<< HEAD
     [HideInInspector] public float DefaultForceJump;
     [SerializeField] public float ForceJump;
+=======
+    //Range [ 1,5];
+    [SerializeField] float ForceMegaJump;
+>>>>>>> e8990a0006e338a1afa0b408e76c85c10e763446
     [SerializeField] float TimerOrientation;
     [SerializeField] float TimerStabilisation;
     [SerializeField] float drag = 7;
@@ -69,7 +82,7 @@ public class player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animatorPlayer = GetComponent<Animator>();
         FlapingNumber = NombreFlap;
-        NombreFlapText.text = FlapingNumber.ToString();
+        ///NombreFlapText.text = FlapingNumber.ToString();
         cameraTransform = GameObject.Find("Main Camera").transform;
         Application.targetFrameRate = 60;
         //FMODUnity.RuntimeManager.PlayOneShot("event:/player/fly");
@@ -113,9 +126,10 @@ public class player : MonoBehaviour
                 }
             }
         }
-
-        if ((Input.GetButtonDown("Jump") && FlapingNumber <= 0f) || (Input.GetButtonDown("Jump") && fermer)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
-        if (Input.GetButtonDown("Jump") && FlapingNumber >= 1f && !fermer)
+        
+        //flap
+        if ((Input.GetButtonDown("Jump") && FlapingNumber <= 0f) || (Input.GetButtonDown("Jump") && fermer) || (Input.GetButtonDown("Jump") && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
+        if (Input.GetButtonDown("Jump") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer)
         {
             onGround = false;
             onGroundFMOD = true;
@@ -127,8 +141,40 @@ public class player : MonoBehaviour
             ActiveTimer = true;
             FMODUnity.RuntimeManager.PlayOneShot("event:/player/flap");
             flyFMOD.start();
-        }
+            if (EnergieFlap <= 25f && EnergieFlap >= 20f) EnergieFlap = 1f;
+            else EnergieFlap -= CostFlap;
 
+            if (EnergieFlap <= 0)
+            {
+                EnergieFlap = 0f;
+                EnergieDown = true;
+                SliderBG.color = ColorSliderDown;
+            }
+        }
+        //Méga flap
+        if ((Input.GetButtonDown("Fire4") && FlapingNumber <= 0f) || (Input.GetButtonDown("Fire4") && fermer) || (Input.GetButtonDown("Fire4") && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
+        if (Input.GetButtonDown("Fire4") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer)
+        {
+            onGround = false;
+            onGroundFMOD = true;
+            rb.AddForce((OrietationJump.transform.position - transform.position) * ForceMegaJump, ForceMode.Impulse);
+            parapluieFerme.SetActive(true);
+            parapluieOuvert.SetActive(false);
+            //ParapluieRenderer.Play("Fermeture");
+            FlapingNumber = FlapingNumber - 1f;
+            ActiveTimer = true;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/player/flap");
+            flyFMOD.start();
+            if (EnergieFlap <= 55f && EnergieFlap >= 45f) EnergieFlap = 1f;
+            else EnergieFlap -= CostMegaFlap;
+            timer = 1f;
+            if (EnergieFlap <= 0)
+            {
+                EnergieFlap = 0f;
+                EnergieDown = true;
+                SliderBG.color = ColorSliderDown;
+            }
+        }
 
 
         if (Input.GetButtonDown("Fire1") && ActiveTimer == false)
@@ -160,11 +206,20 @@ public class player : MonoBehaviour
             timer = timerReset;
             ActiveTimer = false;
         }
-        NombreFlapText.text = FlapingNumber.ToString();
+        ///NombreFlapText.text = FlapingNumber.ToString();
 
         if (Input.GetButtonDown("Fire3"))
         {
             FlapingNumber += FlapNumberCheat;
+            EnergieFlap = 100f;
+        }
+        EnergieFlap += SpeedResetFlap * Time.deltaTime;
+        SliderE.value = EnergieFlap;
+        if (EnergieFlap >= 100)
+        {
+            EnergieDown = false;
+            SliderBG.color = ColorSliderUp;
+            EnergieFlap = 100f;
         }
     }
 

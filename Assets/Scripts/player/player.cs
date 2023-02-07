@@ -37,13 +37,10 @@ public class player : MonoBehaviour
     [SerializeField] public Color ColorSliderDown;
     [SerializeField] public float NombreFlap;
     public float FlapingNumber;
-<<<<<<< HEAD
     [HideInInspector] public float DefaultForceJump;
     [SerializeField] public float ForceJump;
-=======
     //Range [ 1,5];
     [SerializeField] float ForceMegaJump;
->>>>>>> e8990a0006e338a1afa0b408e76c85c10e763446
     [SerializeField] float TimerOrientation;
     [SerializeField] float TimerStabilisation;
     [SerializeField] float drag = 7;

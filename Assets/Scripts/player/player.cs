@@ -22,7 +22,6 @@ public class player : MonoBehaviour
     Animator animatorPlayer;
 
     private Transform cameraTransform;
-    public TextMeshProUGUI NombreFlapText;
     public Slider SliderE;
     public Image SliderBG;
 
@@ -65,12 +64,13 @@ public class player : MonoBehaviour
     private FMOD.Studio.EventInstance flyFMOD;
 
 //a utiliser pour avoir la direction du parapluie
-    [HideInInspector] public bool forward;
-    [HideInInspector] public bool backward;
-    [HideInInspector] public bool left;
-    [HideInInspector] public bool right;
-    [HideInInspector] public bool up;
-    [HideInInspector] public bool down;
+[Header("pour Debug direction")]
+    public bool forward;
+    public bool backward;
+    public bool left;
+    public bool right;
+    public bool up;
+    public bool down;
 
     void Start()
     {
@@ -79,7 +79,6 @@ public class player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animatorPlayer = GetComponent<Animator>();
         FlapingNumber = NombreFlap;
-        ///NombreFlapText.text = FlapingNumber.ToString();
         cameraTransform = GameObject.Find("Main Camera").transform;
         Application.targetFrameRate = 60;
         //FMODUnity.RuntimeManager.PlayOneShot("event:/player/fly");
@@ -203,7 +202,6 @@ public class player : MonoBehaviour
             timer = timerReset;
             ActiveTimer = false;
         }
-        ///NombreFlapText.text = FlapingNumber.ToString();
 
         if (Input.GetButtonDown("Fire3"))
         {

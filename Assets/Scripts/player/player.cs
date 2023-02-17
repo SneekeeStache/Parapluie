@@ -13,7 +13,7 @@ public class player : MonoBehaviour
     public GameObject parapluieOuvert;
 
     [Header("Composants à récupérer")]
-
+    
     public Animator ParapluieRenderer;
     public GameObject OrietationJump;
     bool Collision = false;
@@ -24,11 +24,13 @@ public class player : MonoBehaviour
     private Transform cameraTransform;
     public Slider SliderE;
     public Image SliderBG;
-
+    public Slider SliderEnergieRW;
+    
     [Header("Variables changeants les controles")]
 
     [SerializeField] public float EnergieFlap;
     [SerializeField] private bool EnergieDown;
+    [SerializeField] private float EnergieRW;    //Risk & reward, c'est l'energie qui a +/- 5 energie près donne un bonus de flap.
     [SerializeField] public float SpeedResetFlap;
     [SerializeField] public float CostFlap;
     [SerializeField] public float CostMegaFlap;
@@ -40,6 +42,7 @@ public class player : MonoBehaviour
     [SerializeField] public float ForceJump;
     //Range [ 1,5];
     [SerializeField] float ForceMegaJump;
+    [SerializeField] float ForceBonusJump;
     [SerializeField] float TimerOrientation;
     [SerializeField] float TimerStabilisation;
     [SerializeField] float drag = 7;
@@ -125,8 +128,35 @@ public class player : MonoBehaviour
         
         //flap
         if ((Input.GetButtonDown("Jump") && FlapingNumber <= 0f) || (Input.GetButtonDown("Jump") && fermer) || (Input.GetButtonDown("Jump") && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
-        if (Input.GetButtonDown("Jump") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer)
+        
+        
+        //flap en bonus
+        if (Input.GetButtonDown("Jump") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer && (EnergieFlap - EnergieRW >=5 || EnergieFlap - EnergieRW <=5))
         {
+            EnergieRW = EnergieFlap - 10f;
+            onGround = false;
+            onGroundFMOD = true;
+            rb.AddForce((OrietationJump.transform.position - transform.position) * (ForceMegaJump+ForceBonusJump), ForceMode.Impulse);
+            parapluieFerme.SetActive(true);
+            parapluieOuvert.SetActive(false);
+            //ParapluieRenderer.Play("Fermeture");
+            FlapingNumber = FlapingNumber - 1f;
+            ActiveTimer = true;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/player/flap");
+            flyFMOD.start();
+            if (EnergieFlap <= 25f && EnergieFlap >= 20f) EnergieFlap = 1f;
+            else EnergieFlap -= CostFlap;
+
+            if (EnergieFlap <= 0)
+            {
+                EnergieFlap = 0f;
+                EnergieDown = true;
+                SliderBG.color = ColorSliderDown;
+            }
+        }
+        else if (Input.GetButtonDown("Jump") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer)
+        {
+            EnergieRW = EnergieFlap - 10f;
             onGround = false;
             onGroundFMOD = true;
             rb.AddForce((OrietationJump.transform.position - transform.position) * ForceJump, ForceMode.Impulse);
@@ -149,8 +179,33 @@ public class player : MonoBehaviour
         }
         //Méga flap
         if ((Input.GetButtonDown("Fire4") && FlapingNumber <= 0f) || (Input.GetButtonDown("Fire4") && fermer) || (Input.GetButtonDown("Fire4") && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
-        if (Input.GetButtonDown("Fire4") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer)
+        
+        if (Input.GetButtonDown("Fire4") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer&& (EnergieFlap - EnergieRW >=5 || EnergieFlap - EnergieRW <=5))
         {
+            EnergieRW = EnergieFlap - 10f;
+            onGround = false;
+            onGroundFMOD = true;
+            rb.AddForce((OrietationJump.transform.position - transform.position) * (ForceMegaJump+ForceBonusJump), ForceMode.Impulse);
+            parapluieFerme.SetActive(true);
+            parapluieOuvert.SetActive(false);
+            //ParapluieRenderer.Play("Fermeture");
+            FlapingNumber = FlapingNumber - 1f;
+            ActiveTimer = true;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/player/flap");
+            flyFMOD.start();
+            if (EnergieFlap <= 55f && EnergieFlap >= 45f) EnergieFlap = 1f;
+            else EnergieFlap -= CostMegaFlap;
+            timer = 1f;
+            if (EnergieFlap <= 0)
+            {
+                EnergieFlap = 0f;
+                EnergieDown = true;
+                SliderBG.color = ColorSliderDown;
+            }
+        }
+        else if (Input.GetButtonDown("Fire4") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer)
+        {
+            EnergieRW = EnergieFlap - 10f;
             onGround = false;
             onGroundFMOD = true;
             rb.AddForce((OrietationJump.transform.position - transform.position) * ForceMegaJump, ForceMode.Impulse);
@@ -215,7 +270,12 @@ public class player : MonoBehaviour
             EnergieDown = false;
             SliderBG.color = ColorSliderUp;
             EnergieFlap = 100f;
+            EnergieRW = 100f;
         }
+
+        if (EnergieDown) EnergieRW = EnergieFlap;
+
+        SliderEnergieRW.value = EnergieRW;
     }
 
     void FixedUpdate()

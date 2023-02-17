@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 using UnityEngine.AI;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class CameraRotate : MonoBehaviour
 {
+    public TextMeshProUGUI CameraDefinition;
     public int CameraControl = 0;
     // 0 = Camera auto focus
     // 1 = Camera libre
@@ -43,6 +45,7 @@ public class CameraRotate : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         TimerRotation = TimerAvantRotation;
+        //CameraDefinition = GameObject.Find("CamDefinition").GetComponent<Text>();
     }
 
     void Update()
@@ -75,7 +78,7 @@ public class CameraRotate : MonoBehaviour
         }
 
 
-        if (TimerRotationVerticale <= 0f &&CameraControl == 2)
+        /*if (TimerRotationVerticale <= 0f &&CameraControl == 2)
         {
             if (FocusTransform.transform.position.y - gameObject.transform.position.y >= 2 && (transform.rotation.eulerAngles.x <= 280f || transform.rotation.eulerAngles.x >= 330f))
             {
@@ -91,7 +94,7 @@ public class CameraRotate : MonoBehaviour
                 xRotation += (FocusTransform.transform.position.y - gameObject.transform.position.y) * -CameraRotationAutobas / 10;
             }
             //Debug.Log(transform.rotation.eulerAngles.x);
-        }
+        }*/
         //fait bouger le cam avec input
         float mouseX = Input.GetAxis("Mouse X") * mouseSFDP * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSFDP * Time.deltaTime;
@@ -135,6 +138,18 @@ public class CameraRotate : MonoBehaviour
             }
         }
 
+        if (CameraControl == 0)
+        {
+            CameraDefinition.text = "Camera fixe";
+        }
+        if (CameraControl == 1)
+        {
+            CameraDefinition.text = "Camera libre";
+        }
+        if (CameraControl == 2)
+        {
+            CameraDefinition.text = "Camera focus";
+        }
 
         //tentative de look horizontal
         /*Vector3 direction = rotationReference.position - transform.position;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.15706627, g: 0.0062100883, b: 0.6444499, a: 1}
+  m_IndirectSpecularColor: {r: 0.15706642, g: 0.0062100883, b: 0.6444505, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3821,6 +3821,18 @@ PrefabInstance:
       propertyPath: PlayerScript
       value: 
       objectReference: {fileID: 840450142}
+    - target: {fileID: 160360648418329449, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
+      propertyPath: timerImpulseVent
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 160360648418329449, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
+      propertyPath: timerResetValueMax
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 160360648418329449, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
+      propertyPath: timerResetValueMin
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 160360648418329450, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
       propertyPath: m_Center.y
       value: 0
@@ -7279,8 +7291,8 @@ MonoBehaviour:
   FocusTransform: {fileID: 0}
   cameraFDP: {fileID: 1524708955}
   JumpOrientation: {fileID: 1886424568}
-  CameraRotationAutoHaut: 3
-  CameraRotationAutobas: 3
+  CameraRotationAutoHaut: 5
+  CameraRotationAutobas: 5
   rotationReference: {fileID: 1281866010}
   speedRotationHorizontale: 1
   TimerAvantRotation: 2

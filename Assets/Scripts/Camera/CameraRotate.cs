@@ -103,7 +103,7 @@ public class CameraRotate : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(xRotation, transform.localRotation.eulerAngles.y, 0);
         transform.Rotate(Vector3.up * mouseX);
-        transform.DOMove(ParapluieTransform.position, 01f);
+        transform.DOMove(ParapluieTransform.position, 0.5f);
 
         if (mouseX != 0f || mouseY != 0f)
         {

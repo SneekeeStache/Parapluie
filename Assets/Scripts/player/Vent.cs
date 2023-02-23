@@ -8,8 +8,10 @@ public class Vent : MonoBehaviour
     private Vector3 vent;
     [SerializeField] GameObject player;
     [SerializeField] player PlayerScript;
-    [SerializeField] float timerImpulseVent;
-    [SerializeField] float timerResetValue = 0.5f;
+    [SerializeField] private float timerImpulseVent;
+    [SerializeField] float timerImpulseVentMin, timerImpulseVentMax;
+    [SerializeField] private float timerResetValue = 0.5f;
+    [SerializeField] float timerResetValueMin, timerResetValueMax;
     [SerializeField] bool ventContinue = false;
 
     [SerializeField] float multiplicateurFlap;
@@ -20,6 +22,8 @@ public class Vent : MonoBehaviour
 
     private void Start()
     {
+        timerImpulseVent = Random.Range(timerImpulseVentMin, timerImpulseVentMax);
+        timerResetValue = Random.Range(timerResetValueMin, timerResetValueMax);
         vent = ajoutVent;
     }
 
@@ -103,6 +107,8 @@ public class Vent : MonoBehaviour
                     {
                         timerReset = 0;
                         timer = 0;
+                        timerImpulseVent = Random.Range(timerImpulseVentMin, timerImpulseVentMax);
+                        timerResetValue = Random.Range(timerResetValueMin, timerResetValueMax);
                     }
 
                 }

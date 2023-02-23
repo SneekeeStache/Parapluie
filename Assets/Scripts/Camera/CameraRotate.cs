@@ -52,6 +52,7 @@ public class CameraRotate : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F5)) SceneManager.LoadScene("test");
         if (Input.GetKeyDown(KeyCode.F6)) SceneManager.LoadScene("Level 0");
+        if (Input.GetKeyDown(KeyCode.F7)) SceneManager.LoadScene("Level 1");
 
         //fait bouger le cam automatiquement en fonction du parapluie
         if (TimerRotationVerticale <= 0f && CameraControl == 0)

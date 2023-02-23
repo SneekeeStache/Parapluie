@@ -7,6 +7,8 @@ public class ChangeCamColor : MonoBehaviour
 {
     public Color color;
     private Camera cameraMain;
+    private float t = 0f;
+    public float speedColorChange;
 
     void Start()
     {
@@ -18,8 +20,17 @@ public class ChangeCamColor : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                cameraMain.gameObject.GetComponent<PencilContour>().backgroundColor = color;
+                cameraMain.gameObject.GetComponent<PencilContour>().backgroundColor = Color.Lerp(cameraMain.gameObject.GetComponent<PencilContour>().backgroundColor, color, 0.025f);
+                t += Time.deltaTime * speedColorChange;
             }
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            t = 0;
         }
     }
 }

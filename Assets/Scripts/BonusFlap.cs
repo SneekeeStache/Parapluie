@@ -7,7 +7,7 @@ public class BonusFlap : MonoBehaviour
 {
     [Range(1, 5)]
     public int NombreDeFlapEnBonus;
-    private MeshRenderer mesh;
+    public GameObject ParticleSystemWind;
     private bool BonusPris;
     private float TimerReloadBonus;
     private float TimerReloadBonusReset = 5f;
@@ -37,7 +37,6 @@ public class BonusFlap : MonoBehaviour
 
     private void Start()
     {
-        mesh = gameObject.GetComponent<MeshRenderer>();
         TimerReloadBonus = TimerReloadBonusReset;
         triggerRenderer = gameObject.GetComponent<Renderer>();
 
@@ -64,13 +63,13 @@ public class BonusFlap : MonoBehaviour
     {
         if (BonusPris)
         {
-            mesh.enabled = false;
+            ParticleSystemWind.SetActive(false);
             TimerReloadBonus -= Time.deltaTime;
         }
         if (TimerReloadBonus <= 0f)
         {
             TimerReloadBonus = TimerReloadBonusReset;
-            mesh.enabled = true;
+            ParticleSystemWind.SetActive(true);
             BonusPris = false;
         }
     }

@@ -29,6 +29,9 @@ public class GridPlacerTool : EditorWindow
     private GameObject spawnPrefab;
     
     private Material materialPreview;
+
+    private int offset = 0;
+    private SceneView currentScene;
     
     private void OnEnable()
     {
@@ -52,6 +55,8 @@ public class GridPlacerTool : EditorWindow
         string[] guids = AssetDatabase.FindAssets("t:prefab", new []{"Assets/Prefabs"}); // Find all prefabs in the project, return the unique ID of each object
         IEnumerable<string> paths = guids.Select(AssetDatabase.GUIDToAssetPath);
         prefabs = paths.Select(AssetDatabase.LoadAssetAtPath<GameObject>).ToArray();
+        
+        currentScene = SceneView.currentDrawingSceneView;
     }
 
     private void OnDisable()
@@ -72,9 +77,27 @@ public class GridPlacerTool : EditorWindow
     
     void DuringSceneGUI(SceneView sceneView)
     {
+        if (currentScene != SceneView.currentDrawingSceneView)
+        {
+            OnDisable();
+            OnEnable();
+            currentScene = SceneView.currentDrawingSceneView;
+        }
+
+        // Event.current.modifier is a bitfield. EventModifiers.Alt is the bitmask for the alt bit
+        bool holdingAlt = (Event.current.modifiers & EventModifiers.Alt) != 0;
+        
+
+        if (Event.current.type == EventType.ScrollWheel && !holdingAlt)
+        {
+            float scrollDir = Mathf.Sign(Event.current.delta.y);
+            offset += (int)scrollDir * 15;
+            Event.current.Use();
+        }
+        
         Handles.BeginGUI();
 
-        Rect rect = new Rect(8, 8, 64, 64);
+        Rect rect = new Rect(8, 8 + offset, 64, 64);
 
         for (int i = 0; i < prefabs.Length; i++)
         {
@@ -90,6 +113,7 @@ public class GridPlacerTool : EditorWindow
             rect.y += rect.height + 2;
         }
         Handles.EndGUI();
+        
         
         // Run the code only when repainting
         if (Event.current.type == EventType.Repaint)
@@ -108,10 +132,7 @@ public class GridPlacerTool : EditorWindow
         {
             sceneView.Repaint();
         }
-        
-        // Event.current.modifier is a bitfield. EventModifiers.Alt is the bitmask for the alt bit
-        bool holdingAlt = (Event.current.modifiers & EventModifiers.Alt) != 0;
-        
+
         if (plane.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
         {
             Vector3 hitPoint = GetSnappedPosition(hit.point);

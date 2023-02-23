@@ -131,6 +131,16 @@ public class player : MonoBehaviour
         //flap
         if ((Input.GetButtonDown("Jump") && FlapingNumber <= 0f) || (Input.GetButtonDown("Jump") && fermer) || (Input.GetButtonDown("Jump") && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
         
+        //Le parapluie s'ouvre si il est fermé et qu'on veut flap
+        if (Input.GetButtonDown("Jump") && !EnergieDown && fermer)
+        {
+            fermer = false;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/player/open");
+            chuteFMOD.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            flyFMOD.start();
+            parapluieFerme.SetActive(false);
+            parapluieOuvert.SetActive(true);
+        }
         
         //flap en bonus
         if (Input.GetButtonDown("Jump") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 5) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <=5)))

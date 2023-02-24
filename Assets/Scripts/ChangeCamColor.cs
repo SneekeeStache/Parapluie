@@ -6,6 +6,7 @@ using UnityEngine;
 public class ChangeCamColor : MonoBehaviour
 {
     public Color color;
+    public Material myColor;
     private Camera cameraMain;
     private float t = 0f;
     public float speedColorChange;
@@ -20,7 +21,8 @@ public class ChangeCamColor : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                cameraMain.gameObject.GetComponent<PencilContour>().backgroundColor = Color.Lerp(cameraMain.gameObject.GetComponent<PencilContour>().backgroundColor, color, 0.025f);
+                cameraMain.gameObject.GetComponent<PencilContour>().backgroundColor = Color.Lerp(cameraMain.gameObject.GetComponent<PencilContour>().backgroundColor, color, 1f);
+                myColor.color = Color.Lerp(cameraMain.gameObject.GetComponent<PencilContour>().backgroundColor, color, 1f);
                 t += Time.deltaTime * speedColorChange;
             }
         }

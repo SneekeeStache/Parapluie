@@ -158,7 +158,7 @@ public class player : MonoBehaviour
             ActiveTimer = true;
             FMODUnity.RuntimeManager.PlayOneShot("event:/player/flap");
             flyFMOD.start();
-            Debug.Log("1");
+            //Debug.Log("1");
             if (EnergieFlap <= 25f && EnergieFlap >= 20f) EnergieFlap = 1f;
             else EnergieFlap -= CostFlap;
 
@@ -182,7 +182,7 @@ public class player : MonoBehaviour
             ActiveTimer = true;
             FMODUnity.RuntimeManager.PlayOneShot("event:/player/flap");
             flyFMOD.start();
-            Debug.Log("2");
+            //Debug.Log("2");
             if (EnergieFlap <= 25f && EnergieFlap >= 20f) EnergieFlap = 1f;
             else EnergieFlap -= CostFlap;
 
@@ -199,7 +199,7 @@ public class player : MonoBehaviour
         if (Input.GetButtonDown("Fire4") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 5) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <=5)))
         {
             perfectTextD.Disappear();
-            EnergieRW = EnergieFlap - 10f;
+            EnergieRW = EnergieFlap - 40f;
             onGround = false;
             onGroundFMOD = true;
             rb.AddForce((OrietationJump.transform.position - transform.position) * (ForceMegaJump+ForceBonusJump), ForceMode.Impulse);
@@ -222,7 +222,7 @@ public class player : MonoBehaviour
         }
         else if (Input.GetButtonDown("Fire4") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer)
         {
-            EnergieRW = EnergieFlap - 10f;
+            EnergieRW = EnergieFlap - 40f;
             onGround = false;
             onGroundFMOD = true;
             rb.AddForce((OrietationJump.transform.position - transform.position) * ForceMegaJump, ForceMode.Impulse);
@@ -280,7 +280,15 @@ public class player : MonoBehaviour
             FlapingNumber += FlapNumberCheat;
             EnergieFlap = 100f;
         }
-        EnergieFlap += SpeedResetFlap * Time.deltaTime;
+
+        if (!fermer)
+        {
+            EnergieFlap += SpeedResetFlap * Time.deltaTime;
+        }
+        else
+        {
+            EnergieFlap += SpeedResetFlap * 5 * Time.deltaTime;
+        }
         SliderE.value = EnergieFlap;
         if (EnergieFlap >= 100)
         {

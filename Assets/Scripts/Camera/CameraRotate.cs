@@ -40,6 +40,7 @@ public class CameraRotate : MonoBehaviour
     public float TimerAvantRotationVerticale;
     private float TimerRotationVerticale;
     public float upRotation;
+    public float distanceGroundCheck;
 
     void Start()
     {
@@ -112,6 +113,16 @@ public class CameraRotate : MonoBehaviour
             TimerRotationVerticale = TimerAvantRotationVerticale;
             if (CameraControl == 2) TimerRotationVerticale = 0.1f;
         }
+
+        RaycastHit cameraGroundCheck;
+        if(Physics.Raycast(cameraFDP.transform.position,-cameraFDP.transform.up,out cameraGroundCheck,distanceGroundCheck)){
+            if(cameraGroundCheck.collider.CompareTag("Ground")){
+                TimerRotation = TimerAvantRotation;
+                TimerRotationVerticale = TimerAvantRotationVerticale;
+                if (CameraControl == 2) TimerRotationVerticale = 0.1f;
+                xRotation+=5;
+            }
+        }
         
         TimerRotationVerticale -= Time.deltaTime;
         TimerRotation -= Time.deltaTime;
@@ -157,5 +168,9 @@ public class CameraRotate : MonoBehaviour
         Quaternion toRotation = Quaternion.FromToRotation(transform.forward, direction);
         transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, speedRotationHorizontale * Time.time);*/
         //transform.LookAt(rotationReference, Vector3.up);
+    }
+    private void OnDrawGizmos() {
+        Gizmos.color=Color.red;
+        Gizmos.DrawRay(cameraFDP.transform.position,-cameraFDP.transform.up*distanceGroundCheck);
     }
 }

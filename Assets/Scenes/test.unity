@@ -3021,8 +3021,6 @@ GameObject:
   - component: {fileID: 589855152}
   - component: {fileID: 589855157}
   - component: {fileID: 589855153}
-  - component: {fileID: 589855154}
-  - component: {fileID: 589855155}
   - component: {fileID: 589855156}
   m_Layer: 0
   m_Name: Main Camera
@@ -3102,38 +3100,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraController: {fileID: 2144191339}
-  minC: -10
-  maxC: -4
+  minC: 2
+  maxC: 100
   Cvalue: -5
---- !u!65 &589855154
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 589855149}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &589855155
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 589855149}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  smooth: 10
+  dollyDirAdjusted: {x: 0, y: 0, z: 0}
+  distance: 0
+  ignoreLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  distanceCenterCamera: 50
+  vitesseZoom: 500
 --- !u!114 &589855156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6197,6 +6174,10 @@ PrefabInstance:
     - target: {fileID: 160360648418329448, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
       propertyPath: m_Name
       value: triggerVent
+      objectReference: {fileID: 0}
+    - target: {fileID: 160360648418329448, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 160360648418329449, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
       propertyPath: player
@@ -9777,7 +9758,6 @@ MonoBehaviour:
   TimerAvantRotation: 2
   TimerAvantRotationVerticale: 1
   upRotation: 0
-  distanceGroundCheck: 2
 --- !u!1001 &275056151102387898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9848,6 +9828,10 @@ PrefabInstance:
     - target: {fileID: 275056151213768851, guid: 590766baf2572c680a6eb9d789bc6588, type: 3}
       propertyPath: m_Name
       value: direction
+      objectReference: {fileID: 0}
+    - target: {fileID: 275056151213768851, guid: 590766baf2572c680a6eb9d789bc6588, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 275056151679987292, guid: 590766baf2572c680a6eb9d789bc6588, type: 3}
       propertyPath: playerScript
@@ -10111,6 +10095,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 477688469853740669, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 759321080195122694, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818951555388754965, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2583281787292028153, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -10130,6 +10126,10 @@ PrefabInstance:
     - target: {fileID: 3716179727620831126, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
       propertyPath: m_LocalPosition.y
       value: 3.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4096399247424400684, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5150357425684797004, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
       propertyPath: m_RootOrder
@@ -10267,11 +10267,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: parapluie
       objectReference: {fileID: 0}
+    - target: {fileID: 5490572283884637430, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6335340927972026018, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ccefc915e8e71f74583f3dc543a07b46, type: 2}
     - target: {fileID: 6411483544232594112, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6440463598363219800, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -10292,12 +10300,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7769628328636141913, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769628328636141913, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7769628329614910352, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8622780240906973155, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}

@@ -11,7 +11,7 @@ public class ChangeCamColor : MonoBehaviour
     public Material parapluieMaterial;
     private List<ColorZone> colorZones;
     public Color color;
-    public Material color2;
+    //public Material color2;
     public Color colorReset;
     public Material myColor;
     private Camera cameraMain;
@@ -49,7 +49,7 @@ public class ChangeCamColor : MonoBehaviour
 
             cameraMain.gameObject.GetComponent<PencilContour>().backgroundColor = Color.Lerp(cameraMain.gameObject.GetComponent<PencilContour>().backgroundColor, color, 1f);
             myColor.color = Color.Lerp(cameraMain.gameObject.GetComponent<PencilContour>().backgroundColor, color, 1f);
-            color2.SetColor("_Emission", color);
+            //color2.SetColor("_Emission", color);
             //color2.color = Color.Lerp(cameraMain.gameObject.GetComponent<PencilContour>().backgroundColor, color, 1f);
             parapluieMaterial.SetColor("_BaseColor", color); 
             parapluieMaterial.SetColor("_HighlightColor", color); 

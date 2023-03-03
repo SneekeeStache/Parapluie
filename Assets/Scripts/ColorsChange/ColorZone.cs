@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ColorZone : MonoBehaviour
 {
+    public bool gizmos;
     public Color color;
     public float radius;
 
@@ -12,6 +13,6 @@ public class ColorZone : MonoBehaviour
     {
         // Draw a color sphere at the transform's position
         Gizmos.color = color;
-        Gizmos.DrawSphere(transform.position, radius);
+        if(gizmos) Gizmos.DrawSphere(transform.position, radius);
     }
 }

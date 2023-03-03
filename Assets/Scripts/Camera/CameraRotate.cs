@@ -14,6 +14,7 @@ public class CameraRotate : MonoBehaviour
     // 0 = Camera auto focus
     // 1 = Camera libre
     // 2 = camera fige
+    private Animator animator;
     
     [Header("souris")]
     [SerializeField] private float mouseSFDP = 50f;
@@ -43,6 +44,7 @@ public class CameraRotate : MonoBehaviour
 
     void Start()
     {
+        animator = gameObject.GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
         TimerRotation = TimerAvantRotation;
         //CameraDefinition = GameObject.Find("CamDefinition").GetComponent<Text>();
@@ -157,5 +159,9 @@ public class CameraRotate : MonoBehaviour
         Quaternion toRotation = Quaternion.FromToRotation(transform.forward, direction);
         transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, speedRotationHorizontale * Time.time);*/
         //transform.LookAt(rotationReference, Vector3.up);
+    }
+    public void DisableAnimator()
+    {
+        animator.enabled = false;
     }
 }

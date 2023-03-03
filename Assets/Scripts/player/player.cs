@@ -23,6 +23,7 @@ public class player : MonoBehaviour
     Rigidbody rb;
     Animator animatorPlayer;
 
+    private Animator animator;
     private Transform cameraTransform;
     public Slider SliderE;
     public Image SliderBG;
@@ -79,6 +80,7 @@ public class player : MonoBehaviour
 
     void Start()
     {
+        animator = gameObject.GetComponent<Animator>();
         DefaultForceJump=ForceJump;
         transform.DORotateQuaternion(Quaternion.Euler(0, 0, 0), 1);
         rb = GetComponent<Rigidbody>();
@@ -373,5 +375,10 @@ public class player : MonoBehaviour
     {
         Collision = false;
         //transform.DORotateQuaternion(Quaternion.Euler(0, 0, 0), 1);
+    }
+
+    public void DisableAnimator()
+    {
+        animator.enabled = false;
     }
 }

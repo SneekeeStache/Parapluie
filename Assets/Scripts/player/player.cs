@@ -131,10 +131,10 @@ public class player : MonoBehaviour
         }
         
         //flap
-        if ((Input.GetButtonDown("Jump") && FlapingNumber <= 0f) || (Input.GetButtonDown("Jump") && fermer) || (Input.GetButtonDown("Jump") && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
+        if ((Input.GetButtonDown("Flap") && FlapingNumber <= 0f) || (Input.GetButtonDown("Flap") && fermer) || (Input.GetButtonDown("Flap") && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
         
         //Le parapluie s'ouvre si il est fermé et qu'on veut flap
-        if (Input.GetButtonDown("Jump") && !EnergieDown && fermer)
+        if (Input.GetButtonDown("Flap") && !EnergieDown && fermer)
         {
             fermer = false;
             FMODUnity.RuntimeManager.PlayOneShot("event:/player/open");
@@ -145,7 +145,7 @@ public class player : MonoBehaviour
         }
         
         //flap en bonus
-        if (Input.GetButtonDown("Jump") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 5) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <=5)))
+        if (Input.GetButtonDown("Flap") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 5) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <=5)))
         {
             perfectTextD.Disappear();
             //Debug.Log("Mega Flap");
@@ -171,7 +171,7 @@ public class player : MonoBehaviour
                 SliderBG.color = ColorSliderDown;
             }
         }
-        else if (Input.GetButtonDown("Jump") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer)
+        else if (Input.GetButtonDown("Flap") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer)
         {
             EnergieRW = EnergieFlap - 10f;
             onGround = false;
@@ -196,9 +196,9 @@ public class player : MonoBehaviour
             }
         }
         //Méga flap
-        if ((Input.GetButtonDown("Fire4") && FlapingNumber <= 0f) || (Input.GetButtonDown("Fire4") && fermer) || (Input.GetButtonDown("Fire4") && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
+        if ((Input.GetButtonDown("Megaflap") && FlapingNumber <= 0f) || (Input.GetButtonDown("Megaflap") && fermer) || (Input.GetButtonDown("Megaflap") && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
         
-        if (Input.GetButtonDown("Fire4") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 5) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <=5)))
+        if (Input.GetButtonDown("Megaflap") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 5) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <=5)))
         {
             perfectTextD.Disappear();
             EnergieRW = EnergieFlap - 40f;
@@ -222,7 +222,7 @@ public class player : MonoBehaviour
                 SliderBG.color = ColorSliderDown;
             }
         }
-        else if (Input.GetButtonDown("Fire4") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer)
+        else if (Input.GetButtonDown("Megaflap") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer)
         {
             EnergieRW = EnergieFlap - 40f;
             onGround = false;
@@ -247,7 +247,7 @@ public class player : MonoBehaviour
         }
 
 
-        if (Input.GetButtonDown("Fire1") && ActiveTimer == false)
+        if (Input.GetButtonDown("Fermeture") && ActiveTimer == false)
         {
             fermer = !fermer;
             if (fermer)
@@ -277,7 +277,7 @@ public class player : MonoBehaviour
             ActiveTimer = false;
         }
 
-        if (Input.GetButtonDown("Fire3"))
+        if (Input.GetButtonDown("Gainenergie"))
         {
             FlapingNumber += FlapNumberCheat;
             EnergieFlap = 100f;

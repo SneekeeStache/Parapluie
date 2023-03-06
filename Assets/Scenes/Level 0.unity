@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.15706642, g: 0.0062100883, b: 0.6444505, a: 1}
+  m_IndirectSpecularColor: {r: 0.15706627, g: 0.0062100883, b: 0.6444499, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1631,12 +1631,12 @@ MonoBehaviour:
   edgeDetectShader: {fileID: 4800000, guid: cf4d0ee908cc69142b4f2cfad7ff50e3, type: 3}
   mode: 0
   noiseTex: {fileID: 0}
-  errorPeriod: 10.3
-  errorRange: 0.0015
+  errorPeriod: 22
+  errorRange: 0.00077
   noiseAmount: 0
-  edgesOnly: 0.883
+  edgesOnly: 0
   edgeColor: {r: 0, g: 0, b: 0, a: 1}
-  backgroundColor: {r: 0.5518868, g: 1, b: 0.92461604, a: 1}
+  backgroundColor: {r: 1, g: 0.5529412, b: 0.90898055, a: 1}
   sampleDistance: 1
   sensitivityDepth: 1
   sensitivityNormals: 4.45

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Vent : MonoBehaviour
 {
-    [SerializeField] Vector3 ajoutVent;
+    [SerializeField] public Vector3 ajoutVent;
     private Vector3 vent;
     [SerializeField] GameObject player;
     [SerializeField] player PlayerScript;

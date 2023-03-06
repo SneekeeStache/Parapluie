@@ -16,22 +16,27 @@ public class PauseMenu : MonoBehaviour
             {
                 pauseMenuContainer.SetActive(false);
                 Time.timeScale = 1.0f;
+                Cursor.lockState = CursorLockMode.Locked;
+                
             }
             else
             {
                 pauseMenuContainer.SetActive(true);
                 Time.timeScale = 0.0f;
+                Cursor.lockState = CursorLockMode.None;
             }
         }
     }
 
     public void Reprise()
     {
-        pauseMenuContainer.SetActive(true);
+        pauseMenuContainer.SetActive(false);
         Time.timeScale = 1.0f;
+        Cursor.lockState = CursorLockMode.Locked;
     }
     public void BackToMenu()
     {
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(mainMenu);
     }
 }

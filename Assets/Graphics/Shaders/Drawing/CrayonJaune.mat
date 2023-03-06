@@ -55,7 +55,7 @@ Material:
     - _ShadowTextureTile: 0.71
     - __dirty: 0
     m_Colors:
-    - _BaseColor: {r: 0.46898732, g: 0.46898732, b: 0.46898732, a: 0.996598}
-    - _HighlightColor: {r: 0.46898732, g: 0.46898732, b: 0.46898732, a: 0.996598}
+    - _BaseColor: {r: 0.73625994, g: 0, b: 0.78227615, a: 0.80257815}
+    - _HighlightColor: {r: 0.73625994, g: 0, b: 0.78227615, a: 0.80257815}
     - _RimLightColor: {r: 0.44971517, g: 0.5186899, b: 0.5849056, a: 0}
   m_BuildTextureStacks: []

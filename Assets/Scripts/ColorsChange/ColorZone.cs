@@ -7,6 +7,7 @@ public class ColorZone : MonoBehaviour
 {
     public bool gizmos;
     public Color color;
+    public Color colorParapluie;
     public float radius;
 
     private void OnDrawGizmos()

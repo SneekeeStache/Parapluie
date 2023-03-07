@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,13 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuContainer;
     public string mainMenu;
+    private GameObject parapluie;
+    public GameObject canvasGroupEnd;
+
+    private void Start()
+    {
+        parapluie = GameObject.FindWithTag("Player");
+    }
 
     void Update()
     {
@@ -26,6 +34,13 @@ public class PauseMenu : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
             }
         }
+        //pour la fin :
+        if (parapluie.transform.localPosition.y >= 1100)
+        {
+            canvasGroupEnd.SetActive(true);
+            canvasGroupEnd.GetComponent<CanvasGroup>().alpha += (Time.deltaTime * 0.5f);
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     public void Reprise()
@@ -39,4 +54,9 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(mainMenu);
     }
+    
+    
+    
+    
+    
 }

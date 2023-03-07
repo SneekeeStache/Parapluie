@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.Rendering;
 
 
 public class player : MonoBehaviour
@@ -14,11 +16,14 @@ public class player : MonoBehaviour
     public GameObject parapluieOuvert;
 
     [Header("Composants à récupérer")]
-    
+    public CanvasGroup scoreCredits;
+
+    public CameraRotate CR;
+    public GameObject VentDebug;
     public PerfectTextDisepear perfectTextD;
     public Animator ParapluieRenderer;
     public GameObject OrietationJump;
-    bool Collision = false;
+    public bool Collision = false;
     public bool fermer = false;
     Rigidbody rb;
     Animator animatorPlayer;
@@ -56,6 +61,8 @@ public class player : MonoBehaviour
     [SerializeField] public Vector3 DefaultOrientationVent=Vector3.zero;
 
 
+
+
     [SerializeField] Vector3 orientationModif;
     [SerializeField] Vector3 orientationAnim;
 
@@ -78,6 +85,11 @@ public class player : MonoBehaviour
     public bool up;
     public bool down;
 
+    [Header("Variables ne pas changer, se fait automatiquement !!")]
+
+    public GameObject colliderParapluie;
+    public bool end = false;
+    
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
@@ -100,6 +112,11 @@ public class player : MonoBehaviour
     {
         //Debug.Log(ForceJump);
         rb.AddForce(OrientationVent,ForceMode.Impulse);
+        if (end)
+        {
+            scoreCredits.alpha += (Time.deltaTime * 0.1f);
+            return;
+        }
         if (onGround)
         {
             chuteFMOD.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
@@ -173,27 +190,7 @@ public class player : MonoBehaviour
         }
         else if (Input.GetButtonDown("Flap") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer)
         {
-            EnergieRW = EnergieFlap - 10f;
-            onGround = false;
-            onGroundFMOD = true;
-            rb.AddForce((OrietationJump.transform.position - transform.position) * ForceJump, ForceMode.Impulse);
-            parapluieFerme.SetActive(true);
-            parapluieOuvert.SetActive(false);
-            //ParapluieRenderer.Play("Fermeture");
-            FlapingNumber = FlapingNumber - 1f;
-            ActiveTimer = true;
-            FMODUnity.RuntimeManager.PlayOneShot("event:/player/flap");
-            flyFMOD.start();
-            //Debug.Log("2");
-            if (EnergieFlap <= 25f && EnergieFlap >= 20f) EnergieFlap = 1f;
-            else EnergieFlap -= CostFlap;
-
-            if (EnergieFlap <= 0)
-            {
-                EnergieFlap = 0f;
-                EnergieDown = true;
-                SliderBG.color = ColorSliderDown;
-            }
+            flap();
         }
         //Méga flap
         if ((Input.GetButtonDown("Megaflap") && FlapingNumber <= 0f) || (Input.GetButtonDown("Megaflap") && fermer) || (Input.GetButtonDown("Megaflap") && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
@@ -307,6 +304,7 @@ public class player : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (end) return;
         orientationModif = OrientationVent + ((cameraTransform.right * Input.GetAxis("Horizontal") + cameraTransform.forward * Input.GetAxis("Vertical")) * ImpulseOrientationPlayer);
         orientationAnim = OrientationVent + cameraTransform.right * Input.GetAxis("Horizontal") + cameraTransform.forward * Input.GetAxis("Vertical");
 
@@ -365,6 +363,7 @@ public class player : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         Collision = true;
+        colliderParapluie = other.gameObject;
     }
     private void OnCollisionStay(Collision other)
     {
@@ -380,5 +379,45 @@ public class player : MonoBehaviour
     public void DisableAnimator()
     {
         animator.enabled = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("End"))
+        {
+            CR.CameraControl = 1;
+            end = true;
+            //gameObject.GetComponent<Rigidbody>().useGravity = false;
+            gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+            parapluieFerme.SetActive(true);
+            parapluieOuvert.SetActive(false);
+            VentDebug.gameObject.SetActive(true);
+            fermer = false;
+        }
+    }
+
+    public void flap()
+    {
+        EnergieRW = EnergieFlap - 10f;
+        onGround = false;
+        onGroundFMOD = true;
+        rb.AddForce((OrietationJump.transform.position - transform.position) * ForceJump, ForceMode.Impulse);
+        parapluieFerme.SetActive(true);
+        parapluieOuvert.SetActive(false);
+        //ParapluieRenderer.Play("Fermeture");
+        FlapingNumber = FlapingNumber - 1f;
+        ActiveTimer = true;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/player/flap");
+        flyFMOD.start();
+        //Debug.Log("2");
+        if (EnergieFlap <= 25f && EnergieFlap >= 20f) EnergieFlap = 1f;
+        else EnergieFlap -= CostFlap;
+
+        if (EnergieFlap <= 0)
+        {
+            EnergieFlap = 0f;
+            EnergieDown = true;
+            SliderBG.color = ColorSliderDown;
+        }
     }
 }

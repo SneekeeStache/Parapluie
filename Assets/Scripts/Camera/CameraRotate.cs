@@ -20,7 +20,7 @@ public class CameraRotate : MonoBehaviour
     [SerializeField] private float mouseSFDP = 50f;
     [SerializeField] private float minC = -70f, maxC = 80f;
 
-    [Header("Components")]
+    [Header("Components")] public CameraZoom cameraZoom;
     public Transform ParapluieTransform;
     public Transform FocusTransform;
     public GameObject cameraFDP;
@@ -163,5 +163,6 @@ public class CameraRotate : MonoBehaviour
     public void DisableAnimator()
     {
         animator.enabled = false;
+        cameraZoom.CamReset();
     }
 }

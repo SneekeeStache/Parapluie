@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{ca2a6ff4-42db-4241-bfdb-9e12d2b20aa7}">
+		<property name="assetPath">
+			<value>vent_niv1.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>14.992947845804988</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e080a40b-77e9-4217-93b5-4b1885145034}</destination>
+		</relationship>
+	</object>
+</objects>

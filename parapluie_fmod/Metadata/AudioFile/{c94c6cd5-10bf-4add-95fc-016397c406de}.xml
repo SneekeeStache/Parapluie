@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{c94c6cd5-10bf-4add-95fc-016397c406de}">
+		<property name="assetPath">
+			<value>pigeon_cri.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>10.483492063492063</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e080a40b-77e9-4217-93b5-4b1885145034}</destination>
+		</relationship>
+	</object>
+</objects>

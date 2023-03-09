@@ -3348,7 +3348,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344249702}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 124, y: 19, z: -257}
+  m_LocalPosition: {x: 124, y: 19, z: -239.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3882,7 +3882,6 @@ GameObject:
   - component: {fileID: 384410698}
   - component: {fileID: 384410697}
   - component: {fileID: 384410696}
-  - component: {fileID: 384410695}
   - component: {fileID: 384410694}
   m_Layer: 5
   m_Name: EndTitre
@@ -3959,7 +3958,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 384410695}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Titre, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -3983,19 +3982,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &384410695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 384410692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c2fd88245c6be7408a9194764636ce5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedDispear: 1
 --- !u!225 &384410696
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -15461,6 +15447,7 @@ GameObject:
   - component: {fileID: 1309272546}
   - component: {fileID: 1309272551}
   - component: {fileID: 1309272550}
+  - component: {fileID: 1309272552}
   m_Layer: 0
   m_Name: CameraController
   m_TagString: Untagged
@@ -15611,6 +15598,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1309272552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309272544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a246b3b51b65614781473f08276abce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerR: 0
+  triggerL: 0
 --- !u!1001 &1311367147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18800,9 +18801,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gizmos: 0
-  color: {r: 0.9433962, g: 0.0658597, b: 0.0658597, a: 1}
-  colorParapluie: {r: 0.1656568, g: 1, b: 0, a: 1}
-  radius: 150
+  color: {r: 0.94509804, g: 0.4948848, b: 0.06666666, a: 1}
+  colorParapluie: {r: 0.72155285, g: 0, b: 1, a: 1}
+  radius: 200
 --- !u!1001 &1605555996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19935,7 +19936,7 @@ MonoBehaviour:
   gizmos: 0
   color: {r: 0.30588236, g: 1, b: 0, a: 1}
   colorParapluie: {r: 1, g: 0, b: 0.7106805, a: 1}
-  radius: 350
+  radius: 300
 --- !u!4 &1728858038 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5500752290401910318, guid: 1acda0c186447544e8ef7fee8475a142, type: 3}
@@ -22194,9 +22195,17 @@ PrefabInstance:
       value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 5150357425684797007, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+      propertyPath: CR
+      value: 
+      objectReference: {fileID: 1309272547}
+    - target: {fileID: 5150357425684797007, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
       propertyPath: SliderE
       value: 
       objectReference: {fileID: 1505529720}
+    - target: {fileID: 5150357425684797007, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+      propertyPath: trigger
+      value: 
+      objectReference: {fileID: 1309272552}
     - target: {fileID: 5150357425684797007, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
       propertyPath: CostFlap
       value: 25

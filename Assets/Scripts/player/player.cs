@@ -77,7 +77,7 @@ public class player : MonoBehaviour
     private FMOD.Studio.EventInstance flyFMOD;
 
 //a utiliser pour avoir la direction du parapluie
-[Header("pour Debug direction")]
+    [Header("pour Debug direction")]
     public bool forward;
     public bool backward;
     public bool left;
@@ -89,7 +89,8 @@ public class player : MonoBehaviour
 
     public GameObject colliderParapluie;
     public bool end = false;
-    
+
+    public ConvertTriggerToButton trigger;    
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
@@ -148,10 +149,10 @@ public class player : MonoBehaviour
         }
         
         //flap
-        if ((Input.GetButtonDown("Flap") && FlapingNumber <= 0f) || (Input.GetButtonDown("Flap") && fermer) || (Input.GetButtonDown("Flap") && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
+        if (((Input.GetButtonDown("Flap")||trigger.triggerR) && FlapingNumber <= 0f) || ((Input.GetButtonDown("Flap")||trigger.triggerR) && fermer) || ((Input.GetButtonDown("Flap")||trigger.triggerR) && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
         
         //Le parapluie s'ouvre si il est fermé et qu'on veut flap
-        if (Input.GetButtonDown("Flap") && !EnergieDown && fermer)
+        if ((Input.GetButtonDown("Flap")||trigger.triggerR) && !EnergieDown && fermer)
         {
             fermer = false;
             FMODUnity.RuntimeManager.PlayOneShot("event:/player/open");
@@ -162,7 +163,7 @@ public class player : MonoBehaviour
         }
         
         //flap en bonus
-        if (Input.GetButtonDown("Flap") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 5) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <=5)))
+        if ((Input.GetButtonDown("Flap")||trigger.triggerR) && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 5) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <=5)))
         {
             perfectTextD.Disappear();
             //Debug.Log("Mega Flap");
@@ -188,14 +189,14 @@ public class player : MonoBehaviour
                 SliderBG.color = ColorSliderDown;
             }
         }
-        else if (Input.GetButtonDown("Flap") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer)
+        else if ((Input.GetButtonDown("Flap")||trigger.triggerR) && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer)
         {
             flap();
         }
         //Méga flap
-        if ((Input.GetButtonDown("Megaflap") && FlapingNumber <= 0f) || (Input.GetButtonDown("Megaflap") && fermer) || (Input.GetButtonDown("Megaflap") && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
+        if (((Input.GetButtonDown("Megaflap")||trigger.triggerL) && FlapingNumber <= 0f) || ((Input.GetButtonDown("Megaflap")||trigger.triggerL) && fermer) || ((Input.GetButtonDown("Megaflap")||trigger.triggerL) && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
         
-        if (Input.GetButtonDown("Megaflap") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 5) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <=5)))
+        if ((Input.GetButtonDown("Megaflap")||trigger.triggerL) && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 5) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <=5)))
         {
             perfectTextD.Disappear();
             EnergieRW = EnergieFlap - 40f;
@@ -219,7 +220,7 @@ public class player : MonoBehaviour
                 SliderBG.color = ColorSliderDown;
             }
         }
-        else if (Input.GetButtonDown("Megaflap") && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer)
+        else if ((Input.GetButtonDown("Megaflap")||trigger.triggerL) && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer)
         {
             EnergieRW = EnergieFlap - 40f;
             onGround = false;
@@ -300,6 +301,8 @@ public class player : MonoBehaviour
         if (EnergieDown) EnergieRW = EnergieFlap;
 
         SliderEnergieRW.value = EnergieRW;
+        
+        
     }
 
     void FixedUpdate()

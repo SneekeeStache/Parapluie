@@ -132,7 +132,7 @@ public class CameraRotate : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speedRotationHorizontale);
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetButtonDown("ChangeCamera"))
         {
             CameraControl++;
             if (CameraControl >= 2)

@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
     public string mainMenu;
     private GameObject parapluie;
     public GameObject canvasGroupEnd;
+    public bool activeEnd;
 
     private void Start()
     {
@@ -35,7 +36,7 @@ public class PauseMenu : MonoBehaviour
             }
         }
         //pour la fin :
-        if (parapluie.transform.localPosition.y >= 1100)
+        if (parapluie.transform.localPosition.y >= 1100  && activeEnd)
         {
             canvasGroupEnd.SetActive(true);
             canvasGroupEnd.GetComponent<CanvasGroup>().alpha += (Time.deltaTime * 0.5f);

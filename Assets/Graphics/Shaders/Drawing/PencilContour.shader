@@ -234,7 +234,15 @@ Shader "NPR/Pencil Sketch/Pencil Contour" {
 		
 		ENDCG
 		
+		
+		
 		Pass { 
+			Stencil
+	         {
+	             Ref 2
+	             Comp Less
+	         }
+			
 			ZTest Always Cull Off ZWrite Off
 			
 			CGPROGRAM      
@@ -246,6 +254,12 @@ Shader "NPR/Pencil Sketch/Pencil Contour" {
 		}
 		
 		Pass { 
+			Stencil
+	         {
+	             Ref 2
+	             Comp Less
+	         }
+			
 			ZTest Always Cull Off ZWrite Off
 			
 			CGPROGRAM      
@@ -257,6 +271,12 @@ Shader "NPR/Pencil Sketch/Pencil Contour" {
 		}
 		
 		Pass { 
+			Stencil
+	         {
+	             Ref 2
+	             Comp Less
+	         }
+			
 			ZTest Always Cull Off ZWrite Off
 			
 			CGPROGRAM      
@@ -268,6 +288,12 @@ Shader "NPR/Pencil Sketch/Pencil Contour" {
 		}
 		
 		Pass { 
+			Stencil
+	         {
+	             Ref 2
+	             Comp Less
+	         }
+			
 			ZTest Always Cull Off ZWrite Off
 			
 			CGPROGRAM      

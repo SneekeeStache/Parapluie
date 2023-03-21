@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class EtoilesScore : MonoBehaviour
 {
-    private List<Transform> etoiles;
+    public List<Transform> etoiles;
     public int score;
     public TextMeshProUGUI scoreT;
     public TextMeshProUGUI scoreT2;
@@ -15,8 +15,8 @@ public class EtoilesScore : MonoBehaviour
     
     void Start()
     {
-        etoiles = GetComponentsInChildren<Transform>().ToList();
-        etoiles.RemoveAt(0);
+        //etoiles = GetComponentsInChildren<Transform>().ToList();
+        //etoiles.RemoveAt(0);
     }
     
     void Update()

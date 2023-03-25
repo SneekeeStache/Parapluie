@@ -6,6 +6,7 @@ using UnityEngine;
 public class Etoile : MonoBehaviour
 {
     private EtoilesScore ES;
+    public GameObject TextTP;
 
     private void Start()
     {
@@ -15,6 +16,7 @@ public class Etoile : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         ES.score++;
+        TextTP.SetActive(true);
         gameObject.SetActive(false);
     }
 }

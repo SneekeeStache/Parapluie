@@ -9,9 +9,14 @@ public class SpawnRaccourci : MonoBehaviour
     public GameObject Parapluie;
     private List<Transform> Ateliers;
     public int AtelierTeleport;
+    
+    [Header("Les Bonus qui donnent les tp")]
+    public Transform _22Biphosgate;
+    public Transform _eglise;
 
     private void Start()
     {
+        Parapluie = GameObject.FindWithTag("Player");
         Ateliers = GetComponentsInChildren<Transform>().ToList();
         Ateliers.RemoveAt(0);
     }
@@ -49,5 +54,30 @@ public class SpawnRaccourci : MonoBehaviour
             Parapluie.GetComponent<player>().Collision = true;
 
         }
+    }
+    public void _22Biphopsgate()
+    {
+        Teleport(_22Biphosgate);
+    }
+
+    public void _Eglise()
+    {
+        Teleport(_eglise);
+    }
+
+
+
+
+    private void Teleport(Transform T)
+    {
+        Parapluie.GetComponent<player>().flap();
+        Parapluie.GetComponent<CapsuleCollider>().enabled = false;
+        Parapluie.GetComponent<player>().colliderParapluie.SetActive(false);
+        Parapluie.GetComponent<player>().Collision = false;
+        Parapluie.transform.position = T.transform.position;
+        Parapluie.GetComponent<player>().FlapingNumber = Parapluie.GetComponent<player>().NombreFlap;
+        Parapluie.GetComponent<player>().Collision = true;
+        Parapluie.GetComponent<player>().colliderParapluie.SetActive(true);
+        Parapluie.GetComponent<CapsuleCollider>().enabled = true;
     }
 }

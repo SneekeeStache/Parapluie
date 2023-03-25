@@ -167,7 +167,7 @@ public class player : MonoBehaviour
         {
             perfectTextD.Disappear();
             //Debug.Log("Mega Flap");
-            EnergieRW = EnergieFlap - 10f;
+            EnergieRW = EnergieFlap - 15f;
             onGround = false;
             onGroundFMOD = true;
             rb.AddForce((OrietationJump.transform.position - transform.position) * (ForceJump+ForceBonusJump), ForceMode.Impulse);
@@ -401,7 +401,7 @@ public class player : MonoBehaviour
 
     public void flap()
     {
-        EnergieRW = EnergieFlap - 10f;
+        EnergieRW = EnergieFlap - 15f;
         onGround = false;
         onGroundFMOD = true;
         rb.AddForce((OrietationJump.transform.position - transform.position) * ForceJump, ForceMode.Impulse);

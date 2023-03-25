@@ -21,19 +21,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetButtonDown("Menu"))
         {
-            if (pauseMenuContainer.activeSelf)
-            {
-                pauseMenuContainer.SetActive(false);
-                Time.timeScale = 1.0f;
-                Cursor.lockState = CursorLockMode.Locked;
-                
-            }
-            else
-            {
-                pauseMenuContainer.SetActive(true);
-                Time.timeScale = 0.0f;
-                Cursor.lockState = CursorLockMode.None;
-            }
+            MenuActive();
         }
         //pour la fin :
         if (parapluie.transform.localPosition.y >= 1100  && activeEnd)
@@ -55,9 +43,24 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(mainMenu);
     }
-    
-    
-    
-    
-    
+
+
+
+
+    public void MenuActive()
+    {
+        if (pauseMenuContainer.activeSelf)
+        {
+            pauseMenuContainer.SetActive(false);
+            Time.timeScale = 1.0f;
+            Cursor.lockState = CursorLockMode.Locked;
+                
+        }
+        else
+        {
+            pauseMenuContainer.SetActive(true);
+            Time.timeScale = 0.0f;
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
 }

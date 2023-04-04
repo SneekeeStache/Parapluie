@@ -112,7 +112,10 @@ public class player : MonoBehaviour
     void Update()
     {
         //Debug.Log(ForceJump);
-        rb.AddForce(OrientationVent,ForceMode.Impulse);
+        if (!onGround)
+        {
+            rb.AddForce(OrientationVent,ForceMode.Impulse);
+        }
         if (end)
         {
             scoreCredits.alpha += (Time.deltaTime * 0.1f);

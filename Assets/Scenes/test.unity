@@ -3100,6 +3100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraController: {fileID: 2144191339}
+  parapluie: {fileID: 3218663088141246434}
   minC: 2
   maxC: 100
   Cvalue: -5
@@ -3111,6 +3112,8 @@ MonoBehaviour:
     m_Bits: 1
   distanceCenterCamera: 50
   vitesseZoom: 500
+  speedCam: 0
+  timeCam: 0
 --- !u!114 &589855156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7790,16 +7793,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Parapluie: {fileID: 2873628245924922715}
-  Ateliers:
-  - {fileID: 1902850563}
-  - {fileID: 803153234}
-  - {fileID: 95069027}
-  - {fileID: 2091401372}
-  - {fileID: 1949842234}
-  - {fileID: 1190713849}
-  - {fileID: 13452119}
-  - {fileID: 754716163}
   AtelierTeleport: 0
+  _22Biphosgate: {fileID: 0}
+  _eglise: {fileID: 0}
 --- !u!1 &1754071253
 GameObject:
   m_ObjectHideFlags: 0
@@ -9758,6 +9754,7 @@ MonoBehaviour:
   TimerAvantRotation: 2
   TimerAvantRotationVerticale: 1
   upRotation: 0
+  distanceGroundCheck: 0
 --- !u!1001 &275056151102387898
 PrefabInstance:
   m_ObjectHideFlags: 0

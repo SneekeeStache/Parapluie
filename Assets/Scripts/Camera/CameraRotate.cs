@@ -178,6 +178,6 @@ public class CameraRotate : MonoBehaviour
     public void DisableAnimator()
     {
         animator.enabled = false;
-        cameraZoom.CamReset();
+        //cameraZoom.CamReset();
     }
 }

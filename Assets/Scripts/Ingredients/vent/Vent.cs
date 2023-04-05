@@ -29,6 +29,7 @@ public class Vent : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        
         if (other.CompareTag("Player"))
         {
             //determine la puissance du vent en fonction de l'orientation du parapluie

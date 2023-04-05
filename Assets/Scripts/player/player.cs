@@ -111,7 +111,6 @@ public class player : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(ForceJump);
         if (!onGround)
         {
             rb.AddForce(OrientationVent,ForceMode.Impulse);

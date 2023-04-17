@@ -41,21 +41,21 @@ Material:
     - _BaseCellOffset: -0.35
     - _BaseCellSharpness: 0.26
     - _DetailMapFalloff: 20
-    - _DetailMapIntensity: 0.491
-    - _DetailMapTile: 1.33
-    - _DetailMaskTile: -1.28
+    - _DetailMapIntensity: 1
+    - _DetailMapTile: 0.01
+    - _DetailMaskTile: -0.05
     - _FContrast: 1.01
     - _FPower: 7.8
     - _FScale: 0.42
-    - _HighlightOffset: -0.96
+    - _HighlightOffset: -1
     - _HighlightlSharpness: 0.01
-    - _InkSpotsTile: 0.21
-    - _ShadowIntensity: 0.93
+    - _InkSpotsTile: -0
+    - _ShadowIntensity: 1
     - _ShadowTextureFalloff: 17.29
     - _ShadowTextureTile: 0.71
     - __dirty: 0
     m_Colors:
-    - _BaseColor: {r: 1, g: 0.5235849, b: 0.5235849, a: 0}
-    - _HighlightColor: {r: 0.764151, g: 0.5514863, b: 0.5514863, a: 0}
+    - _BaseColor: {r: 1, g: 0.25849047, b: 0.25849047, a: 1}
+    - _HighlightColor: {r: 1, g: 0.23018864, b: 0.23018864, a: 1}
     - _RimLightColor: {r: 0.44971517, g: 0.5186899, b: 0.5849056, a: 0}
   m_BuildTextureStacks: []

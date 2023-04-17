@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CrayonBlanc
+  m_Name: CrayonVert
   m_Shader: {fileID: 4800000, guid: 94aee3462dc668d47906aa007b0afe63, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -41,21 +41,21 @@ Material:
     - _BaseCellOffset: -0.35
     - _BaseCellSharpness: 0.26
     - _DetailMapFalloff: 20
-    - _DetailMapIntensity: 0.756
-    - _DetailMapTile: 1.33
-    - _DetailMaskTile: 0.21
+    - _DetailMapIntensity: 1
+    - _DetailMapTile: 0.01
+    - _DetailMaskTile: -0.05
     - _FContrast: 1.01
     - _FPower: 7.8
     - _FScale: 0.42
-    - _HighlightOffset: -0.96
+    - _HighlightOffset: -1
     - _HighlightlSharpness: 0.01
-    - _InkSpotsTile: 0.21
-    - _ShadowIntensity: 0.93
+    - _InkSpotsTile: -0
+    - _ShadowIntensity: 1
     - _ShadowTextureFalloff: 17.29
     - _ShadowTextureTile: 0.71
     - __dirty: 0
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 0}
-    - _HighlightColor: {r: 1, g: 1, b: 1, a: 0}
+    - _BaseColor: {r: 0, g: 1, b: 0.106633164, a: 1}
+    - _HighlightColor: {r: 1, g: 0.23018864, b: 0.23018864, a: 1}
     - _RimLightColor: {r: 0.44971517, g: 0.5186899, b: 0.5849056, a: 0}
   m_BuildTextureStacks: []

@@ -34,6 +34,7 @@ public class ChangeCamColor : MonoBehaviour
         {
             color = colorReset;
             colorParapluie = colorReset;
+            colorEdge = colorReset;
             foreach (var colorZone in colorZones)
             {
                 float dist = Vector3.Distance(colorZone.GameObject().transform.position, parapluie.transform.position);

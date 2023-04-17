@@ -8,6 +8,7 @@ Shader "NPR/Pencil Sketch/Pencil Contour" {
 	Properties {
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		_NoiseTex ("Noise Tex", 2D) = "black" {}
+		_MaskTex("MaskTex", 2D) = "white" {}
 		_ErrorPeriod ("Error Period", Float) = 25.0
 		_ErrorRange ("Error Range", Float) = 0.0015
 		_NoiseAmount ("Noise Amount", Float) = 0.02
@@ -24,6 +25,7 @@ Shader "NPR/Pencil Sketch/Pencil Contour" {
 		
 		sampler2D _MainTex;
 		sampler2D _NoiseTex;
+		sampler2D _MaskTex;
 		half4 _MainTex_TexelSize;
 		float _ErrorPeriod;
 		float _ErrorRange;
@@ -229,7 +231,10 @@ Shader "NPR/Pencil Sketch/Pencil Contour" {
 			fixed3 onlyEdgeColor = lerp(_EdgeColor, _BackgroundColor, edge).rgb;
 			fixed3 withEdgeColor = lerp(_EdgeColor, tex2D(_MainTex, i.uv[0]), edge).rgb;
 			
-			return fixed4(lerp(withEdgeColor, onlyEdgeColor, _EdgeOnly), 1);
+			fixed3 maskColor = tex2D(_MaskTex, i.uv[0]);
+			if (maskColor.r > 0) maskColor.r = 1;
+
+			return fixed4(lerp(withEdgeColor, onlyEdgeColor, _EdgeOnly * maskColor.r), 1);
 		}
 		
 		ENDCG

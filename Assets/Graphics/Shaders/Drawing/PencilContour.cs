@@ -22,6 +22,8 @@ public class PencilContour : PostEffectsBase {
 
 	public Texture2D noiseTex;
 
+	public Texture maskTex;
+
 	[Range(10.0f, 50.0f)]
 	public float errorPeriod = 25.0f;
 
@@ -66,6 +68,7 @@ public class PencilContour : PostEffectsBase {
 
 		if (material != null) {
 			material.SetTexture("_NoiseTex", noiseTex);
+			material.SetTexture("_MaskTex", maskTex);
 			material.SetFloat("_EdgeOnly", edgesOnly);
 			material.SetFloat("_ErrorPeriod", errorPeriod);
 			material.SetFloat("_ErrorRange", errorRange);

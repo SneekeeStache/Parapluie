@@ -8,6 +8,7 @@ public class ColorZone : MonoBehaviour
     public bool gizmos;
     public Color color;
     public Color colorParapluie;
+    public Color colorEdge;
     public float radius;
 
     private void OnDrawGizmos()

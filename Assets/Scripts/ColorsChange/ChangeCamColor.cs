@@ -12,19 +12,20 @@ public class ChangeCamColor : MonoBehaviour
     private List<ColorZone> colorZones;
     public Color color;
     private Color colorParapluie;
+    private Color colorEdge;
 
     public PencilContour pencilContour;
     //public Material color2;
     public Color colorReset;
     public Material myColor;
-    private Camera cameraMain;
+    public Camera cameraMain;
     //private float t = 0f;
     public float speedColorChange;
     public AnimationCurve lerpCurve;
 
     void Start()
     {
-        cameraMain = Camera.main;
+        //cameraMain = Camera.main;
         colorZones = GetComponentsInChildren<ColorZone>().ToList();
     }
 
@@ -41,6 +42,7 @@ public class ChangeCamColor : MonoBehaviour
                 float lerpedSlider = lerpCurve.Evaluate(slider);
                 color += colorZone.color * lerpedSlider;
                 colorParapluie += colorZone.colorParapluie * lerpedSlider;
+                colorEdge += colorZone.colorEdge * lerpedSlider;
                 //Debug.Log("Distance avec le colorZone" + colorZone.gameObject + dist + ", valeur du slider : " + slider);
             }
 
@@ -56,7 +58,7 @@ public class ChangeCamColor : MonoBehaviour
             myColor.color = Color.Lerp(cameraMain.gameObject.GetComponent<PencilContour>().backgroundColor, color, 1f);
             //color2.SetColor("_Emission", color);
             //color2.color = Color.Lerp(cameraMain.gameObject.GetComponent<PencilContour>().backgroundColor, color, 1f);
-            pencilContour.edgeColor = colorParapluie; 
+            pencilContour.edgeColor = colorEdge; 
             parapluieMaterial.SetColor("_BaseColor", colorParapluie); 
             parapluieMaterial.SetColor("_HighlightColor", colorParapluie); 
             //parapluieMaterial.color = Color.Lerp(cameraMain.gameObject.GetComponent<PencilContour>().backgroundColor, color, 1f);

@@ -29,14 +29,14 @@ public class SpawnRaccourci : MonoBehaviour
         {
             Parapluie.GetComponent<player>().flap();
             Parapluie.GetComponent<CapsuleCollider>().enabled = false;
-            Parapluie.GetComponent<player>().colliderParapluie.SetActive(false);
+            //Parapluie.GetComponent<player>().colliderParapluie.SetActive(false);
             Parapluie.GetComponent<player>().Collision = false;
             Parapluie.transform.position = Ateliers[AtelierTeleport].transform.position;
             AtelierTeleport += 1;
             Parapluie.GetComponent<player>().FlapingNumber = Parapluie.GetComponent<player>().NombreFlap;
             if(AtelierTeleport > Ateliers.Count-1) AtelierTeleport = 0;
             Parapluie.GetComponent<player>().Collision = true;
-            Parapluie.GetComponent<player>().colliderParapluie.SetActive(true);
+            //Parapluie.GetComponent<player>().colliderParapluie.SetActive(true);
             Parapluie.GetComponent<CapsuleCollider>().enabled = true;
         }
         if(Input.GetKeyDown(KeyCode.U))

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BonusFlap : MonoBehaviour
 {
+    private MeshRenderer MR;
     [Range(1, 5)]
     public int NombreDeFlapEnBonus;
     public GameObject ParticleSystemWind;
@@ -37,6 +38,8 @@ public class BonusFlap : MonoBehaviour
 
     private void Start()
     {
+        MR = GetComponent<MeshRenderer>();
+        MR.enabled = false;
         TimerReloadBonus = TimerReloadBonusReset;
         triggerRenderer = gameObject.GetComponent<Renderer>();
 

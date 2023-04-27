@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Vent : MonoBehaviour
 {
+    private MeshRenderer MR;
     [SerializeField] public Vector3 ajoutVent;
     private Vector3 vent;
     [SerializeField] GameObject player;
@@ -22,6 +23,8 @@ public class Vent : MonoBehaviour
 
     private void Start()
     {
+        MR = GetComponent<MeshRenderer>();
+        MR.enabled = false;
         timerImpulseVent = Random.Range(timerImpulseVentMin, timerImpulseVentMax);
         timerResetValue = Random.Range(timerResetValueMin, timerResetValueMax);
         vent = ajoutVent;

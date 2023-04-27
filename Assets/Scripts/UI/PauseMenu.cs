@@ -12,6 +12,10 @@ public class PauseMenu : MonoBehaviour
     public GameObject canvasGroupEnd;
     public bool activeEnd;
 
+    [Header("set active false")]
+    public GameObject map;
+    public GameObject controle;
+
     private void Start()
     {
         parapluie = GameObject.FindWithTag("Player");
@@ -37,6 +41,8 @@ public class PauseMenu : MonoBehaviour
         pauseMenuContainer.SetActive(false);
         Time.timeScale = 1.0f;
         Cursor.lockState = CursorLockMode.Locked;
+        map.SetActive(false);
+        controle.SetActive(false);
     }
     public void BackToMenu()
     {

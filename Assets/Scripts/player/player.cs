@@ -152,7 +152,7 @@ public class player : MonoBehaviour
         if (((Input.GetButtonDown("Flap")||trigger.triggerR) && FlapingNumber <= 0f) || ((Input.GetButtonDown("Flap")||trigger.triggerR) && fermer) || ((Input.GetButtonDown("Flap")||trigger.triggerR) && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
         
         //Le parapluie s'ouvre si il est fermé et qu'on veut flap
-        if ((Input.GetButtonDown("Flap")||trigger.triggerR) && !EnergieDown && fermer)
+        if (((Input.GetButtonDown("Flap")||trigger.triggerR) || (Input.GetButtonDown("Megaflap")||trigger.triggerL))&& !EnergieDown && fermer)
         {
             fermer = false;
             FMODUnity.RuntimeManager.PlayOneShot("event:/player/open");
@@ -167,7 +167,7 @@ public class player : MonoBehaviour
         {
             perfectTextD.Disappear();
             //Debug.Log("Mega Flap");
-            EnergieRW = EnergieFlap - 15f;
+            EnergieRW = EnergieFlap - CostFlap + 5f;
             onGround = false;
             onGroundFMOD = true;
             rb.AddForce((OrietationJump.transform.position - transform.position) * (ForceJump+ForceBonusJump), ForceMode.Impulse);
@@ -179,7 +179,7 @@ public class player : MonoBehaviour
             FMODUnity.RuntimeManager.PlayOneShot("event:/player/flap");
             flyFMOD.start();
             //Debug.Log("1");
-            if (EnergieFlap <= 25f && EnergieFlap >= 20f) EnergieFlap = 1f;
+            if (EnergieFlap <= CostFlap +5f && EnergieFlap >= CostFlap -5f) EnergieFlap = 1f;
             else EnergieFlap -= CostFlap;
 
             if (EnergieFlap <= 0)
@@ -199,7 +199,7 @@ public class player : MonoBehaviour
         if ((Input.GetButtonDown("Megaflap")||trigger.triggerL) && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 5) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <=5)))
         {
             perfectTextD.Disappear();
-            EnergieRW = EnergieFlap - 40f;
+            EnergieRW = EnergieFlap - CostMegaFlap  + 5f;
             onGround = false;
             onGroundFMOD = true;
             rb.AddForce((OrietationJump.transform.position - transform.position) * (ForceMegaJump+ForceBonusJump), ForceMode.Impulse);
@@ -210,7 +210,7 @@ public class player : MonoBehaviour
             ActiveTimer = true;
             FMODUnity.RuntimeManager.PlayOneShot("event:/player/flap");
             flyFMOD.start();
-            if (EnergieFlap <= 55f && EnergieFlap >= 45f) EnergieFlap = 1f;
+            if (EnergieFlap <= CostMegaFlap +5f && EnergieFlap >= CostMegaFlap -5f) EnergieFlap = 1f;
             else EnergieFlap -= CostMegaFlap;
             timer = 1f;
             if (EnergieFlap <= 0)
@@ -222,7 +222,7 @@ public class player : MonoBehaviour
         }
         else if ((Input.GetButtonDown("Megaflap")||trigger.triggerL) && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer)
         {
-            EnergieRW = EnergieFlap - 40f;
+            EnergieRW = EnergieFlap - CostMegaFlap + 5f;
             onGround = false;
             onGroundFMOD = true;
             rb.AddForce((OrietationJump.transform.position - transform.position) * ForceMegaJump, ForceMode.Impulse);
@@ -233,7 +233,7 @@ public class player : MonoBehaviour
             ActiveTimer = true;
             FMODUnity.RuntimeManager.PlayOneShot("event:/player/flap");
             flyFMOD.start();
-            if (EnergieFlap <= 55f && EnergieFlap >= 45f) EnergieFlap = 1f;
+            if (EnergieFlap <= CostMegaFlap +5f && EnergieFlap >= CostMegaFlap -5f) EnergieFlap = 1f;
             else EnergieFlap -= CostMegaFlap;
             timer = 1f;
             if (EnergieFlap <= 0)
@@ -401,7 +401,7 @@ public class player : MonoBehaviour
 
     public void flap()
     {
-        EnergieRW = EnergieFlap - 15f;
+        EnergieRW = EnergieFlap - CostFlap + 5f;
         onGround = false;
         onGroundFMOD = true;
         rb.AddForce((OrietationJump.transform.position - transform.position) * ForceJump, ForceMode.Impulse);
@@ -413,7 +413,7 @@ public class player : MonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot("event:/player/flap");
         flyFMOD.start();
         //Debug.Log("2");
-        if (EnergieFlap <= 25f && EnergieFlap >= 20f) EnergieFlap = 1f;
+        if (EnergieFlap <= CostFlap +5f && EnergieFlap >= CostFlap -5f) EnergieFlap = 1f;
         else EnergieFlap -= CostFlap;
 
         if (EnergieFlap <= 0)

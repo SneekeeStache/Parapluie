@@ -37,52 +37,70 @@ public class Vent : MonoBehaviour
             //determine la puissance du vent en fonction de l'orientation du parapluie
             if (ajoutVent.y > 0)
             {
-                if(PlayerScript.up){
-                    PlayerScript.ForceJump=PlayerScript.DefaultForceJump*multiplicateurFlap;
-                }else if(PlayerScript.down){
-                    
+                if (PlayerScript.up)
+                {
+                    PlayerScript.ForceJump = PlayerScript.DefaultForceJump * multiplicateurFlap;
+                }
+                else if (PlayerScript.down)
+                {
+
                 }
             }
             else if (ajoutVent.y < 0)
             {
-                if(PlayerScript.down){
-                    
-                }else if(PlayerScript.up){
-                    PlayerScript.ForceJump=PlayerScript.DefaultForceJump/multiplicateurFlap;
+                if (PlayerScript.down)
+                {
+
+                }
+                else if (PlayerScript.up)
+                {
+                    PlayerScript.ForceJump = PlayerScript.DefaultForceJump / multiplicateurFlap;
                 }
             }
 
             if (ajoutVent.x > 0)
             {
-                if(PlayerScript.right){
-                    vent.x=ajoutVent.x*multiplicateurVent;
-                }else if(PlayerScript.left){
-                    vent.z=ajoutVent.z/multiplicateurVent;
+                if (PlayerScript.right)
+                {
+                    vent.x = ajoutVent.x * multiplicateurVent;
+                }
+                else if (PlayerScript.left)
+                {
+                    vent.z = ajoutVent.z / multiplicateurVent;
                 }
             }
             else if (ajoutVent.x < 0)
             {
-                if(PlayerScript.left){
-                    vent.x=ajoutVent.x*multiplicateurVent;
-                }else if(PlayerScript.right){
-                    vent.z=ajoutVent.z/multiplicateurVent;
+                if (PlayerScript.left)
+                {
+                    vent.x = ajoutVent.x * multiplicateurVent;
+                }
+                else if (PlayerScript.right)
+                {
+                    vent.z = ajoutVent.z / multiplicateurVent;
                 }
             }
 
             if (ajoutVent.z > 0)
             {
-                if(PlayerScript.forward){
-                    vent.z=ajoutVent.z*multiplicateurVent;
-                }else if(PlayerScript.backward){
-                    vent.z=ajoutVent.z/multiplicateurVent;
+                if (PlayerScript.forward)
+                {
+                    vent.z = ajoutVent.z * multiplicateurVent;
+                }
+                else if (PlayerScript.backward)
+                {
+                    vent.z = ajoutVent.z / multiplicateurVent;
                 }
             }
             else if (ajoutVent.z < 0)
             {
-                if(PlayerScript.backward){
-                    vent.z=ajoutVent.z*multiplicateurVent;
-                }else if(PlayerScript.forward){
-                    vent.z=ajoutVent.z/multiplicateurVent;
+                if (PlayerScript.backward)
+                {
+                    vent.z = ajoutVent.z * multiplicateurVent;
+                }
+                else if (PlayerScript.forward)
+                {
+                    vent.z = ajoutVent.z / multiplicateurVent;
                 }
             }
             //applique une force continue dans l'orientation du vent
@@ -122,8 +140,13 @@ public class Vent : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        vent=ajoutVent;
+        vent = ajoutVent;
         PlayerScript.OrientationVent = PlayerScript.DefaultOrientationVent;
-        PlayerScript.ForceJump=PlayerScript.DefaultForceJump;
+        PlayerScript.ForceJump = PlayerScript.DefaultForceJump;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position, transform.position + ajoutVent *20);
     }
 }

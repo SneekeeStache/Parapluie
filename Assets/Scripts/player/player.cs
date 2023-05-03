@@ -101,10 +101,10 @@ public class player : MonoBehaviour
         FlapingNumber = NombreFlap;
         cameraTransform = GameObject.Find("Main Camera").transform;
         Application.targetFrameRate = 60;
-        //FMODUnity.RuntimeManager.PlayOneShot("event:/player/fly");
+        //FMODUnity.RuntimeManager.PlayOneShot("event:/player/player_reaction/fly");
         //FMODUnity.RuntimeManager.PlayOneShot("event:/player/chute");
-        chuteFMOD = FMODUnity.RuntimeManager.CreateInstance("event:/player/chute");
-        flyFMOD = FMODUnity.RuntimeManager.CreateInstance("event:/player/fly");
+        chuteFMOD = FMODUnity.RuntimeManager.CreateInstance("event:/player/player_reaction/chute");
+        flyFMOD = FMODUnity.RuntimeManager.CreateInstance("event:/player/player_reaction/fly");
         flyFMOD.start();
         //chuteFMOD.setParameterByName("Parameter 1", 0.0F);
     }
@@ -124,7 +124,7 @@ public class player : MonoBehaviour
             flyFMOD.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             //FMODUnity.RuntimeManager.StudioSystem.setParameterByName("chute", 0);
             //FMODUnity.RuntimeManager.StudioSystem.setParameterByName("fly", 0);
-            if (onGroundFMOD) FMODUnity.RuntimeManager.PlayOneShot("event:/player/landing");
+            if (onGroundFMOD) FMODUnity.RuntimeManager.PlayOneShot("event:/player/player_reaction/landing");
             onGroundFMOD = false;
             transform.position = groundPosition;
             if (Input.GetAxisRaw("Horizontal") > 0f || Input.GetAxisRaw("Horizontal") < 0f || Input.GetAxisRaw("Vertical") > 0f || Input.GetAxisRaw("Vertical") < 0f)
@@ -155,7 +155,7 @@ public class player : MonoBehaviour
         if (((Input.GetButtonDown("Flap")||trigger.triggerR) || (Input.GetButtonDown("Megaflap")||trigger.triggerL))&& !EnergieDown && fermer)
         {
             fermer = false;
-            FMODUnity.RuntimeManager.PlayOneShot("event:/player/open");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/player/player_action/open");
             chuteFMOD.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             flyFMOD.start();
             parapluieFerme.SetActive(false);
@@ -176,7 +176,7 @@ public class player : MonoBehaviour
             //ParapluieRenderer.Play("Fermeture");
             FlapingNumber = FlapingNumber - 1f;
             ActiveTimer = true;
-            FMODUnity.RuntimeManager.PlayOneShot("event:/player/flap");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/player/player_action/flap");
             flyFMOD.start();
             //Debug.Log("1");
             if (EnergieFlap <= CostFlap +5f && EnergieFlap >= CostFlap -5f) EnergieFlap = 1f;
@@ -208,7 +208,7 @@ public class player : MonoBehaviour
             //ParapluieRenderer.Play("Fermeture");
             FlapingNumber = FlapingNumber - 1f;
             ActiveTimer = true;
-            FMODUnity.RuntimeManager.PlayOneShot("event:/player/flap");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/player/player_action/flap_perfect");
             flyFMOD.start();
             if (EnergieFlap <= CostMegaFlap +5f && EnergieFlap >= CostMegaFlap -5f) EnergieFlap = 1f;
             else EnergieFlap -= CostMegaFlap;
@@ -231,7 +231,7 @@ public class player : MonoBehaviour
             //ParapluieRenderer.Play("Fermeture");
             FlapingNumber = FlapingNumber - 1f;
             ActiveTimer = true;
-            FMODUnity.RuntimeManager.PlayOneShot("event:/player/flap");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/player/player_action/flap_perfect");
             flyFMOD.start();
             if (EnergieFlap <= CostMegaFlap +5f && EnergieFlap >= CostMegaFlap -5f) EnergieFlap = 1f;
             else EnergieFlap -= CostMegaFlap;
@@ -252,14 +252,14 @@ public class player : MonoBehaviour
             {
                 parapluieFerme.SetActive(true);
                 parapluieOuvert.SetActive(false);
-                FMODUnity.RuntimeManager.PlayOneShot("event:/player/close");
+                FMODUnity.RuntimeManager.PlayOneShot("event:/player/player_action/close");
                 chuteFMOD.start();
                 flyFMOD.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             }
 
             else
             {
-                FMODUnity.RuntimeManager.PlayOneShot("event:/player/open");
+                FMODUnity.RuntimeManager.PlayOneShot("event:/player/player_action/open");
                 chuteFMOD.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 flyFMOD.start();
                 parapluieFerme.SetActive(false);
@@ -367,6 +367,8 @@ public class player : MonoBehaviour
     {
         Collision = true;
         colliderParapluie = other.gameObject;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/player/player_reaction/landing");
+
     }
     private void OnCollisionStay(Collision other)
     {
@@ -410,7 +412,7 @@ public class player : MonoBehaviour
         //ParapluieRenderer.Play("Fermeture");
         FlapingNumber = FlapingNumber - 1f;
         ActiveTimer = true;
-        FMODUnity.RuntimeManager.PlayOneShot("event:/player/flap");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/player/player_action/flap");
         flyFMOD.start();
         //Debug.Log("2");
         if (EnergieFlap <= CostFlap +5f && EnergieFlap >= CostFlap -5f) EnergieFlap = 1f;

@@ -38,6 +38,8 @@ public class SpawnRaccourci : MonoBehaviour
             Parapluie.GetComponent<player>().Collision = true;
             //Parapluie.GetComponent<player>().colliderParapluie.SetActive(true);
             Parapluie.GetComponent<CapsuleCollider>().enabled = true;
+            Parapluie.GetComponent<player>().CDtpClose = true;
+
         }
         if(Input.GetKeyDown(KeyCode.U))
         {

@@ -43,6 +43,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         map.SetActive(false);
         controle.SetActive(false);
+        Debug.Log("reprise");
     }
     public void BackToMenu()
     {
@@ -57,10 +58,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (pauseMenuContainer.activeSelf)
         {
-            pauseMenuContainer.SetActive(false);
-            Time.timeScale = 1.0f;
-            Cursor.lockState = CursorLockMode.Locked;
-                
+            Reprise();                
         }
         else
         {
@@ -68,5 +66,17 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 0.0f;
             Cursor.lockState = CursorLockMode.None;
         }
+    }
+
+    public void MapReverse()
+    {
+        if(map.activeSelf) map.SetActive(false);
+        else map.SetActive(true);
+    }
+
+    public void ControleReverse()
+    {
+        if (controle.activeSelf) controle.SetActive(false);
+        else controle.SetActive(true);
     }
 }

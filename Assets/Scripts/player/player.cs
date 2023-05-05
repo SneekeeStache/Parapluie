@@ -33,6 +33,7 @@ public class player : MonoBehaviour
     public Slider SliderE;
     public Image SliderBG;
     public Slider SliderEnergieRW;
+    public GameObject perfectIndicator;
     
     [Header("Variables changeants les controles")]
 
@@ -163,7 +164,7 @@ public class player : MonoBehaviour
         }
         
         //flap en bonus
-        if ((Input.GetButtonDown("Flap")||trigger.triggerR) && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 5) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <=5)))
+        if ((Input.GetButtonDown("Flap")||trigger.triggerR) && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 3) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <=3)))
         {
             perfectTextD.Disappear();
             //Debug.Log("Mega Flap");
@@ -196,7 +197,7 @@ public class player : MonoBehaviour
         //Méga flap
         if (((Input.GetButtonDown("Megaflap")||trigger.triggerL) && FlapingNumber <= 0f) || ((Input.GetButtonDown("Megaflap")||trigger.triggerL) && fermer) || ((Input.GetButtonDown("Megaflap")||trigger.triggerL) && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
         
-        if ((Input.GetButtonDown("Megaflap")||trigger.triggerL) && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 5) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <=5)))
+        if ((Input.GetButtonDown("Megaflap")||trigger.triggerL) && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 3) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <=3)))
         {
             perfectTextD.Disappear();
             EnergieRW = EnergieFlap - CostMegaFlap  + 5f;
@@ -302,7 +303,11 @@ public class player : MonoBehaviour
 
         SliderEnergieRW.value = EnergieRW;
         
-        
+        if (!EnergieDown && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 3) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <= 3))) perfectIndicator.SetActive(true);
+        else perfectIndicator.SetActive(false);
+
+
+
     }
 
     void FixedUpdate()

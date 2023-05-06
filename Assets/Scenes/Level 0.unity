@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.15706627, g: 0.0062100883, b: 0.6444499, a: 1}
+  m_IndirectSpecularColor: {r: 0.15701373, g: 0.006209803, b: 0.6442483, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -548,6 +548,7 @@ MonoBehaviour:
   parapluie: {fileID: 0}
   parapluieMaterial: {fileID: 0}
   color: {r: 0.6367924, g: 1, b: 0.9851711, a: 1}
+  pencilContour: {fileID: 0}
   colorReset: {r: 0, g: 0, b: 0, a: 0}
   myColor: {fileID: 0}
   speedColorChange: 0
@@ -1571,9 +1572,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraController: {fileID: 2144191339}
-  minC: -10
-  maxC: -4
+  parapluie: {fileID: 0}
+  minC: 2
+  maxC: 100
   Cvalue: -5
+  smooth: 10
+  dollyDirAdjusted: {x: 0, y: 0, z: 0}
+  distance: 0
+  ignoreLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  distanceCenterCamera: 50
+  vitesseZoom: 0
+  speedCam: 0
+  timeCam: 0
 --- !u!65 &589855154
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2141,6 +2153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuContainer: {fileID: 643021363}
   mainMenu: 
+  canvasGroupEnd: {fileID: 0}
+  activeEnd: 0
 --- !u!114 &766449185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3061,6 +3075,7 @@ MonoBehaviour:
   parapluie: {fileID: 0}
   parapluieMaterial: {fileID: 0}
   color: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
+  pencilContour: {fileID: 0}
   colorReset: {r: 0, g: 0, b: 0, a: 0}
   myColor: {fileID: 0}
   speedColorChange: 0
@@ -4467,6 +4482,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuContainer: {fileID: 643021363}
   mainMenu: 
+  canvasGroupEnd: {fileID: 0}
+  activeEnd: 0
 --- !u!1 &1532783306
 GameObject:
   m_ObjectHideFlags: 0
@@ -4630,6 +4647,7 @@ MonoBehaviour:
   parapluie: {fileID: 0}
   parapluieMaterial: {fileID: 0}
   color: {r: 0.30691457, g: 1, b: 0, a: 0}
+  pencilContour: {fileID: 0}
   colorReset: {r: 0, g: 0, b: 0, a: 0}
   myColor: {fileID: 0}
   speedColorChange: 0
@@ -4763,16 +4781,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Parapluie: {fileID: 2873628245924922715}
-  Ateliers:
-  - {fileID: 1902850563}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   AtelierTeleport: 0
+  _22Biphosgate: {fileID: 0}
+  _eglise: {fileID: 0}
 --- !u!1 &1754071253
 GameObject:
   m_ObjectHideFlags: 0
@@ -6158,6 +6169,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuContainer: {fileID: 643021363}
   mainMenu: MainMenu
+  canvasGroupEnd: {fileID: 0}
+  activeEnd: 0
 --- !u!1 &2121466298
 GameObject:
   m_ObjectHideFlags: 0
@@ -6369,6 +6382,7 @@ MonoBehaviour:
   TimerAvantRotation: 2
   TimerAvantRotationVerticale: 1
   upRotation: 0
+  distanceGroundCheck: 0
 --- !u!65 &2144191346
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6399,6 +6413,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 477688469853740669, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 759321080195122694, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818951555388754965, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2583281787292028153, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6418,6 +6444,10 @@ PrefabInstance:
     - target: {fileID: 3716179727620831126, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
       propertyPath: m_LocalPosition.y
       value: 3.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4096399247424400684, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5150357425684797004, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
       propertyPath: m_RootOrder
@@ -6563,6 +6593,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: parapluie
       objectReference: {fileID: 0}
+    - target: {fileID: 5490572283884637430, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6335340927972026018, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6588,12 +6622,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7769628328636141913, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769628328636141913, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7769628329614910352, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8622780240906973155, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}

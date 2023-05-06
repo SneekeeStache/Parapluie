@@ -20,7 +20,7 @@ public class CameraRotate : MonoBehaviour
     [SerializeField] private float mouseSFDP = 50f;
     [SerializeField] private float minC = -70f, maxC = 80f;
 
-    [Header("Components")] public CameraZoom cameraZoom;
+    [Header("Components")]
     public Transform ParapluieTransform;
     public Transform FocusTransform;
     public GameObject cameraFDP;
@@ -41,6 +41,7 @@ public class CameraRotate : MonoBehaviour
     public float TimerAvantRotationVerticale;
     private float TimerRotationVerticale;
     public float upRotation;
+    public float distanceGroundCheck;
 
     void Start()
     {
@@ -114,6 +115,16 @@ public class CameraRotate : MonoBehaviour
             TimerRotationVerticale = TimerAvantRotationVerticale;
             if (CameraControl == 2) TimerRotationVerticale = 0.1f;
         }
+
+        RaycastHit cameraGroundCheck;
+        if(Physics.Raycast(cameraFDP.transform.position,-cameraFDP.transform.up,out cameraGroundCheck,distanceGroundCheck)){
+            if(cameraGroundCheck.collider.CompareTag("Ground")){
+                TimerRotation = TimerAvantRotation;
+                TimerRotationVerticale = TimerAvantRotationVerticale;
+                if (CameraControl == 2) TimerRotationVerticale = 0.1f;
+                xRotation+=5;
+            }
+        }
         
         TimerRotationVerticale -= Time.deltaTime;
         TimerRotation -= Time.deltaTime;
@@ -132,7 +143,7 @@ public class CameraRotate : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speedRotationHorizontale);
         }
 
-        if (Input.GetButtonDown("ChangeCamera"))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             CameraControl++;
             if (CameraControl >= 2)
@@ -160,9 +171,13 @@ public class CameraRotate : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, speedRotationHorizontale * Time.time);*/
         //transform.LookAt(rotationReference, Vector3.up);
     }
+    private void OnDrawGizmos() {
+        Gizmos.color=Color.red;
+        Gizmos.DrawRay(cameraFDP.transform.position,-cameraFDP.transform.up*distanceGroundCheck);
+    }
     public void DisableAnimator()
     {
         animator.enabled = false;
-        cameraZoom.CamReset();
+        //cameraZoom.CamReset();
     }
 }

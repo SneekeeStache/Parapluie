@@ -51,12 +51,30 @@ public class CameraZoom : MonoBehaviour
         }
         Vector3 desiredCameraPos= transform.parent.TransformPoint(dollyDir * distanceCenterCamera);
         RaycastHit hit;
-        if(Physics.Linecast(transform.parent.position,desiredCameraPos,out hit,ignoreLayer)){
-            print(hit.collider.gameObject.name);
-            distance=Mathf.Clamp((hit.distance * 0.87f),minC,distanceCenterCamera);
-
+        if(Physics.Linecast(transform.parent.position,desiredCameraPos,out hit)){
+        if(!hit.collider.CompareTag("Player"))
+        {
+            if (!hit.collider.CompareTag("direction"))
+            {
+                if (!hit.collider.CompareTag("vent"))
+                {
+                    print(hit.collider.gameObject.name);
+                    distance=Mathf.Clamp((hit.distance * 0.87f),minC,distanceCenterCamera);
+                }
+                
+            }
+            else
+            {
+                distance=maxC;
+            }
+            
+        }
+        else
+        {
+            distance=maxC;
+        }
         }else{
-            distance=distanceCenterCamera;
+            distance=maxC;
         }
 
         transform.localPosition = Vector3.Lerp (transform.localPosition, dollyDir * distance, Time.deltaTime * smooth);

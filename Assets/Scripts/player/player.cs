@@ -73,6 +73,9 @@ public class player : MonoBehaviour
     private bool onGroundFMOD = true;
     [HideInInspector] public bool onGround = false;
     [HideInInspector] public Vector3 groundPosition;
+    [HideInInspector] public bool CDtpClose = false;
+    private float timerCDtpClose = 2;
+    private float CDtpCloseTime = 0;
     public float FlapNumberCheat;
     private FMOD.Studio.EventInstance chuteFMOD;
     private FMOD.Studio.EventInstance flyFMOD;
@@ -112,6 +115,19 @@ public class player : MonoBehaviour
 
     void Update()
     {
+        if (CDtpClose)
+        {
+            if (CDtpCloseTime < timerCDtpClose)
+            {
+                CDtpCloseTime += Time.deltaTime;
+                fermer = false;
+            }
+            else
+            {
+                CDtpClose = false;
+                CDtpCloseTime = 0;
+            }
+        }
         if (!onGround)
         {
             rb.AddForce(OrientationVent,ForceMode.Impulse);

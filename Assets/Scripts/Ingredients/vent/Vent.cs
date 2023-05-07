@@ -14,6 +14,7 @@ public class Vent : MonoBehaviour
     [SerializeField] private float timerResetValue = 0.5f;
     [SerializeField] float timerResetValueMin, timerResetValueMax;
     [SerializeField] bool ventContinue = false;
+    [SerializeField] private bool directionLocal = false;
 
     [SerializeField] float multiplicateurFlap;
     [SerializeField] float multiplicateurVent;
@@ -105,34 +106,95 @@ public class Vent : MonoBehaviour
                 }
             }
             //applique une force continue dans l'orientation du vent
-            if (ventContinue)
+            if (!directionLocal)
             {
-
-                PlayerScript.OrientationVent = vent;
-            }
-            //applique une force tout les x temps pendant y secondes
-            else
-            {
-                if (timer < timerImpulseVent)
+                if (ventContinue)
                 {
-                    PlayerScript.OrientationVent = PlayerScript.DefaultOrientationVent;
-                    timer += Time.deltaTime;
+
+                    PlayerScript.OrientationVent = vent;
                 }
+                //applique une force tout les x temps pendant y secondes
                 else
                 {
-                    PlayerScript.OrientationVent = vent;
-                    if (timerReset < timerResetValue)
+                    if (timer < timerImpulseVent)
                     {
-                        timerReset += Time.deltaTime;
+                        PlayerScript.OrientationVent = PlayerScript.DefaultOrientationVent;
+                        timer += Time.deltaTime;
                     }
                     else
                     {
-                        timerReset = 0;
-                        timer = 0;
-                        timerImpulseVent = Random.Range(timerImpulseVentMin, timerImpulseVentMax);
-                        timerResetValue = Random.Range(timerResetValueMin, timerResetValueMax);
+                        PlayerScript.OrientationVent = vent;
+                        if (timerReset < timerResetValue)
+                        {
+                            timerReset += Time.deltaTime;
+                        }
+                        else
+                        {
+                            timerReset = 0;
+                            timer = 0;
+                            timerImpulseVent = Random.Range(timerImpulseVentMin, timerImpulseVentMax);
+                            timerResetValue = Random.Range(timerResetValueMin, timerResetValueMax);
+                        }
+
+                    }
+                }
+            }
+            else
+            {
+                if (ventContinue)
+                {
+                    if (vent.z != 0)
+                    {
+                        PlayerScript.OrientationVent = transform.forward*vent.z;
+                    }else if (vent.z < 0)
+                    
+                    if (vent.x != 0)
+                    {
+                        PlayerScript.OrientationVent = transform.right*vent.z;
                     }
 
+                    if (vent.y != 0)
+                    {
+                        PlayerScript.OrientationVent = transform.up*vent.y;
+                    }
+                }
+                else
+                {
+                    if (timer < timerImpulseVent)
+                    {
+                        PlayerScript.OrientationVent = PlayerScript.DefaultOrientationVent;
+                        timer += Time.deltaTime;
+                    }
+                    else
+                    {
+                        if (vent.z != 0)
+                        {
+                            PlayerScript.OrientationVent = transform.forward*vent.z;
+                        }else if (vent.z < 0)
+                    
+                            if (vent.x != 0)
+                            {
+                                PlayerScript.OrientationVent = transform.right*vent.z;
+                            }
+
+                        if (vent.y != 0)
+                        {
+                            PlayerScript.OrientationVent = transform.up*vent.y;
+                        }
+                        
+                        if (timerReset < timerResetValue)
+                        {
+                            timerReset += Time.deltaTime;
+                        }
+                        else
+                        {
+                            timerReset = 0;
+                            timer = 0;
+                            timerImpulseVent = Random.Range(timerImpulseVentMin, timerImpulseVentMax);
+                            timerResetValue = Random.Range(timerResetValueMin, timerResetValueMax);
+                        }
+                        
+                    }
                 }
             }
 

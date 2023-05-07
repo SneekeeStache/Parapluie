@@ -14,6 +14,7 @@ TagManager:
   - noTouch
   - direction
   - End
+  - vent
   layers:
   - Default
   - TransparentFX

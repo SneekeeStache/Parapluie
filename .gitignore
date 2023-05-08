@@ -49,3 +49,7 @@ Logs/*
 *.csproj
 .sln
 netrunner/*.csproj
+.vs/ProjectSettings.json
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json
+.vs/Parapluie/v16/Browse.VC.db

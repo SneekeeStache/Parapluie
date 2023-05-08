@@ -15,6 +15,7 @@ TagManager:
   - direction
   - End
   - vent
+  - cameraIgnore
   layers:
   - Default
   - TransparentFX

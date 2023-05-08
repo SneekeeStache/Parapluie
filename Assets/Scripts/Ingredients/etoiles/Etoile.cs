@@ -18,5 +18,6 @@ public class Etoile : MonoBehaviour
         ES.score++;
         TextTP.SetActive(true);
         gameObject.SetActive(false);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/system/Ui/etoile_collect");
     }
 }

@@ -5,7 +5,7 @@
 			<value>navigation_menu</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{08aa6270-4aeb-464c-acdf-8a3e4a8e1fb5}</destination>
@@ -90,7 +90,7 @@
 	<object class="MixerBusPanner" id="{ebd92aba-775d-4572-bd9d-fc8cc28c7e17}" />
 	<object class="SingleSound" id="{bf477692-5992-447d-ad6c-cabe31097208}">
 		<property name="length">
-			<value>0.030022675736961452</value>
+			<value>3.7523809523809524</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{199f557f-c307-49b4-89dd-7c1298b7a23c}</destination>

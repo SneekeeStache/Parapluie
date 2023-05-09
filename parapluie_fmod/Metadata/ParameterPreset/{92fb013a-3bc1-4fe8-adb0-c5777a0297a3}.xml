@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{92fb013a-3bc1-4fe8-adb0-c5777a0297a3}">
+		<property name="name">
+			<value>petit ciel</value>
+		</property>
+		<relationship name="folder">
+			<destination>{2f59f8e1-3d4d-450e-a4f2-c7ed388a5557}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{1771f7aa-5cdf-46a3-97a3-eca659d63ac4}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{1771f7aa-5cdf-46a3-97a3-eca659d63ac4}">
+		<property name="maximum">
+			<value>20</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

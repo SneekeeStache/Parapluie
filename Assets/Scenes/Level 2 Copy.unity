@@ -1310,6 +1310,7 @@ GameObject:
   - component: {fileID: 74680279}
   - component: {fileID: 74680278}
   - component: {fileID: 74680277}
+  - component: {fileID: 74680280}
   m_Layer: 0
   m_Name: small (1)
   m_TagString: cameraIgnore
@@ -1395,6 +1396,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 74680275}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &74680280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74680275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdc94ac90fdc63e47ad59a04d78132f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScript: {fileID: 840450142}
 --- !u!1001 &80171409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3363,6 +3377,7 @@ GameObject:
   - component: {fileID: 227312347}
   - component: {fileID: 227312346}
   - component: {fileID: 227312345}
+  - component: {fileID: 227312348}
   m_Layer: 0
   m_Name: small
   m_TagString: cameraIgnore
@@ -3448,6 +3463,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227312343}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &227312348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227312343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdc94ac90fdc63e47ad59a04d78132f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScript: {fileID: 840450142}
 --- !u!1 &229047206
 GameObject:
   m_ObjectHideFlags: 0
@@ -9177,6 +9205,7 @@ GameObject:
   - component: {fileID: 566628660}
   - component: {fileID: 566628659}
   - component: {fileID: 566628658}
+  - component: {fileID: 566628661}
   m_Layer: 0
   m_Name: medium (4)
   m_TagString: cameraIgnore
@@ -9262,6 +9291,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 566628656}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &566628661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566628656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c963cd38ab786e24993866c8b99895cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScript: {fileID: 840450142}
 --- !u!1001 &570184946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12567,21 +12609,33 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 2099284690
+      Data2: 1216224517
+      Data3: -557734267
+      Data4: -256175430
+    Path: event:/ville/musique ambiante
   Event: 
   PlayEvent: 1
   StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
-  Params: []
+  Params:
+  - Name: ambiance moyen
+    Value: 0
+  - Name: ambiance petit
+    Value: 0
+  - Name: ambiance ville
+    Value: 0
+  - Name: gratte ciel ciel
+    Value: 0
+  - Name: moyen ciel
+    Value: 0
+  - Name: petit ciel
+    Value: 0
   OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!4 &859986844 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5603445160520574897, guid: c72ac2de94bc37b4b8e007b93beeb3f4, type: 3}
@@ -15122,6 +15176,7 @@ GameObject:
   - component: {fileID: 1109819170}
   - component: {fileID: 1109819169}
   - component: {fileID: 1109819168}
+  - component: {fileID: 1109819171}
   m_Layer: 0
   m_Name: medium (3)
   m_TagString: cameraIgnore
@@ -15207,6 +15262,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1109819166}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1109819171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109819166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c963cd38ab786e24993866c8b99895cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScript: {fileID: 840450142}
 --- !u!1001 &1121959104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24654,6 +24722,7 @@ GameObject:
   - component: {fileID: 1352304166}
   - component: {fileID: 1352304165}
   - component: {fileID: 1352304164}
+  - component: {fileID: 1352304167}
   m_Layer: 0
   m_Name: big
   m_TagString: cameraIgnore
@@ -24739,6 +24808,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352304162}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1352304167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352304162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 623d42f4c15c48f4581b2396e0761fbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScript: {fileID: 840450142}
 --- !u!1 &1355098887
 GameObject:
   m_ObjectHideFlags: 0
@@ -27895,6 +27977,7 @@ GameObject:
   - component: {fileID: 1613577085}
   - component: {fileID: 1613577084}
   - component: {fileID: 1613577083}
+  - component: {fileID: 1613577086}
   m_Layer: 0
   m_Name: medium (1)
   m_TagString: cameraIgnore
@@ -27980,6 +28063,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1613577081}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1613577086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613577081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c963cd38ab786e24993866c8b99895cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScript: {fileID: 840450142}
 --- !u!1001 &1617638692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28449,6 +28545,7 @@ GameObject:
   - component: {fileID: 1686244044}
   - component: {fileID: 1686244043}
   - component: {fileID: 1686244042}
+  - component: {fileID: 1686244045}
   m_Layer: 0
   m_Name: medium
   m_TagString: cameraIgnore
@@ -28534,6 +28631,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686244040}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1686244045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686244040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c963cd38ab786e24993866c8b99895cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScript: {fileID: 840450142}
 --- !u!4 &1688281405 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 160360648418329445, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
@@ -31662,6 +31772,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 477643672}
     - target: {fileID: 5150357425684797007, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+      propertyPath: ambiance
+      value: 
+      objectReference: {fileID: 840450143}
+    - target: {fileID: 5150357425684797007, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
       propertyPath: EnergieRW
       value: 1000
       objectReference: {fileID: 0}
@@ -31752,6 +31866,10 @@ PrefabInstance:
     - target: {fileID: 5150357425684797007, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
       propertyPath: ColorSliderDown.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5150357425684797007, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+      propertyPath: vitesseChangementMusique
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5490572283884637430, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
       propertyPath: m_Name
@@ -31954,6 +32072,7 @@ GameObject:
   - component: {fileID: 1977407741}
   - component: {fileID: 1977407740}
   - component: {fileID: 1977407739}
+  - component: {fileID: 1977407742}
   m_Layer: 0
   m_Name: small (2)
   m_TagString: cameraIgnore
@@ -32039,6 +32158,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1977407737}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1977407742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977407737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdc94ac90fdc63e47ad59a04d78132f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScript: {fileID: 840450142}
 --- !u!1001 &1984685510
 PrefabInstance:
   m_ObjectHideFlags: 0

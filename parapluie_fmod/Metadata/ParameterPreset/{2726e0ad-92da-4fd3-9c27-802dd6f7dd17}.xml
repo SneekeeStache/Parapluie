@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{2726e0ad-92da-4fd3-9c27-802dd6f7dd17}">
+		<property name="name">
+			<value>moyen ciel</value>
+		</property>
+		<relationship name="folder">
+			<destination>{2f59f8e1-3d4d-450e-a4f2-c7ed388a5557}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{921cdc78-537e-488c-9144-07f279b2882e}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{921cdc78-537e-488c-9144-07f279b2882e}">
+		<property name="maximum">
+			<value>20</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

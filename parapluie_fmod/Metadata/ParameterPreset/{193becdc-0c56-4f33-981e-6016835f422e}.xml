@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{193becdc-0c56-4f33-981e-6016835f422e}">
+		<property name="name">
+			<value>gratte ciel ciel</value>
+		</property>
+		<relationship name="folder">
+			<destination>{2f59f8e1-3d4d-450e-a4f2-c7ed388a5557}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{06803767-c070-454a-8c79-efec818e286e}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{06803767-c070-454a-8c79-efec818e286e}">
+		<property name="maximum">
+			<value>20</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{85fd0451-3986-410f-8487-6f6360c270dd}">
+		<property name="name">
+			<value>ambiance ville</value>
+		</property>
+		<relationship name="folder">
+			<destination>{2f59f8e1-3d4d-450e-a4f2-c7ed388a5557}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{7da0a148-7b77-4835-ad1f-9672da7dab6a}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{7da0a148-7b77-4835-ad1f-9672da7dab6a}">
+		<property name="maximum">
+			<value>20</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

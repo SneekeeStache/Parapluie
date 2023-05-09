@@ -79,8 +79,24 @@ public class player : MonoBehaviour
     public float FlapNumberCheat;
     private FMOD.Studio.EventInstance chuteFMOD;
     private FMOD.Studio.EventInstance flyFMOD;
+    [SerializeField] float vitesseChangementMusique=1.5f;
+    [SerializeField] FMODUnity.StudioEventEmitter ambiance;
+    [HideInInspector] public float ambiancePetit=0;
+    float currentpetit = 0;
+    [HideInInspector] public float ambianceMoyen = 0;
+    float currentMoyen = 0;
+    [HideInInspector] public float ambianceGrateCiel = 0;
+    float currentGrateCiel = 0;
+    [HideInInspector] public float ambiancePetitCiel = 0;
+    float currentPetitCiel = 0;
+    [HideInInspector] public float ambianceMoyenCiel = 0;
+    float currentMoyenCiel = 0;
+    [HideInInspector] public float ambianceGrateCielCiel = 0;
+    float currentGrateCielCiel = 0;
 
-//a utiliser pour avoir la direction du parapluie
+
+
+    //a utiliser pour avoir la direction du parapluie
     [Header("pour Debug direction")]
     public bool forward;
     public bool backward;
@@ -94,7 +110,9 @@ public class player : MonoBehaviour
     public GameObject colliderParapluie;
     public bool end = false;
 
-    public ConvertTriggerToButton trigger;    
+    public ConvertTriggerToButton trigger;
+
+    
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
@@ -113,6 +131,18 @@ public class player : MonoBehaviour
 
     void Update()
     {
+        currentpetit = Mathf.Lerp(currentpetit,ambiancePetit,Time.deltaTime*vitesseChangementMusique);
+        ambiance.SetParameter("ambiance petit",currentpetit);
+        currentMoyen = Mathf.Lerp(currentMoyen, ambianceMoyen, Time.deltaTime * vitesseChangementMusique);
+        ambiance.SetParameter("ambiance moyen", currentMoyen);
+        currentGrateCiel = Mathf.Lerp(currentGrateCiel, ambianceGrateCiel, Time.deltaTime * vitesseChangementMusique);
+        ambiance.SetParameter("ambiance ville", currentGrateCiel);
+        currentPetitCiel = Mathf.Lerp(currentPetitCiel, ambiancePetitCiel, Time.deltaTime * vitesseChangementMusique);
+        ambiance.SetParameter("petit ciel", currentPetitCiel);
+        currentMoyenCiel = Mathf.Lerp(currentMoyenCiel, ambianceMoyenCiel, Time.deltaTime * vitesseChangementMusique);
+        ambiance.SetParameter("moyen ciel", currentMoyenCiel);
+        currentGrateCielCiel = Mathf.Lerp(currentGrateCielCiel, ambianceGrateCielCiel, Time.deltaTime * vitesseChangementMusique);
+        ambiance.SetParameter("gratte ciel ciel", currentGrateCielCiel);
         if (CDtpClose)
         {
             if (CDtpCloseTime < timerCDtpClose)

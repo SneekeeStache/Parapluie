@@ -8,9 +8,11 @@ public class Etoile : MonoBehaviour
     private EtoilesScore ES;
     public GameObject TextTP;
 
+
     private void Start()
     {
         ES = GetComponentInParent<EtoilesScore>();
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -20,4 +22,6 @@ public class Etoile : MonoBehaviour
         gameObject.SetActive(false);
         FMODUnity.RuntimeManager.PlayOneShot("event:/system/Ui/etoile_collect");
     }
+
+
 }

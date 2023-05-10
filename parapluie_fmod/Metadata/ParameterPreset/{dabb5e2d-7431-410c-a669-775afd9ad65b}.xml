@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{dabb5e2d-7431-410c-a669-775afd9ad65b}">
+		<property name="name">
+			<value>wata</value>
+		</property>
+		<relationship name="folder">
+			<destination>{2f59f8e1-3d4d-450e-a4f2-c7ed388a5557}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{eb47bd37-4081-44ca-9e03-7c702565aecb}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{eb47bd37-4081-44ca-9e03-7c702565aecb}">
+		<property name="maximum">
+			<value>20</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

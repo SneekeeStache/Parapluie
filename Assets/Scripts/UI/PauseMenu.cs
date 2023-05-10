@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuContainer;
     public string mainMenu;
     private GameObject parapluie;
+    private player scriptParapluie;
     public GameObject canvasGroupEnd;
     public bool activeEnd;
 
@@ -19,6 +20,7 @@ public class PauseMenu : MonoBehaviour
     private void Start()
     {
         parapluie = GameObject.FindWithTag("Player");
+        scriptParapluie=parapluie.GetComponent<player>();
     }
 
     void Update()
@@ -33,6 +35,15 @@ public class PauseMenu : MonoBehaviour
             canvasGroupEnd.SetActive(true);
             canvasGroupEnd.GetComponent<CanvasGroup>().alpha += (Time.deltaTime * 0.5f);
             Cursor.lockState = CursorLockMode.None;
+            scriptParapluie.ambiancePetit = 0;
+            scriptParapluie.ambianceMoyen = 0;
+            scriptParapluie.ambianceGrateCiel = 0;
+            scriptParapluie.ambiancePetitCiel = 0;
+            scriptParapluie.ambianceMoyenCiel = 0;
+            scriptParapluie.ambianceGrateCielCiel = 0;
+            scriptParapluie.ambianceWata = 0;
+            scriptParapluie.ambianceSpace = 20;
+
         }
     }
 

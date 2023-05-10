@@ -93,6 +93,10 @@ public class player : MonoBehaviour
     float currentMoyenCiel = 0;
     [HideInInspector] public float ambianceGrateCielCiel = 0;
     float currentGrateCielCiel = 0;
+    [HideInInspector] public float ambianceWata = 0;
+    float currentWata = 0;
+    [HideInInspector] public float ambianceSpace = 0;
+    float currentSpace = 0;
 
 
 
@@ -143,6 +147,10 @@ public class player : MonoBehaviour
         ambiance.SetParameter("moyen ciel", currentMoyenCiel);
         currentGrateCielCiel = Mathf.Lerp(currentGrateCielCiel, ambianceGrateCielCiel, Time.deltaTime * vitesseChangementMusique);
         ambiance.SetParameter("gratte ciel ciel", currentGrateCielCiel);
+        currentWata = Mathf.Lerp(currentWata, ambianceWata, Time.deltaTime * vitesseChangementMusique);
+        ambiance.SetParameter("wata", currentWata);
+        currentSpace = Mathf.Lerp(currentSpace, ambianceSpace, Time.deltaTime * vitesseChangementMusique);
+        ambiance.SetParameter("space", currentSpace);
         if (CDtpClose)
         {
             if (CDtpCloseTime < timerCDtpClose)

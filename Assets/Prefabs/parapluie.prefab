@@ -293,20 +293,21 @@ MonoBehaviour:
   SliderE: {fileID: 0}
   SliderBG: {fileID: 0}
   SliderEnergieRW: {fileID: 0}
-  EnergieFlap: 0
+  perfectIndicator: {fileID: 0}
+  EnergieFlap: 100
   EnergieDown: 0
-  EnergieRW: 0
-  SpeedResetFlap: 0
-  CostFlap: 0
-  CostMegaFlap: 0
-  ColorSliderUp: {r: 0, g: 0, b: 0, a: 0}
-  ColorSliderDown: {r: 0, g: 0, b: 0, a: 0}
-  NombreFlap: 3
+  EnergieRW: 1000
+  SpeedResetFlap: 5
+  CostFlap: 15
+  CostMegaFlap: 30
+  ColorSliderUp: {r: 1, g: 1, b: 1, a: 1}
+  ColorSliderDown: {r: 1, g: 0, b: 0, a: 1}
+  NombreFlap: 5
   FlapingNumber: 0
   DefaultForceJump: 0
-  ForceJump: 50
-  ForceMegaJump: 0
-  ForceBonusJump: 0
+  ForceJump: 20
+  ForceMegaJump: 50
+  ForceBonusJump: 10
   TimerOrientation: 2
   TimerStabilisation: 5
   drag: 5
@@ -320,7 +321,18 @@ MonoBehaviour:
   ActiveTimer: 0
   onGround: 0
   groundPosition: {x: 0, y: 0, z: 0}
-  FlapNumberCheat: 0
+  CDtpClose: 0
+  FlapNumberCheat: 5
+  vitesseChangementMusique: 2
+  ambiance: {fileID: 0}
+  ambiancePetit: 0
+  ambianceMoyen: 0
+  ambianceGrateCiel: 0
+  ambiancePetitCiel: 0
+  ambianceMoyenCiel: 0
+  ambianceGrateCielCiel: 0
+  ambianceWata: 0
+  ambianceSpace: 0
   forward: 0
   backward: 0
   left: 0

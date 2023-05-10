@@ -10,6 +10,9 @@ using UnityEngine.SceneManagement;
 public class CameraRotate : MonoBehaviour
 {
     public TextMeshProUGUI CameraDefinition;
+    public GameObject camSigne1;
+    public GameObject camSigne2;
+    public GameObject camSigne3;
     public int CameraControl = 0;
     // 0 = Camera auto focus
     // 1 = Camera libre
@@ -146,6 +149,7 @@ public class CameraRotate : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             CameraControl++;
+            CameraDefinition.gameObject.GetComponent<CanvasGroup>().alpha = 1f;
             if (CameraControl >= 2)
             {
                 CameraControl = 0;
@@ -154,14 +158,23 @@ public class CameraRotate : MonoBehaviour
 
         if (CameraControl == 0)
         {
+            camSigne1.SetActive(true);
+            camSigne2.SetActive(false);
+            camSigne3.SetActive(false);
             CameraDefinition.text = "Camera fixe";
         }
         if (CameraControl == 1)
         {
+            camSigne1.SetActive(false);
+            camSigne2.SetActive(true);
+            camSigne3.SetActive(false);
             CameraDefinition.text = "Camera libre";
         }
         if (CameraControl == 2)
         {
+            camSigne1.SetActive(false);
+            camSigne2.SetActive(false);
+            camSigne3.SetActive(true);
             CameraDefinition.text = "Camera focus";
         }
 

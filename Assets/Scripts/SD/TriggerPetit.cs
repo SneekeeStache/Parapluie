@@ -19,11 +19,16 @@ public class TriggerPetit : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        playerScript.ambiancePetit = 20;
-        playerScript.ambianceMoyen = 0;
-        playerScript.ambianceGrateCiel = 0;
-        playerScript.ambiancePetitCiel = 0;
-        playerScript.ambianceMoyenCiel = 0;
-        playerScript.ambianceGrateCielCiel = 0;
+        if (other.CompareTag("Player"))
+        {
+            playerScript.ambiancePetit = 20;
+            playerScript.ambianceMoyen = 0;
+            playerScript.ambianceGrateCiel = 0;
+            playerScript.ambiancePetitCiel = 0;
+            playerScript.ambianceMoyenCiel = 0;
+            playerScript.ambianceGrateCielCiel = 0;
+            playerScript.ambianceWata = 0;
+            playerScript.ambianceSpace = 0;
+        }
     }
 }

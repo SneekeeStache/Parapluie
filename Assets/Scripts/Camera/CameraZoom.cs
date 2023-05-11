@@ -60,7 +60,7 @@ public class CameraZoom : MonoBehaviour
                 {
                         if (!hit.collider.CompareTag("cameraIgnore"))
                         {
-                            print(hit.collider.gameObject.name);
+                            //print(hit.collider.gameObject.name);
                             distance = Mathf.Clamp((hit.distance * 0.87f), minC, distanceCenterCamera);
                         }
                 }

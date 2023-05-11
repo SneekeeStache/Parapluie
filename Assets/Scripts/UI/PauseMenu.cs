@@ -12,38 +12,35 @@ public class PauseMenu : MonoBehaviour
     private player scriptParapluie;
     public GameObject canvasGroupEnd;
     public bool activeEnd;
+    public GameObject end;
 
     [Header("set active false")]
     public GameObject map;
     public GameObject controle;
+    private bool canvasCanEnd;
 
     private void Start()
     {
         parapluie = GameObject.FindWithTag("Player");
-        scriptParapluie=parapluie.GetComponent<player>();
+        scriptParapluie = parapluie.GetComponent<player>();
     }
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            activeEnd = true;
+            end.SetActive(true);
+        }
         if (Input.GetButtonDown("Menu"))
         {
             MenuActive();
         }
         //pour la fin :
-        if (parapluie.transform.localPosition.y >= 1100  && activeEnd)
+        if (canvasCanEnd&&parapluie.transform.position.y > 1200f)
         {
             canvasGroupEnd.SetActive(true);
             canvasGroupEnd.GetComponent<CanvasGroup>().alpha += (Time.deltaTime * 0.5f);
-            Cursor.lockState = CursorLockMode.None;
-            scriptParapluie.ambiancePetit = 0;
-            scriptParapluie.ambianceMoyen = 0;
-            scriptParapluie.ambianceGrateCiel = 0;
-            scriptParapluie.ambiancePetitCiel = 0;
-            scriptParapluie.ambianceMoyenCiel = 0;
-            scriptParapluie.ambianceGrateCielCiel = 0;
-            scriptParapluie.ambianceWata = 0;
-            scriptParapluie.ambianceSpace = 20;
-
         }
     }
 
@@ -69,7 +66,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (pauseMenuContainer.activeSelf)
         {
-            Reprise();                
+            Reprise();
         }
         else
         {
@@ -81,7 +78,7 @@ public class PauseMenu : MonoBehaviour
 
     public void MapReverse()
     {
-        if(map.activeSelf) map.SetActive(false);
+        if (map.activeSelf) map.SetActive(false);
         else map.SetActive(true);
     }
 
@@ -89,5 +86,21 @@ public class PauseMenu : MonoBehaviour
     {
         if (controle.activeSelf) controle.SetActive(false);
         else controle.SetActive(true);
+    }
+    public void End()
+    {
+        Debug.Log("end");
+
+        Cursor.lockState = CursorLockMode.None;
+        scriptParapluie.ambiancePetit = 0;
+        scriptParapluie.ambianceMoyen = 0;
+        scriptParapluie.ambianceGrateCiel = 0;
+        scriptParapluie.ambiancePetitCiel = 0;
+        scriptParapluie.ambianceMoyenCiel = 0;
+        scriptParapluie.ambianceGrateCielCiel = 0;
+        scriptParapluie.ambianceWata = 0;
+        scriptParapluie.ambianceSpace = 20;
+        canvasCanEnd = true;
+
     }
 }

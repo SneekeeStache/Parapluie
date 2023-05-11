@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.025062777, g: 0.002112319, b: 0.04963212, a: 1}
+  m_IndirectSpecularColor: {r: 0.02507735, g: 0.0021149362, b: 0.0495502, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6645,6 +6645,7 @@ MonoBehaviour:
   gizmos: 0
   color: {r: 0, g: 0, b: 0, a: 1}
   colorParapluie: {r: 1, g: 0, b: 0.80811405, a: 1}
+  colorEdge: {r: 0, g: 0, b: 0, a: 0}
   radius: 200
 --- !u!1 &1067085198
 GameObject:
@@ -9899,6 +9900,7 @@ MonoBehaviour:
   pencilContour: {fileID: 1681577150}
   colorReset: {r: 0, g: 0, b: 0, a: 0}
   myColor: {fileID: 2100000, guid: d957de78c6170fc41a478549778ca576, type: 2}
+  cameraMain: {fileID: 0}
   speedColorChange: 0
   lerpCurve:
     serializedVersion: 2
@@ -10942,7 +10944,7 @@ MonoBehaviour:
   defaultSen: 4
   mainControllerSen: 4
   comfirmationPrompt: {fileID: 646903122}
-  _newGameLevel1: Level 1
+  _newGameLevel1: Level 2
   _newGameLevel2: Level 0
   _newGameLevel3: test
   _newGameLevel4: Level 1
@@ -11079,6 +11081,7 @@ MonoBehaviour:
   edgeDetectShader: {fileID: 4800000, guid: cf4d0ee908cc69142b4f2cfad7ff50e3, type: 3}
   mode: 0
   noiseTex: {fileID: 0}
+  maskTex: {fileID: 0}
   errorPeriod: 13
   errorRange: 0.00141
   noiseAmount: 0

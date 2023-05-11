@@ -135,22 +135,22 @@ public class player : MonoBehaviour
 
     void Update()
     {
-        //currentpetit = Mathf.Lerp(currentpetit, ambiancePetit, Time.deltaTime * vitesseChangementMusique);
-        //ambiance.SetParameter("ambiance petit", currentpetit);
-        //currentMoyen = Mathf.Lerp(currentMoyen, ambianceMoyen, Time.deltaTime * vitesseChangementMusique);
-        //ambiance.SetParameter("ambiance moyen", currentMoyen);
-        //currentGrateCiel = Mathf.Lerp(currentGrateCiel, ambianceGrateCiel, Time.deltaTime * vitesseChangementMusique);
-        //ambiance.SetParameter("ambiance ville", currentGrateCiel);
-        //currentPetitCiel = Mathf.Lerp(currentPetitCiel, ambiancePetitCiel, Time.deltaTime * vitesseChangementMusique);
-        //ambiance.SetParameter("petit ciel", currentPetitCiel);
-        //currentMoyenCiel = Mathf.Lerp(currentMoyenCiel, ambianceMoyenCiel, Time.deltaTime * vitesseChangementMusique);
-        //ambiance.SetParameter("moyen ciel", currentMoyenCiel);
-        //currentGrateCielCiel = Mathf.Lerp(currentGrateCielCiel, ambianceGrateCielCiel, Time.deltaTime * vitesseChangementMusique);
-        //ambiance.SetParameter("gratte ciel ciel", currentGrateCielCiel);
-        //currentWata = Mathf.Lerp(currentWata, ambianceWata, Time.deltaTime * vitesseChangementMusique);
-        //ambiance.SetParameter("wata", currentWata);
-        //currentSpace = Mathf.Lerp(currentSpace, ambianceSpace, Time.deltaTime * vitesseChangementMusique);
-        //ambiance.SetParameter("space", currentSpace);
+        currentpetit = Mathf.Lerp(currentpetit, ambiancePetit, Time.deltaTime * vitesseChangementMusique);
+        ambiance.SetParameter("ambiance petit", currentpetit);
+        currentMoyen = Mathf.Lerp(currentMoyen, ambianceMoyen, Time.deltaTime * vitesseChangementMusique);
+        ambiance.SetParameter("ambiance moyen", currentMoyen);
+        currentGrateCiel = Mathf.Lerp(currentGrateCiel, ambianceGrateCiel, Time.deltaTime * vitesseChangementMusique);
+        ambiance.SetParameter("ambiance ville", currentGrateCiel);
+        currentPetitCiel = Mathf.Lerp(currentPetitCiel, ambiancePetitCiel, Time.deltaTime * vitesseChangementMusique);
+        ambiance.SetParameter("petit ciel", currentPetitCiel);
+        currentMoyenCiel = Mathf.Lerp(currentMoyenCiel, ambianceMoyenCiel, Time.deltaTime * vitesseChangementMusique);
+        ambiance.SetParameter("moyen ciel", currentMoyenCiel);
+        currentGrateCielCiel = Mathf.Lerp(currentGrateCielCiel, ambianceGrateCielCiel, Time.deltaTime * vitesseChangementMusique);
+        ambiance.SetParameter("gratte ciel ciel", currentGrateCielCiel);
+        currentWata = Mathf.Lerp(currentWata, ambianceWata, Time.deltaTime * vitesseChangementMusique);
+        ambiance.SetParameter("wata", currentWata);
+        currentSpace = Mathf.Lerp(currentSpace, ambianceSpace, Time.deltaTime * vitesseChangementMusique);
+        ambiance.SetParameter("space", currentSpace);
         if (CDtpClose)
         {
             if (CDtpCloseTime < timerCDtpClose)

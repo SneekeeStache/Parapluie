@@ -72,9 +72,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{6f0828d2-0ac3-48e6-9022-737de85810c0}">
-		<property name="volume">
-			<value>-11</value>
-		</property>
 		<relationship name="effectChain">
 			<destination>{6442afb7-3282-4ee6-9d02-46b16f34c9aa}</destination>
 		</relationship>
@@ -87,7 +84,7 @@
 	</object>
 	<object class="MultiSound" id="{0a620241-ee99-40ef-8402-d0655dc6e20c}">
 		<relationship name="sounds">
-			<destination>{311cba5f-e2a6-463a-bfe6-c6f7fe6629ba}</destination>
+			<destination>{8042dd2d-a45a-4391-8b93-6e8b00cd647d}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{98695b42-c3b1-45e1-82b5-e71bd25b04f8}">
@@ -98,20 +95,23 @@
 	<object class="MixerBusPanner" id="{2524ccb4-1715-481f-9a92-a5ab75d6d6c5}" />
 	<object class="MixerBusEffectChain" id="{6442afb7-3282-4ee6-9d02-46b16f34c9aa}">
 		<relationship name="effects">
+			<destination>{1e0eaddc-f728-41c0-9a51-e62d51dd9c33}</destination>
 			<destination>{1e71845e-fa32-4abb-ad4e-cd6c3568742a}</destination>
 			<destination>{fd9957d3-0654-41a3-b427-f5fa86287766}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{220bf882-646a-45ae-86c3-9dc0ad4d450b}" />
-	<object class="SingleSound" id="{311cba5f-e2a6-463a-bfe6-c6f7fe6629ba}">
-		<property name="pitch">
-			<value>-0.300000012</value>
-		</property>
+	<object class="SingleSound" id="{8042dd2d-a45a-4391-8b93-6e8b00cd647d}">
 		<relationship name="audioFile">
-			<destination>{cc87cfcd-f6b2-434f-899e-ef2274ab9e3b}</destination>
+			<destination>{ff066d6c-8ea5-4a55-984e-01988f1d3220}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{da8102f8-5494-4d2b-a0d6-1a7a5cfa6f03}" />
+	<object class="SFXReverbEffect" id="{1e0eaddc-f728-41c0-9a51-e62d51dd9c33}">
+		<property name="decayTime">
+			<value>140</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{1e71845e-fa32-4abb-ad4e-cd6c3568742a}" />
 	<object class="PitchShifterEffect" id="{fd9957d3-0654-41a3-b427-f5fa86287766}">
 		<property name="pitch">

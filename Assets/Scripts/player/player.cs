@@ -70,7 +70,8 @@ public class player : MonoBehaviour
     private float timer = 0.3f;
     private float timerReset = 0.3f;
     public bool ActiveTimer;
-    private bool onGroundFMOD = true;
+    [SerializeField]  private bool onGroundFMOD = true;
+    bool playedGroundOnce = false;
     [HideInInspector] public bool onGround = false;
     [HideInInspector] public Vector3 groundPosition;
     [HideInInspector] public bool CDtpClose = false;
@@ -424,7 +425,6 @@ public class player : MonoBehaviour
     {
         Collision = true;
         colliderParapluie = other.gameObject;
-        FMODUnity.RuntimeManager.PlayOneShot("event:/player/player_reaction/landing");
     }
     private void OnCollisionStay(Collision other)
     {

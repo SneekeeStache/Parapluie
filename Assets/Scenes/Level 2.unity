@@ -16568,11 +16568,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 2099284690
+      Data2: 1216224517
+      Data3: -557734267
+      Data4: -256175430
+    Path: event:/ville/musique ambiante
   Event: 
   PlayEvent: 1
   StopEvent: 12
@@ -16581,8 +16581,8 @@ MonoBehaviour:
   Preload: 0
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &849032707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41386,6 +41386,10 @@ PrefabInstance:
       propertyPath: SliderBG
       value: 
       objectReference: {fileID: 477643672}
+    - target: {fileID: 5150357425684797007, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
+      propertyPath: ambiance
+      value: 
+      objectReference: {fileID: 840450143}
     - target: {fileID: 5150357425684797007, guid: 80db5fd14b9f13fc7bc415b7e5dbdd48, type: 3}
       propertyPath: EnergieRW
       value: 1000

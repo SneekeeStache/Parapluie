@@ -5,7 +5,7 @@
 			<value>flap</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{77407e24-67db-4b21-ace9-65fa895d7cc3}</destination>
@@ -84,7 +84,7 @@
 	</object>
 	<object class="MultiSound" id="{1206fb96-9095-4f86-ae5e-b572be7ce2db}">
 		<relationship name="sounds">
-			<destination>{47eb4570-717d-448e-974d-a22d1feeb67c}</destination>
+			<destination>{e58655eb-9215-4196-b3ff-baee9a1e14f8}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{fdfbe6be-f61e-4155-9a82-f4a5e05ce183}">
@@ -99,15 +99,9 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{669c63b2-437b-48f8-b82b-f74d09453c4a}" />
-	<object class="SingleSound" id="{47eb4570-717d-448e-974d-a22d1feeb67c}">
-		<property name="volume">
-			<value>3</value>
-		</property>
-		<property name="pitch">
-			<value>3.20000005</value>
-		</property>
+	<object class="SingleSound" id="{e58655eb-9215-4196-b3ff-baee9a1e14f8}">
 		<relationship name="audioFile">
-			<destination>{25e4e354-ea5a-43f7-bede-40df5d2eec0e}</destination>
+			<destination>{cc87cfcd-f6b2-434f-899e-ef2274ab9e3b}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{b6769620-30d6-4017-abcc-58b36b5f786d}" />

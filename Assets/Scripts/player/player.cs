@@ -202,7 +202,7 @@ public class player : MonoBehaviour
         }
         
         //flap
-        if (((Input.GetButtonDown("Flap")||trigger.triggerR) && FlapingNumber <= 0f) || ((Input.GetButtonDown("Flap")||trigger.triggerR) && fermer) || ((Input.GetButtonDown("Flap")||trigger.triggerR) && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
+        if (((Input.GetButtonDown("Flap")||trigger.triggerR) && fermer) || ((Input.GetButtonDown("Flap")||trigger.triggerR) && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
         
         //Le parapluie s'ouvre si il est fermé et qu'on veut flap
         if (((Input.GetButtonDown("Flap")||trigger.triggerR) || (Input.GetButtonDown("Megaflap")||trigger.triggerL))&& !EnergieDown && fermer)
@@ -247,7 +247,7 @@ public class player : MonoBehaviour
             flap();
         }
         //Méga flap
-        if (((Input.GetButtonDown("Megaflap")||trigger.triggerL) && FlapingNumber <= 0f) || ((Input.GetButtonDown("Megaflap")||trigger.triggerL) && fermer) || ((Input.GetButtonDown("Megaflap")||trigger.triggerL) && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
+        if (((Input.GetButtonDown("Megaflap")||trigger.triggerL) && fermer) || ((Input.GetButtonDown("Megaflap")||trigger.triggerL) && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
         
         if ((Input.GetButtonDown("Megaflap")||trigger.triggerL) && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 3) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <=3)))
         {

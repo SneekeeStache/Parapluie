@@ -261,7 +261,7 @@ public class player : MonoBehaviour
             //ParapluieRenderer.Play("Fermeture");
             FlapingNumber = FlapingNumber - 1f;
             ActiveTimer = true;
-            FMODUnity.RuntimeManager.PlayOneShot("player_action/flap_perfect");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/player/player_action/flap_perfect");
             flyFMOD.start();
             if (EnergieFlap <= CostMegaFlap +5f && EnergieFlap >= CostMegaFlap -5f) EnergieFlap = 1f;
             else EnergieFlap -= CostMegaFlap;
@@ -284,7 +284,7 @@ public class player : MonoBehaviour
             //ParapluieRenderer.Play("Fermeture");
             FlapingNumber = FlapingNumber - 1f;
             ActiveTimer = true;
-            FMODUnity.RuntimeManager.PlayOneShot("player_action/flap_perfect");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/player/player_action/flap_perfect");
             flyFMOD.start();
             if (EnergieFlap <= CostMegaFlap +5f && EnergieFlap >= CostMegaFlap -5f) EnergieFlap = 1f;
             else EnergieFlap -= CostMegaFlap;

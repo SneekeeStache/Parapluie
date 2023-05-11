@@ -18,18 +18,19 @@ public class BonusFlap : MonoBehaviour
     [SerializeField] private Color color3;
     [SerializeField] private Color color4;
     [SerializeField] private Color color5;
+    player playeScript;
 
     private Renderer triggerRenderer;
 
 
-    private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             if (!BonusPris)
             {
-                other.GetComponent<player>().FlapingNumber += NombreDeFlapEnBonus;
-                other.GetComponent<player>().EnergieFlap = 100;
+                playeScript.FlapingNumber += NombreDeFlapEnBonus;
+                playeScript.EnergieFlap = 100;
                 FMODUnity.RuntimeManager.PlayOneShot("event:/player/bonus");
                 BonusPris = true;
             }
@@ -38,6 +39,7 @@ public class BonusFlap : MonoBehaviour
 
     private void Start()
     {
+        playeScript = GameObject.Find("parapluie").GetComponent<player>();
         MR = GetComponent<MeshRenderer>();
         MR.enabled = false;
         TimerReloadBonus = TimerReloadBonusReset;

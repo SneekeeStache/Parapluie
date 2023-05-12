@@ -18,15 +18,17 @@ public class BonusFlap : MonoBehaviour
     [SerializeField] private Color color3;
     [SerializeField] private Color color4;
     [SerializeField] private Color color5;
-    player playeScript;
+    [SerializeField] player playeScript;
 
     private Renderer triggerRenderer;
 
 
         private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("collider sans tag" + other.name);
         if (other.CompareTag("Player"))
         {
+            Debug.Log("collider avec tag" + other.name);
             if (!BonusPris)
             {
                 playeScript.FlapingNumber += NombreDeFlapEnBonus;
@@ -39,7 +41,6 @@ public class BonusFlap : MonoBehaviour
 
     private void Start()
     {
-        playeScript = GameObject.Find("parapluie").GetComponent<player>();
         MR = GetComponent<MeshRenderer>();
         MR.enabled = false;
         TimerReloadBonus = TimerReloadBonusReset;

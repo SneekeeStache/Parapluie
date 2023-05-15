@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMaskHelper : MonoBehaviour
 {
     public Camera maskCamera;
-    void Update()
+    void LateUpdate()
     {
         MaterialReplaceForMask[] materials = FindObjectsOfType<MaterialReplaceForMask>();
 

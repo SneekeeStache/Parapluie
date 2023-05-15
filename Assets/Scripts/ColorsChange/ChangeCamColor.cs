@@ -25,7 +25,7 @@ public class ChangeCamColor : MonoBehaviour
 
     void Start()
     {
-        //cameraMain = Camera.main;
+        cameraMain = Camera.main;
         colorZones = GetComponentsInChildren<ColorZone>().ToList();
     }
 

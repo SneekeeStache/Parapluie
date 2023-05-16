@@ -72,6 +72,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{6f0828d2-0ac3-48e6-9022-737de85810c0}">
+		<property name="volume">
+			<value>-2.5</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{6442afb7-3282-4ee6-9d02-46b16f34c9aa}</destination>
 		</relationship>
@@ -122,6 +125,17 @@
 		</property>
 		<property name="overlap">
 			<value>18</value>
+		</property>
+		<relationship name="modulators">
+			<destination>{740d88ef-0bd5-4f92-8ca6-ccd787e3d06b}</destination>
+		</relationship>
+	</object>
+	<object class="RandomizerModulator" id="{740d88ef-0bd5-4f92-8ca6-ccd787e3d06b}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>pitch</value>
+		</property>
+		<property name="amount">
+			<value>26.5</value>
 		</property>
 	</object>
 </objects>

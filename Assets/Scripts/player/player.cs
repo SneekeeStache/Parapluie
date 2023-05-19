@@ -34,11 +34,12 @@ public class player : MonoBehaviour
     public Image SliderBG;
     public Slider SliderEnergieRW;
     public GameObject perfectIndicator;
+    public Material crayonParapluie;
     
     [Header("Variables changeants les controles")]
 
     [SerializeField] public float EnergieFlap;
-    [SerializeField] private bool EnergieDown;
+    [SerializeField] public bool EnergieDown;
     [SerializeField] private float EnergieRW;    //Risk & reward, c'est l'energie qui a +/- 5 energie près donne un bonus de flap.
     [SerializeField] public float SpeedResetFlap;
     [SerializeField] public float CostFlap;
@@ -111,7 +112,7 @@ public class player : MonoBehaviour
     public bool down;
 
     [Header("Variables ne pas changer, se fait automatiquement !!")]
-
+    public bool perfectIndicatorBool;
     public GameObject colliderParapluie;
     public bool end = false;
 
@@ -349,18 +350,44 @@ public class player : MonoBehaviour
             EnergieDown = false;
             SliderBG.color = ColorSliderUp;
             EnergieFlap = 100f;
-            EnergieRW = 100f;
+            EnergieRW = 98f;
         }
 
-        if (EnergieDown) EnergieRW = EnergieFlap;
+        if (EnergieDown && EnergieRW <= 98f) EnergieRW = EnergieFlap;
+
+
+        if (!EnergieDown && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 3) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <= 3)))
+        {
+            if (!perfectIndicatorBool) StartCoroutine(Clignote());
+            perfectIndicator.SetActive(true);
+            perfectIndicatorBool = true;
+            Debug.Log("BIBOUAAAAAAAAAAAAAAAA");
+        }
+        else
+        {
+            Debug.Log("BIBOU");
+            StopCoroutine(Clignote());
+            perfectIndicatorBool = false;
+            perfectIndicator.SetActive(false);
+        }
+
+        if (EnergieRW >= 98f) EnergieRW = 98f;
+
 
         SliderEnergieRW.value = EnergieRW;
-        
-        if (!EnergieDown && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 3) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <= 3))) perfectIndicator.SetActive(true);
-        else perfectIndicator.SetActive(false);
+    }
 
+    IEnumerator Clignote()
+    {
+        while (true)
+        {
+            Color randomColor = UnityEngine.Random.ColorHSV(0f, 1f, 0.8f, 1f, 0f, 1f, 1f, 1f);
+            crayonParapluie.SetColor("_BaseColor", randomColor);
+            crayonParapluie.SetColor("_HighlightColor", randomColor);
+            Debug.Log("Je t'aime bibou");
 
-
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 
     void FixedUpdate()

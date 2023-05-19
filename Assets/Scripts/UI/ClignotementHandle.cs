@@ -59,12 +59,15 @@ public class ClignotementHandle : MonoBehaviour
     public Color colorNormal;
     public Color color1;
     public Color color2;
+    public Color colorInvisible;
     public float timerBetweenChanges;
     private bool change;
+    private player player;
 
     private void Start()
     {
         handle = GetComponent<Image>().color;
+        player = GameObject.FindWithTag("Player").GetComponent<player>();
     }
 
     // Update is called once per frame
@@ -82,7 +85,14 @@ public class ClignotementHandle : MonoBehaviour
             if (color == color1) change = true;
             handle.color = colorChange;
         }*/
-        if(slider.value <= 10)
+        if (player.EnergieDown)
+        {
+            handle = colorInvisible;
+            ColorBlock cb = slider.colors;
+            cb.normalColor = handle;
+            slider.colors = cb;
+        }
+        else if (slider.value <= 10)
         {
             lerpedColor = Color.Lerp(color1, color2, Mathf.PingPong(Time.time, timerBetweenChanges));
             handle = lerpedColor;
@@ -97,7 +107,7 @@ public class ClignotementHandle : MonoBehaviour
             cb.normalColor = handle;
             slider.colors = cb;
         }
-
+        
 
 
     }

@@ -59,9 +59,13 @@ public class ChangeCamColor : MonoBehaviour
             myColor.color = Color.Lerp(cameraMain.gameObject.GetComponent<PencilContour>().backgroundColor, color, 1f);
             //color2.SetColor("_Emission", color);
             //color2.color = Color.Lerp(cameraMain.gameObject.GetComponent<PencilContour>().backgroundColor, color, 1f);
-            pencilContour.edgeColor = colorEdge; 
-            parapluieMaterial.SetColor("_BaseColor", colorParapluie); 
+            pencilContour.edgeColor = colorEdge;
+            if (!parapluie.GetComponent<player>().perfectIndicatorBool)
+            {
+parapluieMaterial.SetColor("_BaseColor", colorParapluie); 
             parapluieMaterial.SetColor("_HighlightColor", colorParapluie); 
+            }
+            
             //parapluieMaterial.color = Color.Lerp(cameraMain.gameObject.GetComponent<PencilContour>().backgroundColor, color, 1f);
             //t += Time.deltaTime * speedColorChange;
         }

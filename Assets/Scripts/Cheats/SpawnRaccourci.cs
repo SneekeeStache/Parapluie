@@ -12,7 +12,13 @@ public class SpawnRaccourci : MonoBehaviour
     
     [Header("Les Bonus qui donnent les tp")]
     public Transform _22Biphosgate;
-    public Transform _eglise;
+    public Transform _Bridge;
+    public Transform _Scalpel;
+    public Transform _Heron;
+    public Transform _Gherkin;
+    public Transform _TheShard;
+    public Transform _Talkie;
+    public Transform _Stadium;
 
     private void Start()
     {
@@ -56,15 +62,40 @@ public class SpawnRaccourci : MonoBehaviour
 
         }
     }
-    public void _22Biphopsgate()
+    public void _22BiphopsgateTP()
     {
         Teleport(_22Biphosgate);
     }
 
-    public void _Eglise()
+    public void _BridgeTP()
     {
-        Teleport(_eglise);
+        Teleport(_Bridge);
     }
+    /*public void _BridgeTP()
+    {
+        Teleport(_Bridge);
+    }
+    public void _BridgeTP()
+    {
+        Teleport(_Bridge);
+    }
+    public void _BridgeTP()
+    {
+        Teleport(_Bridge);
+    }
+    public void _BridgeTP()
+    {
+        Teleport(_Bridge);
+    }
+    public void _BridgeTP()
+    {
+        Teleport(_Bridge);
+    }
+    public void _BridgeTP()
+    {
+        Teleport(_Bridge);
+    }*/
+
 
 
 

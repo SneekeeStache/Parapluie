@@ -7,6 +7,7 @@ public class Etoile : MonoBehaviour
 {
     private EtoilesScore ES;
     public GameObject TextTP;
+    public GameObject ImageFrise;
 
 
     private void Start()
@@ -17,6 +18,7 @@ public class Etoile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        ImageFrise.gameObject.SetActive(true);
         ES.score++;
         TextTP.SetActive(true);
         gameObject.SetActive(false);

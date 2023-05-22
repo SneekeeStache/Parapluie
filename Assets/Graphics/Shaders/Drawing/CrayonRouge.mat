@@ -53,7 +53,7 @@ Material:
     - _ShadowIntensity: 1
     - _ShadowTextureFalloff: 17.29
     - _ShadowTextureTile: 0.71
-    - __dirty: 0
+    - __dirty: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 0.25849047, b: 0.25849047, a: 1}
     - _HighlightColor: {r: 1, g: 0.23018864, b: 0.23018864, a: 1}

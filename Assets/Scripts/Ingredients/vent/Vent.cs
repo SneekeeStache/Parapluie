@@ -18,6 +18,9 @@ public class Vent : MonoBehaviour
 
     [SerializeField] float multiplicateurFlap;
     [SerializeField] float multiplicateurVent;
+    bool addedForward = false;
+    bool addedright = false;
+    bool addedup = false;
 
     float timer;
     float timerReset = 0;
@@ -33,6 +36,7 @@ public class Vent : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        print(PlayerScript.OrientationVent);
         
         if (other.CompareTag("Player"))
         {
@@ -145,17 +149,32 @@ public class Vent : MonoBehaviour
                 {
                     if (vent.z != 0)
                     {
-                        PlayerScript.OrientationVent = transform.forward*vent.z;
+                        if (!addedForward)
+                        {
+                            PlayerScript.OrientationVent += transform.forward * vent.z;
+                            addedForward = true;
+                        }
+                        
                     }else if (vent.z < 0)
                     
                     if (vent.x != 0)
                     {
-                        PlayerScript.OrientationVent = transform.right*vent.z;
+                            if (!addedright)
+                            {
+                                PlayerScript.OrientationVent += transform.right * vent.z;
+                                addedright = true;
+                            }
+                        
                     }
 
                     if (vent.y != 0)
                     {
-                        PlayerScript.OrientationVent = transform.up*vent.y;
+                        
+                        if (!addedup)
+                        {
+                            PlayerScript.OrientationVent += transform.up * vent.y;
+                            addedup = true;
+                        }
                     }
                 }
                 else
@@ -169,17 +188,31 @@ public class Vent : MonoBehaviour
                     {
                         if (vent.z != 0)
                         {
-                            PlayerScript.OrientationVent = transform.forward*vent.z;
-                        }else if (vent.z < 0)
-                    
-                            if (vent.x != 0)
+                            if (!addedForward)
                             {
-                                PlayerScript.OrientationVent = transform.right*vent.z;
+                                PlayerScript.OrientationVent += transform.forward * vent.z;
+                                addedForward = true;
                             }
+                            
+                        }
+                        if (vent.x != 0)
+                        {
+                            if (!addedright)
+                            {
+                                PlayerScript.OrientationVent += transform.right * vent.z;
+                                addedright = true;
+                            }
+                            
+                        }
 
                         if (vent.y != 0)
                         {
-                            PlayerScript.OrientationVent = transform.up*vent.y;
+                            if (!addedup)
+                            {
+                                PlayerScript.OrientationVent += transform.up * vent.y;
+                                addedup = true;
+                            }
+                            
                         }
                         
                         if (timerReset < timerResetValue)
@@ -203,6 +236,9 @@ public class Vent : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        addedForward = false;
+        addedright = false;
+        addedup = false;
         vent = ajoutVent;
         PlayerScript.OrientationVent = PlayerScript.DefaultOrientationVent;
         PlayerScript.ForceJump = PlayerScript.DefaultForceJump;

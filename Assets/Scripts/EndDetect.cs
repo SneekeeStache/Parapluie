@@ -12,6 +12,7 @@ public class EndDetect : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             pm.End();
+            //Debug.Log("Fonction End");
         }
     }
 }

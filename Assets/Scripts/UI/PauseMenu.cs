@@ -37,11 +37,17 @@ public class PauseMenu : MonoBehaviour
             MenuActive();
         }
         //pour la fin :
-        if (canvasCanEnd&&parapluie.transform.position.y > 1200f)
+        if (canvasCanEnd && parapluie.transform.position.y > 1200f)
         {
+            //Debug.Log(parapluie.transform.position.y);
             canvasGroupEnd.SetActive(true);
             canvasGroupEnd.GetComponent<CanvasGroup>().alpha += (Time.deltaTime * 0.5f);
         }
+        /*if (parapluie.transform.position.y > 1200f)
+        {
+            Debug.Log("manque le bool pour finir");
+            Debug.Log(canvasCanEnd);
+        }*/
     }
 
     public void Reprise()
@@ -51,7 +57,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         map.SetActive(false);
         controle.SetActive(false);
-        Debug.Log("reprise");
+        //Debug.Log("reprise");
     }
     public void BackToMenu()
     {
@@ -89,7 +95,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void End()
     {
-        Debug.Log("end");
+        //Debug.Log("end");
 
         Cursor.lockState = CursorLockMode.None;
         scriptParapluie.ambiancePetit = 0;

@@ -34,6 +34,10 @@ public class player : MonoBehaviour
     public Image SliderBG;
     public Slider SliderEnergieRW;
     public GameObject perfectIndicator;
+    public float perfectIndicatorScale;
+    public float perfectIndicatorScaleReset;
+    public float perfectIndicatorScaleSpeedDown;
+    public Material perfectIndicatorMaterial;
     public Material crayonParapluie;
     
     [Header("Variables changeants les controles")]
@@ -220,6 +224,7 @@ public class player : MonoBehaviour
         //flap en bonus
         if ((Input.GetButtonDown("Flap")||trigger.triggerR) && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 3) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <=3)))
         {
+            PerfectIndicator();
             perfectTextD.Disappear();
             //Debug.Log("Mega Flap");
             EnergieRW = EnergieFlap - CostFlap + 5f;
@@ -247,12 +252,15 @@ public class player : MonoBehaviour
         else if ((Input.GetButtonDown("Flap")||trigger.triggerR) && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer)
         {
             flap();
+            //Debug.Log("samEEEEEERE");
+            PerfectIndicator();
         }
         //Méga flap
         if (((Input.GetButtonDown("Megaflap")||trigger.triggerL) && fermer) || ((Input.GetButtonDown("Megaflap")||trigger.triggerL) && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
         
         if ((Input.GetButtonDown("Megaflap")||trigger.triggerL) && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 3) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <=3)))
         {
+            PerfectIndicator();
             perfectTextD.Disappear();
             EnergieRW = EnergieFlap - CostMegaFlap  + 5f;
             onGround = false;
@@ -277,6 +285,7 @@ public class player : MonoBehaviour
         }
         else if ((Input.GetButtonDown("Megaflap")||trigger.triggerL) && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer)
         {
+            PerfectIndicator();
             EnergieRW = EnergieFlap - CostMegaFlap + 5f;
             onGround = false;
             onGroundFMOD = true;
@@ -356,19 +365,33 @@ public class player : MonoBehaviour
         if (EnergieDown && EnergieRW <= 98f) EnergieRW = EnergieFlap;
 
 
+
+        perfectIndicatorScale -= perfectIndicatorScaleSpeedDown * Time.deltaTime;
+        perfectIndicator.transform.localScale = new Vector3(perfectIndicatorScale, perfectIndicatorScale, perfectIndicatorScale);
+        if(perfectIndicatorScale <= 0f)
+        {
+            perfectIndicatorScale = 0f; ;
+        }
+
+
         if (!EnergieDown && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 3) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <= 3)))
         {
-            if (!perfectIndicatorBool) StartCoroutine(Clignote());
-            perfectIndicator.SetActive(true);
-            perfectIndicatorBool = true;
-            Debug.Log("BIBOUAAAAAAAAAAAAAAAA");
+            /*if (!perfectIndicatorBool)
+            {      
+                StartCoroutine(Clignote());
+            }*/
+            //perfectIndicator 
+            perfectIndicatorMaterial.SetColor("_EmissionColor", crayonParapluie.GetColor("_BaseColor"));
+
+
         }
         else
         {
-            Debug.Log("BIBOU");
-            StopCoroutine(Clignote());
+            //StopCoroutine(Clignote());
             perfectIndicatorBool = false;
-            perfectIndicator.SetActive(false);
+            //perfectIndicator.SetActive(false);
+            //perfectIndicatorScale = 0f;
+            //perfectIndicator.transform.localScale = new Vector3(perfectIndicatorScale, perfectIndicatorScale, perfectIndicatorScale);
         }
 
         if (EnergieRW >= 98f) EnergieRW = 98f;
@@ -377,7 +400,20 @@ public class player : MonoBehaviour
         SliderEnergieRW.value = EnergieRW;
     }
 
-    IEnumerator Clignote()
+    public void PerfectIndicator()
+    {
+        Debug.Log("perfectIndicator");
+        perfectIndicator.SetActive(true);
+        perfectIndicatorBool = true;
+        perfectIndicatorMaterial.SetColor("_EmissionColor", Color.white);
+        perfectIndicatorScale = perfectIndicatorScaleReset;
+        perfectIndicator.transform.localScale = new Vector3(perfectIndicatorScale, perfectIndicatorScale, perfectIndicatorScale);
+
+        /*perfectIndicatorScale = 1f;
+        perfectIndicator.transform.localScale = new Vector3(perfectIndicatorScale, perfectIndicatorScale, perfectIndicatorScale);*/
+    }
+
+    /*IEnumerator Clignote()
     {
         while (true)
         {
@@ -388,7 +424,7 @@ public class player : MonoBehaviour
 
             yield return new WaitForSeconds(0.2f);
         }
-    }
+    }*/
 
     void FixedUpdate()
     {

@@ -36,7 +36,7 @@ public class Vent : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        print(PlayerScript.OrientationVent);
+        //print(PlayerScript.OrientationVent);
         
         if (other.CompareTag("Player"))
         {

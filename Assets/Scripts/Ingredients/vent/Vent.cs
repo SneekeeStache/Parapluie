@@ -6,7 +6,7 @@ public class Vent : MonoBehaviour
 {
     private MeshRenderer MR;
     [SerializeField] public Vector3 ajoutVent;
-    private Vector3 vent;
+    [SerializeField] private Vector3 vent;
     [SerializeField] GameObject player;
     [SerializeField] player PlayerScript;
     [SerializeField] private float timerImpulseVent;
@@ -18,9 +18,10 @@ public class Vent : MonoBehaviour
 
     [SerializeField] float multiplicateurFlap;
     [SerializeField] float multiplicateurVent;
-    bool addedForward = false;
-    bool addedright = false;
-    bool addedup = false;
+    [SerializeField] bool addedForward = false;
+    [SerializeField] bool addedright = false;
+    [SerializeField] bool addedup = false;
+    Vector3 ventLocalDirection;
 
     float timer;
     float timerReset = 0;
@@ -147,35 +148,8 @@ public class Vent : MonoBehaviour
             {
                 if (ventContinue)
                 {
-                    if (vent.z != 0)
-                    {
-                        if (!addedForward)
-                        {
-                            PlayerScript.OrientationVent += transform.forward * vent.z;
-                            addedForward = true;
-                        }
-                        
-                    }else if (vent.z < 0)
-                    
-                    if (vent.x != 0)
-                    {
-                            if (!addedright)
-                            {
-                                PlayerScript.OrientationVent += transform.right * vent.z;
-                                addedright = true;
-                            }
-                        
-                    }
-
-                    if (vent.y != 0)
-                    {
-                        
-                        if (!addedup)
-                        {
-                            PlayerScript.OrientationVent += transform.up * vent.y;
-                            addedup = true;
-                        }
-                    }
+                    ventLocalDirection = (transform.right * vent.x) + (transform.forward * vent.z) + (transform.up * vent.y);
+                    PlayerScript.OrientationVent = ventLocalDirection;
                 }
                 else
                 {
@@ -197,9 +171,11 @@ public class Vent : MonoBehaviour
                         }
                         if (vent.x != 0)
                         {
+                            print("test1");
                             if (!addedright)
                             {
-                                PlayerScript.OrientationVent += transform.right * vent.z;
+                                print("test2");
+                                PlayerScript.OrientationVent += transform.right * vent.x;
                                 addedright = true;
                             }
                             

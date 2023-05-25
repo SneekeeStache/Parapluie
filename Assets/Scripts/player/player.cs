@@ -39,6 +39,8 @@ public class player : MonoBehaviour
     public float perfectIndicatorScaleSpeedDown;
     public Material perfectIndicatorMaterial;
     public Material crayonParapluie;
+    public GameObject PerfectFeedback;
+    private float perfectFeedbackTimer;
     
     [Header("Variables changeants les controles")]
 
@@ -224,6 +226,7 @@ public class player : MonoBehaviour
         //flap en bonus
         if ((Input.GetButtonDown("Flap")||trigger.triggerR) && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 3) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <=3)))
         {
+            PerfectFeedBack();
             PerfectIndicator();
             perfectTextD.Disappear();
             //Debug.Log("Mega Flap");
@@ -260,6 +263,7 @@ public class player : MonoBehaviour
         
         if ((Input.GetButtonDown("Megaflap")||trigger.triggerL) && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 3) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <=3)))
         {
+            PerfectFeedBack();
             PerfectIndicator();
             perfectTextD.Disappear();
             EnergieRW = EnergieFlap - CostMegaFlap  + 5f;
@@ -543,5 +547,11 @@ public class player : MonoBehaviour
             EnergieDown = true;
             SliderBG.color = ColorSliderDown;
         }
+    }
+    public void PerfectFeedBack()
+    {
+        PerfectFeedback.SetActive(false);
+        PerfectFeedback.SetActive(true);
+        //perfectFeedbackTimer = 0.2f;
     }
 }

@@ -19,6 +19,7 @@ public class BonusFlap : MonoBehaviour
     [SerializeField] private Color color4;
     [SerializeField] private Color color5;
     [SerializeField] player playeScript;
+    public ParticleSystem explodeParticleRenderer;
 
     private Renderer triggerRenderer;
 
@@ -31,6 +32,7 @@ public class BonusFlap : MonoBehaviour
             Debug.Log("collider avec tag" + other.name);
             if (!BonusPris)
             {
+                ExplodeParticleBonus();
                 playeScript.FlapingNumber += NombreDeFlapEnBonus;
                 playeScript.EnergieFlap = 100;
                 FMODUnity.RuntimeManager.PlayOneShot("event:/player/bonus");
@@ -78,5 +80,12 @@ public class BonusFlap : MonoBehaviour
             ParticleSystemWind.SetActive(true);
             BonusPris = false;
         }
+    }
+    public void ExplodeParticleBonus()
+    {
+        explodeParticleRenderer.Stop();
+        explodeParticleRenderer.Play();
+        //explodeParticleRenderer.SetActive(false);
+        //explodeParticleRenderer.SetActive(true);
     }
 }

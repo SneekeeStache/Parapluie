@@ -91953,9 +91953,25 @@ PrefabInstance:
       value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 852520449373575718, guid: e03b18681cc52de4181d8690a485e279, type: 3}
+      propertyPath: maxC
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 852520449373575718, guid: e03b18681cc52de4181d8690a485e279, type: 3}
+      propertyPath: maxMaxC
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 852520449373575718, guid: e03b18681cc52de4181d8690a485e279, type: 3}
+      propertyPath: minMaxC
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 852520449373575718, guid: e03b18681cc52de4181d8690a485e279, type: 3}
       propertyPath: parapluie
       value: 
       objectReference: {fileID: 840450142}
+    - target: {fileID: 852520449373575718, guid: e03b18681cc52de4181d8690a485e279, type: 3}
+      propertyPath: vitesseZoom
+      value: 400
+      objectReference: {fileID: 0}
     - target: {fileID: 852520449373575718, guid: e03b18681cc52de4181d8690a485e279, type: 3}
       propertyPath: distanceCenterCamera
       value: 100

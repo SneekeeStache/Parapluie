@@ -6,7 +6,7 @@ public class CameraZoom : MonoBehaviour
 {
     public GameObject CameraController;
     public player parapluie;
-    public float minC, maxC;
+    public float minC, maxC, minMaxC, maxMaxC;
     public float Cvalue;
 
     public float smooth=10;
@@ -32,7 +32,7 @@ public class CameraZoom : MonoBehaviour
     public void CamReset()
     {
         CameraController.transform.localRotation = Quaternion.Euler(25, 145, 0);
-        transform.localPosition = new Vector3(0,0,-120);
+        transform.localPosition = new Vector3(0,0,-200);
         //Debug.Log("camReset");
     }
 
@@ -40,15 +40,25 @@ public class CameraZoom : MonoBehaviour
     {
         distanceCenterCamera=Mathf.Clamp(distanceCenterCamera,minC,maxC);
 
-        if (Input.mouseScrollDelta.y > 0f)
-        {
-            
-            distanceCenterCamera+=1*vitesseZoom*Time.deltaTime;
-        }
         if (Input.mouseScrollDelta.y < 0f)
         {
-            distanceCenterCamera-=1*vitesseZoom*Time.deltaTime;
+            if (maxC < maxMaxC)
+            {
+                maxC += 1 * vitesseZoom * Time.deltaTime;
+            }
+            
         }
+        if (Input.mouseScrollDelta.y > 0f)
+        {
+            if(maxC > minMaxC)
+            {
+                maxC -= 1 * vitesseZoom * Time.deltaTime;
+
+            }
+            //maxC -= 1 * vitesseZoom * Time.deltaTime;
+
+        }
+
         Vector3 desiredCameraPos= transform.parent.TransformPoint(dollyDir * distanceCenterCamera);
         RaycastHit hit;
         if(Physics.Linecast(transform.parent.position,desiredCameraPos,out hit)){

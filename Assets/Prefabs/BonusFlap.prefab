@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1449602926558329954}
   m_Layer: 0
   m_Name: BonusFlap
-  m_TagString: Untagged
+  m_TagString: cameraIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -260,7 +260,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -10
+      scalar: 4.44
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -836,7 +836,7 @@ ParticleSystem:
     m_TextureAlphaAffectsParticles: 1
     m_TextureBilinearFiltering: 0
     randomDirectionAmount: 0
-    sphericalDirectionAmount: 0
+    sphericalDirectionAmount: 1
     randomPositionAmount: 0
     radius:
       value: 1
@@ -1126,7 +1126,7 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 1.5
+      scalar: 0.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1644,7 +1644,7 @@ ParticleSystem:
     flipU: 0
     flipV: 0
   VelocityModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 1
@@ -1966,7 +1966,7 @@ ParticleSystem:
     orbitalOffsetX:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: -10
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2178,7 +2178,7 @@ ParticleSystem:
     speedModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: -1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5537,7 +5537,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4829433536732041159, guid: 02a758955584c8949b260423aa4a52ab, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829433536732041159, guid: 02a758955584c8949b260423aa4a52ab, type: 3}
+      propertyPath: m_TagString
+      value: cameraIgnore
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02a758955584c8949b260423aa4a52ab, type: 3}
@@ -5628,6 +5632,10 @@ PrefabInstance:
     - target: {fileID: 4829433536732041159, guid: 02a758955584c8949b260423aa4a52ab, type: 3}
       propertyPath: m_Name
       value: WindBonus
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829433536732041159, guid: 02a758955584c8949b260423aa4a52ab, type: 3}
+      propertyPath: m_TagString
+      value: cameraIgnore
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02a758955584c8949b260423aa4a52ab, type: 3}

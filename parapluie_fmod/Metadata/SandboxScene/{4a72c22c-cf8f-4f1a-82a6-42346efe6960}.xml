@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="SandboxScene" id="{4a72c22c-cf8f-4f1a-82a6-42346efe6960}">
+		<property name="note">
+			<value>les parametre determine le volume de la musique, sur unity lorsque le joueur passe un trigger, la musique change progessivement avec un lerp qui diminue le volume de la musique precedente et augmente c'elle qui va etre jouer</value>
+		</property>
+		<property name="name">
+			<value>sebastien musique ambiante</value>
+		</property>
+		<relationship name="folder">
+			<destination>{9bd1cbd1-326f-4c3d-ace6-3c6e8326f874}</destination>
+		</relationship>
+		<relationship name="markerTracks">
+			<destination>{2e757ca8-e484-488c-b223-96dac5b77ad2}</destination>
+		</relationship>
+		<relationship name="timeline">
+			<destination>{b72bd7f1-d43a-43d0-9d95-354cf5c3a1a3}</destination>
+		</relationship>
+		<relationship name="listeners">
+			<destination>{b5ac2a1f-1624-448e-b778-3b3fc9adf81c}</destination>
+		</relationship>
+		<relationship name="emitters">
+			<destination>{d61cd81b-05f8-45ed-be59-dac4498bc066}</destination>
+		</relationship>
+	</object>
+	<object class="MarkerTrack" id="{2e757ca8-e484-488c-b223-96dac5b77ad2}" />
+	<object class="Timeline" id="{b72bd7f1-d43a-43d0-9d95-354cf5c3a1a3}" />
+	<object class="SandboxListener" id="{b5ac2a1f-1624-448e-b778-3b3fc9adf81c}">
+		<property name="positionX">
+			<value>-5.2750001</value>
+		</property>
+		<property name="positionZ">
+			<value>6.3499999</value>
+		</property>
+		<property name="rotationY">
+			<value>109.397491</value>
+		</property>
+	</object>
+	<object class="SandboxEmitter" id="{d61cd81b-05f8-45ed-be59-dac4498bc066}">
+		<property name="positionX">
+			<value>-14.8249998</value>
+		</property>
+		<property name="positionZ">
+			<value>7.92500019</value>
+		</property>
+		<relationship name="sandboxParameters">
+			<destination>{08b21349-7d03-4df4-8747-7e5fd00b5765}</destination>
+		</relationship>
+		<relationship name="event">
+			<destination>{7d208ad2-1d05-487e-85a6-c1deba12bbf0}</destination>
+		</relationship>
+	</object>
+	<object class="SandboxParameter" id="{08b21349-7d03-4df4-8747-7e5fd00b5765}">
+		<property name="parameterValue">
+			<value>20</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{7da0a148-7b77-4835-ad1f-9672da7dab6a}</destination>
+		</relationship>
+	</object>
+</objects>

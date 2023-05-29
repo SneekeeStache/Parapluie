@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="SandboxScene" id="{578590c6-4480-4c29-ba9c-1b1fd255b0ed}">
+		<property name="note">
+			<value>pour que cela marche, il faut supprimer le listener et le slave, jouer les musique puis les rajouter a nouveau. il sagit d'un bug de fmod pour le sandbox, il n'y a pas ce bug sur unity.
+les son ambiant utilise un transceiver pour eviter la surchage memoire car ont en retrouvera beaucoup sur la carte en jeu.</value>
+		</property>
+		<property name="name">
+			<value>kyle ambiance sonore</value>
+		</property>
+		<relationship name="folder">
+			<destination>{9bd1cbd1-326f-4c3d-ace6-3c6e8326f874}</destination>
+		</relationship>
+		<relationship name="markerTracks">
+			<destination>{37a5b9c1-b11d-405a-a0f9-20acf2cfc33e}</destination>
+		</relationship>
+		<relationship name="timeline">
+			<destination>{d152d6aa-97f0-446c-97e2-fa2752a92730}</destination>
+		</relationship>
+		<relationship name="listeners">
+			<destination>{75942687-326c-407e-8575-e36f38b1ee32}</destination>
+		</relationship>
+		<relationship name="emitters">
+			<destination>{9d42dde5-bbcc-43e9-917e-122911d0ce0b}</destination>
+			<destination>{b2775363-f987-4187-83a4-ba26617363a4}</destination>
+			<destination>{fb727151-e220-41ac-975b-0dad963631c4}</destination>
+			<destination>{1c012477-e63c-43dd-9dcd-f640f181ee89}</destination>
+			<destination>{29f67553-0d29-4630-948d-7bba86573090}</destination>
+		</relationship>
+	</object>
+	<object class="MarkerTrack" id="{37a5b9c1-b11d-405a-a0f9-20acf2cfc33e}" />
+	<object class="Timeline" id="{d152d6aa-97f0-446c-97e2-fa2752a92730}" />
+	<object class="SandboxListener" id="{75942687-326c-407e-8575-e36f38b1ee32}">
+		<property name="positionX">
+			<value>23.2250023</value>
+		</property>
+		<property name="positionZ">
+			<value>5.74999905</value>
+		</property>
+		<property name="rotationY">
+			<value>-84.4744873</value>
+		</property>
+	</object>
+	<object class="SandboxEmitter" id="{9d42dde5-bbcc-43e9-917e-122911d0ce0b}">
+		<property name="positionX">
+			<value>-13.1750002</value>
+		</property>
+		<property name="positionZ">
+			<value>5.5250001</value>
+		</property>
+		<relationship name="event">
+			<destination>{668ea942-521b-43f0-bf93-0378a41689fb}</destination>
+		</relationship>
+	</object>
+	<object class="SandboxEmitter" id="{b2775363-f987-4187-83a4-ba26617363a4}">
+		<property name="positionX">
+			<value>180.025009</value>
+		</property>
+		<property name="positionZ">
+			<value>8.57500076</value>
+		</property>
+		<property name="rotationY">
+			<value>-177.242386</value>
+		</property>
+		<relationship name="event">
+			<destination>{668ea942-521b-43f0-bf93-0378a41689fb}</destination>
+		</relationship>
+	</object>
+	<object class="SandboxEmitter" id="{fb727151-e220-41ac-975b-0dad963631c4}">
+		<property name="positionX">
+			<value>104.224998</value>
+		</property>
+		<property name="positionZ">
+			<value>160.925018</value>
+		</property>
+		<property name="rotationY">
+			<value>-166.078766</value>
+		</property>
+		<relationship name="event">
+			<destination>{668ea942-521b-43f0-bf93-0378a41689fb}</destination>
+		</relationship>
+	</object>
+	<object class="SandboxEmitter" id="{1c012477-e63c-43dd-9dcd-f640f181ee89}">
+		<property name="positionX">
+			<value>106.500008</value>
+		</property>
+		<property name="positionZ">
+			<value>-182.650009</value>
+		</property>
+		<property name="rotationY">
+			<value>-180</value>
+		</property>
+		<relationship name="event">
+			<destination>{668ea942-521b-43f0-bf93-0378a41689fb}</destination>
+		</relationship>
+	</object>
+	<object class="SandboxEmitter" id="{29f67553-0d29-4630-948d-7bba86573090}">
+		<property name="positionX">
+			<value>104.650002</value>
+		</property>
+		<property name="positionZ">
+			<value>147.449997</value>
+		</property>
+		<relationship name="event">
+			<destination>{d7ed96be-22ef-4f6c-8eda-9925ffbf0e82}</destination>
+		</relationship>
+	</object>
+</objects>

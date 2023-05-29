@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="SandboxScene" id="{d01652a2-d7c3-4253-90e2-68c40bf7ae95}">
+		<property name="note">
+			<value>les son ambiants se joue principalement lorsque le joueur est a une certaine distance du sol, plus il est proche du sol plus il entendra des son de villes, moins il est proche du sol moins ils les entendra, il entrandra aussi parfois des son de oiseau qui seront present en permanance car les oiseau peuvent se trouver en l'air.
+
+comme fmod studio ne permet pas d'assigner sa mais unity oui, j'ai laisser le parametre que vous pourez essayer.</value>
+		</property>
+		<property name="name">
+			<value>kyle son ambiants</value>
+		</property>
+		<relationship name="folder">
+			<destination>{9bd1cbd1-326f-4c3d-ace6-3c6e8326f874}</destination>
+		</relationship>
+		<relationship name="markerTracks">
+			<destination>{7812136b-648b-450b-96d2-1d229ecc9622}</destination>
+		</relationship>
+		<relationship name="timeline">
+			<destination>{1716a108-73d1-4d87-98e2-6345cb1bfcbe}</destination>
+		</relationship>
+		<relationship name="emitters">
+			<destination>{e98b4818-6582-4d8f-a366-3278f110a661}</destination>
+		</relationship>
+	</object>
+	<object class="MarkerTrack" id="{7812136b-648b-450b-96d2-1d229ecc9622}" />
+	<object class="Timeline" id="{1716a108-73d1-4d87-98e2-6345cb1bfcbe}" />
+	<object class="SandboxEmitter" id="{e98b4818-6582-4d8f-a366-3278f110a661}">
+		<property name="positionX">
+			<value>-8.625</value>
+		</property>
+		<property name="positionZ">
+			<value>5.45000029</value>
+		</property>
+		<property name="rotationY">
+			<value>117.532669</value>
+		</property>
+		<relationship name="sandboxParameters">
+			<destination>{80bfe69c-4521-4ad8-ae11-aecf05bc1ebc}</destination>
+		</relationship>
+		<relationship name="event">
+			<destination>{ce04f607-daf5-4fab-aca6-febb5132f6bc}</destination>
+		</relationship>
+	</object>
+	<object class="SandboxParameter" id="{80bfe69c-4521-4ad8-ae11-aecf05bc1ebc}">
+		<property name="parameterValue">
+			<value>0</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{7abd8235-4139-45bc-bc68-b256c02adef5}</destination>
+		</relationship>
+	</object>
+</objects>

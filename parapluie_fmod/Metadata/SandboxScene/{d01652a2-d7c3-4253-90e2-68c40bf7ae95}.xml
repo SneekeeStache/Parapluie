@@ -2,9 +2,9 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="SandboxScene" id="{d01652a2-d7c3-4253-90e2-68c40bf7ae95}">
 		<property name="note">
-			<value>les son ambiants se joue principalement lorsque le joueur est a une certaine distance du sol, plus il est proche du sol plus il entendra des son de villes, moins il est proche du sol moins ils les entendra, il entrandra aussi parfois des son de oiseau qui seront present en permanance car les oiseau peuvent se trouver en l'air.
+			<value>les sons ambiants se jouent principalement lorsque le joueur est à une certaine distance du sol. Plus il est proche du sol, plus il entendra des sons de ville et inversement. Plus il est loin du sol, moins ils les entendra. Il entrandra aussi parfois des sons d'oiseaux qui seront présents en permanance car les oiseaux peuvent se trouver sur terre comme dans les airs.
 
-comme fmod studio ne permet pas d'assigner sa mais unity oui, j'ai laisser le parametre que vous pourez essayer.</value>
+Comme fmod studio ne permet pas d'assigner ça mais unity oui, j'ai laissé le paramètre que vous pourrez essayer.</value>
 		</property>
 		<property name="name">
 			<value>kyle son ambiants</value>

@@ -103,6 +103,7 @@ public class SpawnRaccourci : MonoBehaviour
     private void Teleport(Transform T)
     {
         Debug.Log(T);
+        //Parapluie.transform.Translate(T.position,Space.Self);
         Parapluie.GetComponent<player>().flap();
         Parapluie.GetComponent<CapsuleCollider>().enabled = false;
         Parapluie.GetComponent<player>().colliderParapluie.SetActive(false);

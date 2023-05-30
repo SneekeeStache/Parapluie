@@ -71,30 +71,30 @@ public class SpawnRaccourci : MonoBehaviour
     {
         Teleport(_Bridge);
     }
-    /*public void _BridgeTP()
+    public void _ScalpelTP()
     {
-        Teleport(_Bridge);
+        Teleport(_Scalpel);
     }
-    public void _BridgeTP()
+    public void _HeronTP()
     {
-        Teleport(_Bridge);
+        Teleport(_Heron);
     }
-    public void _BridgeTP()
+    public void _GherkinTP()
     {
-        Teleport(_Bridge);
+        Teleport(_Gherkin);
     }
-    public void _BridgeTP()
+    public void _TheShardTP()
     {
-        Teleport(_Bridge);
+        Teleport(_TheShard);
     }
-    public void _BridgeTP()
+    public void _TalkieTP()
     {
-        Teleport(_Bridge);
+        Teleport(_Talkie);
     }
-    public void _BridgeTP()
+    public void _StadiumTP()
     {
-        Teleport(_Bridge);
-    }*/
+        Teleport(_Stadium);
+    }
 
 
 
@@ -102,6 +102,7 @@ public class SpawnRaccourci : MonoBehaviour
 
     private void Teleport(Transform T)
     {
+        Debug.Log(T);
         Parapluie.GetComponent<player>().flap();
         Parapluie.GetComponent<CapsuleCollider>().enabled = false;
         Parapluie.GetComponent<player>().colliderParapluie.SetActive(false);

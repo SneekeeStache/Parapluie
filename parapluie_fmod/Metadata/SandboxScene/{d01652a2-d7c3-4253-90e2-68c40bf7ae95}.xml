@@ -18,12 +18,23 @@ Comme fmod studio ne permet pas d'assigner ça mais unity oui, j'ai laissé le p
 		<relationship name="timeline">
 			<destination>{1716a108-73d1-4d87-98e2-6345cb1bfcbe}</destination>
 		</relationship>
+		<relationship name="sandboxParameters">
+			<destination>{aae265a0-5841-4ba5-97f4-ba2a522ed71a}</destination>
+		</relationship>
 		<relationship name="emitters">
 			<destination>{e98b4818-6582-4d8f-a366-3278f110a661}</destination>
 		</relationship>
 	</object>
 	<object class="MarkerTrack" id="{7812136b-648b-450b-96d2-1d229ecc9622}" />
 	<object class="Timeline" id="{1716a108-73d1-4d87-98e2-6345cb1bfcbe}" />
+	<object class="SandboxParameter" id="{aae265a0-5841-4ba5-97f4-ba2a522ed71a}">
+		<property name="parameterValue">
+			<value>0</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{1fc055d4-87f4-4e62-9703-f3b0522d04df}</destination>
+		</relationship>
+	</object>
 	<object class="SandboxEmitter" id="{e98b4818-6582-4d8f-a366-3278f110a661}">
 		<property name="positionX">
 			<value>-8.625</value>

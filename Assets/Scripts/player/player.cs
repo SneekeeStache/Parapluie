@@ -40,6 +40,7 @@ public class player : MonoBehaviour
     public Material perfectIndicatorMaterial;
     public Material crayonParapluie;
     public GameObject PerfectFeedback;
+    public ParticleSystem MegaPerfectFeedback;
     private float perfectFeedbackTimer;
     public Tyrolienne tyrolienneBoolCantMonve;
     
@@ -270,7 +271,7 @@ public class player : MonoBehaviour
         
         if ((Input.GetButtonDown("Megaflap")||trigger.triggerL) && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer && (EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 3) || (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <=3)))
         {
-            PerfectFeedBack();
+            MegaPerfectFlap();
             PerfectIndicator();
             perfectTextD.Disappear();
             EnergieRW = EnergieFlap - CostMegaFlap  + 5f;
@@ -286,7 +287,7 @@ public class player : MonoBehaviour
             flyFMOD.start();
             if (EnergieFlap <= CostMegaFlap +5f && EnergieFlap >= CostMegaFlap -5f) EnergieFlap = 1f;
             else EnergieFlap -= CostMegaFlap;
-            timer = 1f;
+            timer = 0.7f;
             if (EnergieFlap <= 0)
             {
                 EnergieFlap = 0f;
@@ -296,7 +297,6 @@ public class player : MonoBehaviour
         }
         else if ((Input.GetButtonDown("Megaflap")||trigger.triggerL) && /*FlapingNumber >= 1f*/ !EnergieDown && !fermer)
         {
-            PerfectIndicator();
             EnergieRW = EnergieFlap - CostMegaFlap + 5f;
             onGround = false;
             onGroundFMOD = true;
@@ -310,7 +310,7 @@ public class player : MonoBehaviour
             flyFMOD.start();
             if (EnergieFlap <= CostMegaFlap +5f && EnergieFlap >= CostMegaFlap -5f) EnergieFlap = 1f;
             else EnergieFlap -= CostMegaFlap;
-            timer = 1f;
+            timer = 0.7f;
             if (EnergieFlap <= 0)
             {
                 EnergieFlap = 0f;
@@ -560,5 +560,10 @@ public class player : MonoBehaviour
         PerfectFeedback.SetActive(false);
         PerfectFeedback.SetActive(true);
         //perfectFeedbackTimer = 0.2f;
+    }
+
+    public void MegaPerfectFlap()
+    {
+        MegaPerfectFeedback.Play();
     }
 }

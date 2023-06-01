@@ -6,18 +6,33 @@ using UnityEngine;
 public class CameraFocus : MonoBehaviour
 {
     public Transform CibleCameraTransform;
-    private GameObject CameraController;
+    public GameObject CameraController;
+    private GameObject player;
     void Start()
     {
-        CameraController = GameObject.Find("CameraController");
+        player = GameObject.FindWithTag("Player");
+        //CameraController = GameObject.Find("CameraController");
     }
-    
-    private void OnTriggerEnter(Collider collision)
+
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject == CameraController)
+        if (other.gameObject == CameraController || other.gameObject == player)
         {
-            collision.gameObject.GetComponent<CameraRotate>().FocusTransform = CibleCameraTransform;
-            collision.gameObject.GetComponent<CameraRotate>().CameraControl = 2;
+            CameraController.GetComponent<CameraRotate>().canFocus = false;
+            //collision.gameObject.GetComponent<CameraRotate>().FocusTransform = CibleCameraTransform;
+            CameraController.gameObject.GetComponent<CameraRotate>().CameraControl = 1;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject == CameraController || other.gameObject == player)
+        {
+            Debug.Log("camFocus");
+            CameraController.GetComponent<CameraRotate>().canFocus = true;
+            CameraController.gameObject.GetComponent<CameraRotate>().FocusTransform = CibleCameraTransform;
+            CameraController.gameObject.GetComponent<CameraRotate>().CameraControl = 2;
+        }
+    }
+    
 }

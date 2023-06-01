@@ -45,6 +45,7 @@ public class CameraRotate : MonoBehaviour
     private float TimerRotationVerticale;
     public float upRotation;
     public float distanceGroundCheck;
+    public bool canFocus;
 
     void Start()
     {
@@ -151,7 +152,11 @@ public class CameraRotate : MonoBehaviour
         {
             CameraControl++;
             CameraDefinition.gameObject.GetComponent<CanvasGroup>().alpha = 1f;
-            if (CameraControl >= 2)
+            if (CameraControl >= 2 && !canFocus)
+            {
+                CameraControl = 0;
+            }
+            else if (CameraControl >= 3 &&canFocus)
             {
                 CameraControl = 0;
             }

@@ -13,15 +13,34 @@ public class Tyrolienne : MonoBehaviour
     private bool canTyrolienne;
     public bool cantMoveParapluie;
     private float timerReset;
+    private player parapluiePlayer;
+    public ParticleSystem tyrolienneParticleSystem;
+
+    private void Start()
+    {
+        parapluiePlayer = parapluie.GetComponent<player>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) && canTyrolienne)
+        if (/*Input.GetKeyDown(KeyCode.P) && */canTyrolienne)
         {
+            tyrolienneParticleSystem.gameObject.SetActive(true);
+            tyrolienneParticleSystem.Play();
+            canTyrolienne = false;
+            parapluiePlayer.onGround = false;
             cantMoveParapluie = true;
+            parapluiePlayer.onGround = false;
+            parapluiePlayer.parapluieFerme.SetActive(true);
+            parapluiePlayer.parapluieOuvert.SetActive(false);
             parapluie.transform.DOMove(depart,timerDepart).OnComplete(() => DescenteTyrolienne());
             parapluie.transform.DORotateQuaternion(Quaternion.Euler(0, 0, 180), timerDepart);
+            parapluiePlayer.onGround = false;
+            cantMoveParapluie = true;
+            parapluiePlayer.onGround = false;
+            parapluiePlayer.parapluieFerme.SetActive(true);
+            parapluiePlayer.parapluieOuvert.SetActive(false);
         }
 
         if (cantMoveParapluie)
@@ -30,12 +49,14 @@ public class Tyrolienne : MonoBehaviour
             if (timerReset <= 0f)
             {
                 cantMoveParapluie = false;
+                parapluiePlayer.parapluieFerme.SetActive(false);
+                parapluiePlayer.parapluieOuvert.SetActive(true);
             }
         }
     }
     public void DescenteTyrolienne()
     {
-        parapluie.GetComponent<player>().onGround = false;
+        parapluiePlayer.onGround = false;
         timerReset = timerArrive;
         parapluie.transform.DOMove(fin,timerArrive);
 

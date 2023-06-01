@@ -18,7 +18,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject map;
     public GameObject controle;
     private bool canvasCanEnd;
-
+    public Etoile theShardEtoile;
     private void Start()
     {
         parapluie = GameObject.FindWithTag("Player");
@@ -27,7 +27,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.M) || !theShardEtoile.gameObject.activeSelf)
         {
             activeEnd = true;
             end.SetActive(true);

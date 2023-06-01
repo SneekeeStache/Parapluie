@@ -8,7 +8,7 @@ public class Etoile : MonoBehaviour
     private EtoilesScore ES;
     public GameObject TextTP;
     public GameObject ImageFrise;
-
+    
     public ParticleSystem explodeParticleRenderer;
 
     private void Start()

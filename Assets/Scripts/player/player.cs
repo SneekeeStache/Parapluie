@@ -41,6 +41,7 @@ public class player : MonoBehaviour
     public Material crayonParapluie;
     public GameObject PerfectFeedback;
     private float perfectFeedbackTimer;
+    public Tyrolienne tyrolienneBoolCantMonve;
     
     [Header("Variables changeants les controles")]
 
@@ -159,6 +160,8 @@ public class player : MonoBehaviour
         ambiance.SetParameter("wata", currentWata);
         currentSpace = Mathf.Lerp(currentSpace, ambianceSpace, Time.deltaTime * vitesseChangementMusique);
         ambiance.SetParameter("space", currentSpace);
+        //ne bloque pas le parapluie quand tu tp
+        
         if (CDtpClose)
         {
             if (CDtpCloseTime < timerCDtpClose)
@@ -172,6 +175,7 @@ public class player : MonoBehaviour
                 CDtpCloseTime = 0;
             }
         }
+        if (tyrolienneBoolCantMonve.cantMoveParapluie) return;
         if (!onGround)
         {
             rb.AddForce(OrientationVent,ForceMode.Impulse);
@@ -208,6 +212,8 @@ public class player : MonoBehaviour
                 }
             }
         }
+
+        
         
         //flap
         if (((Input.GetButtonDown("Flap")||trigger.triggerR) && fermer) || ((Input.GetButtonDown("Flap")||trigger.triggerR) && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/player/noflap");
@@ -240,7 +246,7 @@ public class player : MonoBehaviour
             FlapingNumber = FlapingNumber - 1f;
             ActiveTimer = true;
             FMODUnity.RuntimeManager.PlayOneShot("event:/player/player_action/flap");
-            FMODUnity.RuntimeManager.PlayOneShot("event:/player/player_action/flap_perfect");
+            //FMODUnity.RuntimeManager.PlayOneShot("event:/player/player_action/flap_perfect");
             flyFMOD.start();
             //Debug.Log("1");
             if (EnergieFlap <= CostFlap +5f && EnergieFlap >= CostFlap -5f) EnergieFlap = 1f;

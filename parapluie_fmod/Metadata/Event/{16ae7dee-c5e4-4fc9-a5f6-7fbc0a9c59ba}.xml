@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{16ae7dee-c5e4-4fc9-a5f6-7fbc0a9c59ba}">
+		<property name="note" />
 		<property name="name">
 			<value>etoile_collect</value>
 		</property>

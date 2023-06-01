@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="SandboxScene" id="{120ec0d8-a30c-4125-9127-f0f091182875}">
+		<property name="note">
+			<value>En haut d'un landmark, après avoir parcouru les challenges liés à la zone du landmark, se trouve une étoile. Même si on l'a surement vu de loin, en étant en dessous, on l'a peut e^tre oublié, ou on a juste surement du mal à la repérer, alors la spatialiser avec un signe sonore est très important, en plus de la tonalité qui indique son importance. Il est également obligatoire de donner un feedback sonore à la récupération de cet étoile, faisant comprendre l'achievement du challeng, de la zone, en inspiration nous trouvon Mario Galaxy 1 &amp; 2, qui reflètent parfaitement ce design.</value>
+		</property>
 		<property name="name">
 			<value>yumi etoile</value>
 		</property>
@@ -14,7 +17,7 @@
 			<destination>{298de817-7fdc-4e7f-a78b-e289b1b9fe30}</destination>
 		</relationship>
 		<relationship name="listeners">
-			<destination>{6a02f761-610f-484e-8e8b-31adbcbe59d1}</destination>
+			<destination>{98763a31-caa1-411a-82d1-3c7d4f47ac7e}</destination>
 		</relationship>
 		<relationship name="emitters">
 			<destination>{7bddac51-6609-4e5f-85bf-cd11935c0b42}</destination>
@@ -24,15 +27,15 @@
 	</object>
 	<object class="MarkerTrack" id="{5b50fffb-97de-44a7-8f0f-1db278341b8b}" />
 	<object class="Timeline" id="{298de817-7fdc-4e7f-a78b-e289b1b9fe30}" />
-	<object class="SandboxListener" id="{6a02f761-610f-484e-8e8b-31adbcbe59d1}">
+	<object class="SandboxListener" id="{98763a31-caa1-411a-82d1-3c7d4f47ac7e}">
 		<property name="positionX">
-			<value>9</value>
+			<value>-3.36562467</value>
 		</property>
 		<property name="positionZ">
-			<value>7.42499971</value>
+			<value>6.84236526</value>
 		</property>
 		<property name="rotationY">
-			<value>-145.181046</value>
+			<value>99.9163513</value>
 		</property>
 	</object>
 	<object class="SandboxEmitter" id="{7bddac51-6609-4e5f-85bf-cd11935c0b42}">

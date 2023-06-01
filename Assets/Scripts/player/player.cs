@@ -240,6 +240,7 @@ public class player : MonoBehaviour
             FlapingNumber = FlapingNumber - 1f;
             ActiveTimer = true;
             FMODUnity.RuntimeManager.PlayOneShot("event:/player/player_action/flap");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/player/player_action/flap_perfect");
             flyFMOD.start();
             //Debug.Log("1");
             if (EnergieFlap <= CostFlap +5f && EnergieFlap >= CostFlap -5f) EnergieFlap = 1f;

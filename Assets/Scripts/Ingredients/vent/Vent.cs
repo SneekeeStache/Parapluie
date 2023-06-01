@@ -29,7 +29,7 @@ public class Vent : MonoBehaviour
     private void Start()
     {
         MR = GetComponent<MeshRenderer>();
-        //MR.enabled = false;
+        MR.enabled = false;
         timerImpulseVent = Random.Range(timerImpulseVentMin, timerImpulseVentMax);
         timerResetValue = Random.Range(timerResetValueMin, timerResetValueMax);
         vent = ajoutVent;
@@ -222,6 +222,6 @@ public class Vent : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawLine(transform.position, transform.position + ajoutVent *50);
+        //Gizmos.DrawLine(transform.position, transform.position + ajoutVent *50);
     }
 }

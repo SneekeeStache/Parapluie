@@ -13,6 +13,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject canvasGroupEnd;
     public bool activeEnd;
     public GameObject end;
+    public GameObject frise;
 
     [Header("set active false")]
     public GameObject map;
@@ -52,6 +53,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Reprise()
     {
+        frise.SetActive(false);
         pauseMenuContainer.SetActive(false);
         Time.timeScale = 1.0f;
         Cursor.lockState = CursorLockMode.Locked;
@@ -76,6 +78,8 @@ public class PauseMenu : MonoBehaviour
         }
         else
         {
+            frise.SetActive(true);
+            frise.GetComponent<CanvasGroup>().alpha = 1.0f;
             pauseMenuContainer.SetActive(true);
             Time.timeScale = 0.0f;
             Cursor.lockState = CursorLockMode.None;

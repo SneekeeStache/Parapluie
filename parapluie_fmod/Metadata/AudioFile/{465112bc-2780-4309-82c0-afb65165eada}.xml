@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{465112bc-2780-4309-82c0-afb65165eada}">
+		<property name="assetPath">
+			<value>foule_multi-002.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>391.60968253968252</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e080a40b-77e9-4217-93b5-4b1885145034}</destination>
+		</relationship>
+	</object>
+</objects>

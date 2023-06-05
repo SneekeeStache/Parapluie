@@ -22,7 +22,10 @@ public class BonusFlap : MonoBehaviour
     public ParticleSystem explodeParticleRenderer;
 
     private Renderer triggerRenderer;
+    private Transform parapluie;
 
+    public float distance;
+    private float distancePourDisparaitre = 2000f;
 
         private void OnTriggerEnter(Collider other)
     {
@@ -43,6 +46,7 @@ public class BonusFlap : MonoBehaviour
 
     private void Start()
     {
+        parapluie = GameObject.FindWithTag("Player").transform;
         MR = GetComponent<MeshRenderer>();
         MR.enabled = false;
         TimerReloadBonus = TimerReloadBonusReset;
@@ -69,16 +73,27 @@ public class BonusFlap : MonoBehaviour
     }
     private void Update()
     {
+        distance = Vector3.Distance(parapluie.transform.position, gameObject.transform.position);
+        //distance = MathF.Abs(distance);
         if (BonusPris)
         {
             ParticleSystemWind.SetActive(false);
             TimerReloadBonus -= Time.deltaTime;
         }
-        if (TimerReloadBonus <= 0f)
+        if (TimerReloadBonus <= 0f && distance <= distancePourDisparaitre)
         {
             TimerReloadBonus = TimerReloadBonusReset;
             ParticleSystemWind.SetActive(true);
             BonusPris = false;
+        }
+        else if (!BonusPris &&distance <= distancePourDisparaitre)
+        {
+            ParticleSystemWind.SetActive(true);
+        }
+        else if (distance >= distancePourDisparaitre)
+        {
+            //Debug.Log(distance);
+            ParticleSystemWind.SetActive(false);
         }
     }
     public void ExplodeParticleBonus()

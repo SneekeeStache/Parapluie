@@ -25,18 +25,17 @@ public class Etoile : MonoBehaviour
         if (afficheFrise && once)
         {
             bc.enabled = false;
-            Debug.Log("ca ce joue");
             frise.gameObject.SetActive(true);
             frise.alpha += affichageFriseSpeed * Time.deltaTime;
             if (frise.alpha >= 1.0f)
             {
+                ES.score++;
                 ImageFrise.gameObject.SetActive(true);
                 once = false;
             }
         }
         else if (afficheFrise)
         {
-            Debug.Log("ca ce joue 2");
             //frise.alpha = 0.0f;
             frise.alpha -= affichageFriseSpeed * Time.deltaTime;
             if(frise.alpha <= 0.0f)
@@ -47,8 +46,6 @@ public class Etoile : MonoBehaviour
             }
         }
         else Debug.Log("ca ce joue 3");
-        Debug.Log(afficheFrise);
-        Debug.Log(once);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -60,7 +57,7 @@ public class Etoile : MonoBehaviour
             afficheFrise = true;
             
             
-            ES.score++;
+
             TextTP.SetActive(true);
 
             //gameObject.SetActive(false);

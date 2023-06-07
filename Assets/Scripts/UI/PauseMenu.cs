@@ -20,6 +20,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject controle;
     private bool canvasCanEnd;
     public Etoile theShardEtoile;
+    public GameObject activeRouteEndTheShard; 
     private void Start()
     {
         parapluie = GameObject.FindWithTag("Player");
@@ -32,6 +33,7 @@ public class PauseMenu : MonoBehaviour
         {
             activeEnd = true;
             end.SetActive(true);
+            activeRouteEndTheShard.SetActive(true);
         }
         if (Input.GetButtonDown("Menu"))
         {

@@ -12,11 +12,12 @@ public class Etoile : MonoBehaviour
     private bool afficheFrise, once;
     public CanvasGroup frise;
     private BoxCollider bc;
-    
     public ParticleSystem explodeParticleRenderer;
+    private FMODUnity.StudioEventEmitter eventEmitter;
 
     private void Start()
     {
+        eventEmitter = gameObject.GetComponent<FMODUnity.StudioEventEmitter>();
         ES = GetComponentInParent<EtoilesScore>();
         bc = gameObject.GetComponent<BoxCollider>();
     }
@@ -55,7 +56,7 @@ public class Etoile : MonoBehaviour
             frise.alpha = 0.0f;
             once = true;
             afficheFrise = true;
-            
+            eventEmitter.Stop();
             
 
             TextTP.SetActive(true);

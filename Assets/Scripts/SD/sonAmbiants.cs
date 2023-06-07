@@ -8,9 +8,10 @@ public class sonAmbiants : MonoBehaviour
     [SerializeField] FMODUnity.StudioEventEmitter SonAmbiance;
     [SerializeField] player playerScript;
     [SerializeField] Transform playerLocation;
+    [SerializeField] float trafic=100;
     void Start()
     {
-        
+        SonAmbiance.SetParameter("trafic", trafic);
     }
 
     // Update is called once per frame

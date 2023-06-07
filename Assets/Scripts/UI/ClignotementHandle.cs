@@ -62,12 +62,12 @@ public class ClignotementHandle : MonoBehaviour
     public Color colorInvisible;
     public float timerBetweenChanges;
     private bool change;
-    private player player;
+    public player player;
 
     private void Start()
     {
         handle = GetComponent<Image>().color;
-        player = GameObject.FindWithTag("Player").GetComponent<player>();
+        
     }
 
     // Update is called once per frame

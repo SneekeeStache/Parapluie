@@ -22,7 +22,6 @@ public class SpawnRaccourci : MonoBehaviour
 
     private void Start()
     {
-        Parapluie = GameObject.FindWithTag("Player");
         Ateliers = GetComponentsInChildren<Transform>().ToList();
         Ateliers.RemoveAt(0);
     }
@@ -41,11 +40,12 @@ public class SpawnRaccourci : MonoBehaviour
             AtelierTeleport += 1;
             Parapluie.GetComponent<player>().FlapingNumber = Parapluie.GetComponent<player>().NombreFlap;
             if(AtelierTeleport > Ateliers.Count-1) AtelierTeleport = 0;
-            Parapluie.GetComponent<player>().Collision = true;
+            //Parapluie.GetComponent<player>().Collision = true;
             //Parapluie.GetComponent<player>().colliderParapluie.SetActive(true);
             Parapluie.GetComponent<CapsuleCollider>().enabled = true;
-            Parapluie.GetComponent<player>().CDtpClose = true;
+            //Parapluie.GetComponent<player>().CDtpClose = true;
         }
+        /*
         if(Input.GetKeyDown(KeyCode.U))
         {
             Parapluie.GetComponent<player>().flap();
@@ -60,7 +60,7 @@ public class SpawnRaccourci : MonoBehaviour
             Parapluie.GetComponent<player>().colliderParapluie.SetActive(true);
             Parapluie.GetComponent<player>().Collision = true;
 
-        }
+        }*/
     }
     public void _22BiphopsgateTP()
     {

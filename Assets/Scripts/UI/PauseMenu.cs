@@ -8,7 +8,7 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuContainer;
     public string mainMenu;
-    private GameObject parapluie;
+    public GameObject parapluie;
     private player scriptParapluie;
     public GameObject canvasGroupEnd;
     public bool activeEnd;
@@ -23,7 +23,6 @@ public class PauseMenu : MonoBehaviour
     public GameObject activeRouteEndTheShard; 
     private void Start()
     {
-        parapluie = GameObject.FindWithTag("Player");
         scriptParapluie = parapluie.GetComponent<player>();
     }
 

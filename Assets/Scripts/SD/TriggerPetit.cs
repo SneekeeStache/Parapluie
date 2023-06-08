@@ -31,4 +31,11 @@ public class TriggerPetit : MonoBehaviour
             playerScript.ambianceSpace = 0;
         }
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerScript.ambiancePetit = 0;
+        }
+    }
 }

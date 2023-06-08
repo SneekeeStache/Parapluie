@@ -32,4 +32,11 @@ public class TriggerGrateCielCIel : MonoBehaviour
             playerScript.ambianceSpace = 0;
         }
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerScript.ambianceGrateCielCiel = 0;
+        }
+    }
 }

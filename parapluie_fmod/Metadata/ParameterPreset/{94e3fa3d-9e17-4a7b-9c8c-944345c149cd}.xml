@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{94e3fa3d-9e17-4a7b-9c8c-944345c149cd}">
+		<property name="name">
+			<value>fin tirolienne</value>
+		</property>
+		<relationship name="folder">
+			<destination>{2f59f8e1-3d4d-450e-a4f2-c7ed388a5557}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{427a0920-290e-4a19-bf97-4dfa758d179c}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{427a0920-290e-4a19-bf97-4dfa758d179c}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

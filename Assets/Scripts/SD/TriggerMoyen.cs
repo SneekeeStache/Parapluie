@@ -29,4 +29,11 @@ public class TriggerMoyen : MonoBehaviour
             playerScript.ambianceWata = 0;
         }
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerScript.ambianceMoyen = 0;
+        }
+    }
 }

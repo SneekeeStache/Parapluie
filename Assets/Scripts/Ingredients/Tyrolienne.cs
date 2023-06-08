@@ -15,6 +15,7 @@ public class Tyrolienne : MonoBehaviour
     private float timerReset;
     private player parapluiePlayer;
     public ParticleSystem tyrolienneParticleSystem;
+    public FMODUnity.StudioEventEmitter sonTyrolienne;
 
     private void Start()
     {
@@ -41,6 +42,7 @@ public class Tyrolienne : MonoBehaviour
             parapluiePlayer.onGround = false;
             parapluiePlayer.parapluieFerme.SetActive(true);
             parapluiePlayer.parapluieOuvert.SetActive(false);
+            
         }
 
         if (cantMoveParapluie)
@@ -51,11 +53,13 @@ public class Tyrolienne : MonoBehaviour
                 cantMoveParapluie = false;
                 parapluiePlayer.parapluieFerme.SetActive(false);
                 parapluiePlayer.parapluieOuvert.SetActive(true);
+                sonTyrolienne.Stop();
             }
         }
     }
     public void DescenteTyrolienne()
     {
+        
         parapluiePlayer.onGround = false;
         timerReset = timerArrive;
         parapluie.transform.DOMove(fin,timerArrive);
@@ -65,7 +69,8 @@ public class Tyrolienne : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if( other.CompareTag("Player"))
+        
+        if ( other.CompareTag("Player"))
         {
             canTyrolienne = true;
         }
@@ -76,5 +81,6 @@ public class Tyrolienne : MonoBehaviour
         if( other.CompareTag("Player")){
             canTyrolienne = false;
         }
+        sonTyrolienne.Play();
     }
 }

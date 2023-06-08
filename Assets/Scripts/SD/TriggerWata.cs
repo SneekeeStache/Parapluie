@@ -31,4 +31,12 @@ public class TriggerWata : MonoBehaviour
             playerScript.ambianceSpace = 0;
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerScript.ambianceWata = 0;
+        }
+    }
 }

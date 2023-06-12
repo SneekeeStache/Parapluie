@@ -38,16 +38,18 @@ public class PauseMenu : MonoBehaviour
             end.SetActive(true);
             activeRouteEndTheShard.SetActive(true);
         }
-        if (Input.GetButtonDown("Menu"))
+        if (Input.GetButtonDown("Menu") && !canvasGroupEnd.activeSelf)
         {
             MenuActive();
         }
         //pour la fin :
-        if (canvasCanEnd && parapluie.transform.position.y > 1200f)
+        if (canvasCanEnd && parapluie.transform.position.y > 1600f)
         {
             //Debug.Log(parapluie.transform.position.y);
             canvasGroupEnd.SetActive(true);
             canvasGroupEnd.GetComponent<CanvasGroup>().alpha += (Time.deltaTime * 0.5f);
+            isMenu = true;
+            Cursor.lockState = CursorLockMode.None;
         }
         /*if (parapluie.transform.position.y > 1200f)
         {

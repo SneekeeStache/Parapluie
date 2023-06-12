@@ -4169,7 +4169,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 911, y: -212}
+  m_AnchoredPosition: {x: 911, y: -190}
   m_SizeDelta: {x: 1091.9277, y: 150.8155}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &695798465
@@ -7918,7 +7918,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 911, y: -326}
+  m_AnchoredPosition: {x: 911, y: -296}
   m_SizeDelta: {x: 1091.9277, y: 150.8155}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1280260417
@@ -7942,9 +7942,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "C\xE9leste Wekstein - Direction Artistique & programmation\nTitouan Drezet
-    - Direction Artistique & programmation\nLaure Lorquet - Documentation\nICAN -
-    Chaque professeur & \xE9l\xE8ves pour leurs aide et leurs retours\nEt vous, chers
-    joueurs de faire vivre notre parapluie"
+    - Direction Artistique & programmation\nLaure Lorquet - Documentation\nTheophile
+    De Larquier - Visuel\nICAN - Chaque professeur & \xE9l\xE8ves pour leurs aide
+    et leurs retours\nEt vous, chers joueurs de faire vivre notre parapluie"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ed81b5100bf1beb47ba8466be3c7bfea, type: 2}
   m_sharedMaterial: {fileID: -9010289936497565855, guid: ed81b5100bf1beb47ba8466be3c7bfea, type: 2}
@@ -9523,7 +9523,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedDispear: 2
-  clic: 0
+  TimeBeforeDisapear: 0
+  clic: 1
 --- !u!225 &1584180036
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -9781,6 +9782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedDispear: 1
+  TimeBeforeDisapear: 0
   clic: 0
 --- !u!225 &1592958852
 CanvasGroup:

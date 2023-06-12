@@ -32,7 +32,8 @@ public class CameraRotate : MonoBehaviour
     private CharacterController charController;
     private float xRotation = 0f;
     private Vector3 playerVelo;
-
+    FMOD.Studio.Bus MasterBus;
+    
     [Header("Réglages camera")]
     public float CameraRotationAutoHaut = 0.5f;
     public float CameraRotationAutobas = 1f;
@@ -46,9 +47,11 @@ public class CameraRotate : MonoBehaviour
     public float upRotation;
     public float distanceGroundCheck;
     public bool canFocus;
+    
 
     void Start()
     {
+        MasterBus = FMODUnity.RuntimeManager.GetBus("Bus:/");
         animator = gameObject.GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
         TimerRotation = TimerAvantRotation;
@@ -57,10 +60,14 @@ public class CameraRotate : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F5)) SceneManager.LoadScene("Level 2");
-        if (Input.GetKeyDown(KeyCode.F6)) SceneManager.LoadScene("Level 0");
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            MasterBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            SceneManager.LoadScene("Level 2");
+        }
+        /*if (Input.GetKeyDown(KeyCode.F6)) SceneManager.LoadScene("Level 0");
         if (Input.GetKeyDown(KeyCode.F7)) SceneManager.LoadScene("Level 1");
-        if (Input.GetKeyDown(KeyCode.F8)) SceneManager.LoadScene("test");
+        if (Input.GetKeyDown(KeyCode.F8)) SceneManager.LoadScene("test");*/
 
         //fait bouger le cam automatiquement en fonction du parapluie
         if (TimerRotationVerticale <= 0f && CameraControl == 0)

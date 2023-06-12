@@ -15,6 +15,11 @@ public class PauseMenu : MonoBehaviour
     public bool activeEnd;
     public GameObject end;
     public GameObject frise;
+    public GameObject TitreObjectif;
+    public Titre TitreObjectifTitre;
+    public TextMeshProUGUI TitreObjectifText;
+    public TextMeshProUGUI TitreObjectifTextMenu;
+    FMOD.Studio.Bus MasterBus;
 
     [Header("set active false")]
     public GameObject map;
@@ -25,18 +30,28 @@ public class PauseMenu : MonoBehaviour
     public TextMeshProUGUI cheatActive;
     public bool canCheat;
     public bool isMenu;
+    private bool triggerOnceUnlockEnd;
+
     private void Start()
     {
+        MasterBus = FMODUnity.RuntimeManager.GetBus("Bus:/");
+        triggerOnceUnlockEnd = true;
         scriptParapluie = parapluie.GetComponent<player>();
     }
 
     void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.M) && canCheat) || !theShardEtoile.gameObject.activeSelf)
+        if (((Input.GetKeyDown(KeyCode.M) && canCheat) || !theShardEtoile.gameObject.activeSelf) && triggerOnceUnlockEnd )
         {
+            triggerOnceUnlockEnd = false;
             activeEnd = true;
             end.SetActive(true);
             activeRouteEndTheShard.SetActive(true);
+            TitreObjectif.SetActive(true);
+            TitreObjectifTitre.ResetTitre();
+            TitreObjectifText.text = "Objectif : Retourner au point d'apparition";
+            TitreObjectifTextMenu.text = "Objectif : Retourner au point d'apparition";
+            
         }
         if (Input.GetButtonDown("Menu") && !canvasGroupEnd.activeSelf)
         {
@@ -71,6 +86,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void BackToMenu()
     {
+        MasterBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(mainMenu);
     }

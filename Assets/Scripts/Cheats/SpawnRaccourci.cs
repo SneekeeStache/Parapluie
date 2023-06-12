@@ -19,6 +19,7 @@ public class SpawnRaccourci : MonoBehaviour
     public Transform _TheShard;
     public Transform _Talkie;
     public Transform _Stadium;
+    public PauseMenu pm;
 
     private void Start()
     {
@@ -30,7 +31,7 @@ public class SpawnRaccourci : MonoBehaviour
     {
         //if( Input.GetKeyDown(KeyCode.F5)) SceneManager.LoadScene("test");
         //téléportations aux points de la liste
-        if(Input.GetButtonDown("CheatSpawn"))
+        if(Input.GetButtonDown("CheatSpawn") && pm.canCheat && !pm.isMenu)
         {
             Parapluie.GetComponent<player>().flap();
             Parapluie.GetComponent<CapsuleCollider>().enabled = false;

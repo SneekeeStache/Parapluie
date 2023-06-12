@@ -46,7 +46,7 @@ public class Etoile : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
-        else Debug.Log("ca ce joue 3");
+        //else Debug.Log("ca ce joue 3");
     }
 
     private void OnTriggerEnter(Collider other)

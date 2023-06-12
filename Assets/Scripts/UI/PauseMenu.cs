@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,7 +21,10 @@ public class PauseMenu : MonoBehaviour
     public GameObject controle;
     private bool canvasCanEnd;
     public Etoile theShardEtoile;
-    public GameObject activeRouteEndTheShard; 
+    public GameObject activeRouteEndTheShard;
+    public TextMeshProUGUI cheatActive;
+    public bool canCheat;
+    public bool isMenu;
     private void Start()
     {
         scriptParapluie = parapluie.GetComponent<player>();
@@ -28,7 +32,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M) || !theShardEtoile.gameObject.activeSelf)
+        if ((Input.GetKeyDown(KeyCode.M) && canCheat) || !theShardEtoile.gameObject.activeSelf)
         {
             activeEnd = true;
             end.SetActive(true);
@@ -60,6 +64,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         map.SetActive(false);
         controle.SetActive(false);
+        isMenu = false;
         //Debug.Log("reprise");
     }
     public void BackToMenu()
@@ -79,6 +84,7 @@ public class PauseMenu : MonoBehaviour
         }
         else
         {
+            isMenu = true;
             frise.SetActive(true);
             frise.GetComponent<CanvasGroup>().alpha = 1.0f;
             pauseMenuContainer.SetActive(true);
@@ -113,5 +119,20 @@ public class PauseMenu : MonoBehaviour
         scriptParapluie.ambianceSpace = 20;
         canvasCanEnd = true;
 
+    }
+
+    public void Cheat()
+    {
+        if (canCheat)
+        {
+            canCheat = false;
+            cheatActive.text = "Cheats désactivés";
+        }
+        else
+        {
+            canCheat = true;
+            cheatActive.text = "Cheats activés";
+        }
+        
     }
 }

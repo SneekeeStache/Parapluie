@@ -6,6 +6,7 @@ public class Titre : MonoBehaviour
 {
     private bool yes;
     public float speedDispear = 0.5f;
+    public bool clic;
     private void Update()
     {
         if (yes)

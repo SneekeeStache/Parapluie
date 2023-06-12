@@ -43,6 +43,7 @@ public class player : MonoBehaviour
     public ParticleSystem MegaPerfectFeedback;
     private float perfectFeedbackTimer;
     public Tyrolienne tyrolienneBoolCantMonve;
+    public PauseMenu pm;
     
     [Header("Variables changeants les controles")]
 
@@ -176,7 +177,7 @@ public class player : MonoBehaviour
                 CDtpCloseTime = 0;
             }
         }
-        if (tyrolienneBoolCantMonve.cantMoveParapluie) return;
+        if (tyrolienneBoolCantMonve.cantMoveParapluie || pm.isMenu) return;
         if (!onGround)
         {
             rb.AddForce(OrientationVent,ForceMode.Impulse);
@@ -351,7 +352,7 @@ public class player : MonoBehaviour
             ActiveTimer = false;
         }
 
-        if (Input.GetButtonDown("Gainenergie"))
+        if (Input.GetButtonDown("Gainenergie") && pm.canCheat)
         {
             FlapingNumber += FlapNumberCheat;
             EnergieFlap = 100f;
@@ -414,7 +415,7 @@ public class player : MonoBehaviour
 
     public void PerfectIndicator()
     {
-        Debug.Log("perfectIndicator");
+        //Debug.Log("perfectIndicator");
         perfectIndicator.SetActive(true);
         perfectIndicatorBool = true;
         perfectIndicatorMaterial.SetColor("_EmissionColor", Color.white);

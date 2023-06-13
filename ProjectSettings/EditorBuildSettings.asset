@@ -6,21 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/=Parapluie/Scenes/MainMenu.unity
     guid: 54e908b99291b1441aaef144fa5e3483
   - enabled: 0
-    path: Assets/Scenes/Level 1.unity
+    path: Assets/=Parapluie/Scenes/Level 1.unity
     guid: 4dfc6aaf310a5ac4b92b56ccbb13a7f5
   - enabled: 0
-    path: Assets/Scenes/Level 0.unity
+    path: Assets/=Parapluie/Scenes/Level 0.unity
     guid: fef15dc59d3387f4ba4d7daa581121fc
   - enabled: 1
-    path: Assets/Scenes/Level 2.unity
+    path: Assets/=Parapluie/Scenes/Level 2.unity
     guid: 46e312f15bda18348b8b7dd88ae1203d
   - enabled: 0
-    path: Assets/Scenes/scene intermediaire.unity
+    path: Assets/=Parapluie/Scenes/scene intermediaire.unity
     guid: 339a8fe85ff15bc4cbbf89ccd48b027b
   - enabled: 0
-    path: Assets/Scenes/test.unity
+    path: Assets/=Parapluie/Scenes/test.unity
     guid: 91d294d17cbdf616db30fe6f3c758400
   m_configObjects: {}

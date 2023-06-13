@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CrayonNoir
+  m_Shader: {fileID: 4800000, guid: 94aee3462dc668d47906aa007b0afe63, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _TopTexture0:
+        m_Texture: {fileID: 2800000, guid: 1b69961124871d94ba8b3b0edcfe327f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TopTexture1:
+        m_Texture: {fileID: 2800000, guid: ba47223ead772f545883672df1c2bfb4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TopTexture2:
+        m_Texture: {fileID: 2800000, guid: d0d98d8307b1ad144aadb44c411b1877, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TopTexture3:
+        m_Texture: {fileID: 2800000, guid: 01cbb5964dad2414cb058a5773ad8aef, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BaseCellOffset: -0.35
+    - _BaseCellSharpness: 0.255
+    - _DetailMapFalloff: 21.15
+    - _DetailMapIntensity: 0.571
+    - _DetailMapTile: 2.62
+    - _DetailMaskTile: -1.3
+    - _FContrast: 1.01
+    - _FPower: 7.8
+    - _FScale: 0.42
+    - _HighlightOffset: -0.65
+    - _HighlightlSharpness: 0.01
+    - _InkSpotsTile: 0.21
+    - _ShadowIntensity: 1
+    - _ShadowTextureFalloff: 17.29
+    - _ShadowTextureTile: 0.71
+    - __dirty: 0
+    m_Colors:
+    - _BaseColor: {r: 0, g: 0, b: 0, a: 0.9597245}
+    - _HighlightColor: {r: 0, g: 0, b: 0, a: 0.9597245}
+    - _RimLightColor: {r: 0.44971508, g: 0.51868975, b: 0.5849056, a: 0}
+  m_BuildTextureStacks: []

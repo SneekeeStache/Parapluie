@@ -15,6 +15,10 @@ public class Player : MonoBehaviour
     
     public GameObject parapluieFerme;
     public GameObject parapluieOuvert;
+    private float timer = 0.3f;
+    public float timerBeforeOpenFlap = 0.3f;
+    public float timerBeforeOpenMegaFlap = 0.7f;
+    public bool ActiveTimer;
 
     [Header("Composants à récupérer")]
     
@@ -50,10 +54,7 @@ public class Player : MonoBehaviour
     //je ne sais pas à quoi ca sert mais ca à l'air de servir
     [SerializeField] Vector3 orientationModif;
     [SerializeField] Vector3 orientationAnim;
-
-    private float timer = 0.3f;
-    private float timerReset = 0.3f;
-    public bool ActiveTimer;
+    
     [SerializeField]  private bool onGroundFMOD = true;
     [HideInInspector] public bool onGround = false;
     [HideInInspector] public Vector3 groundPosition;
@@ -234,7 +235,6 @@ public class Player : MonoBehaviour
         {
             parapluieFerme.SetActive(false);
             parapluieOuvert.SetActive(true);
-            timer = timerReset;
             ActiveTimer = false;
         }
         
@@ -378,6 +378,8 @@ public class Player : MonoBehaviour
             EnergieFlap = 0f;
             EnergieDown = true;
         }
+
+        timer = timerBeforeOpenFlap;
     }
 
     public void MegaFlap()
@@ -406,14 +408,12 @@ public class Player : MonoBehaviour
         flyFMOD.start();
         if (EnergieFlap <= CostMegaFlap +5f && EnergieFlap >= CostMegaFlap -5f) EnergieFlap = 1f;
         else EnergieFlap -= CostMegaFlap;
-        timer = 0.7f;
         if (EnergieFlap <= 0)
         {
             EnergieFlap = 0f;
             EnergieDown = true;
         }
-        
-        OnMegaFlap.Invoke();
+        timer = timerBeforeOpenMegaFlap;
     }
 
     public void Fermeture()

@@ -14,7 +14,7 @@ public class ClignotementHandle : MonoBehaviour
     void Start()
     {
 
-        //In here, set the array colors you are going to use, optimally, repeat the first color in the end to keep transitions smooth
+        //In here, set the array colors you are going to use, optimally, repeat the first color in the EndContainer to keep transitions smooth
 
         colors[0] = Color.red;
         colors[1] = Color.yellow;

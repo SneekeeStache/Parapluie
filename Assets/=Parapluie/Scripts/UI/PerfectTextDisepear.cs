@@ -8,13 +8,14 @@ public class PerfectTextDisepear : MonoBehaviour
 {
     private Vector2 positionInitiale;
     private bool disappearBool;
+    public RectTransform Position;
     private TextMeshProUGUI text;
     private float opacity;
     public float speedDisappear;
     public float speedTranslateUp;
     void Start()
     {
-        positionInitiale = gameObject.GetComponent<RectTransform>().anchoredPosition;
+        positionInitiale = Position.anchoredPosition;
         text = gameObject.GetComponent<TextMeshProUGUI>();
     }
 
@@ -22,7 +23,7 @@ public class PerfectTextDisepear : MonoBehaviour
     {
         opacity = 255;
         disappearBool = true;
-        gameObject.GetComponent<RectTransform>().anchoredPosition = positionInitiale;
+        Position.anchoredPosition = positionInitiale;
     }
     void Update()
     {
@@ -30,9 +31,10 @@ public class PerfectTextDisepear : MonoBehaviour
         {
             opacity -= speedDisappear * Time.deltaTime;
             text.alpha = opacity;
-            gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(
-                gameObject.GetComponent<RectTransform>().anchoredPosition.x,
-                gameObject.GetComponent<RectTransform>().anchoredPosition.y + speedTranslateUp * Time.deltaTime);
+            Position.anchoredPosition = new Vector2(
+                Position.anchoredPosition.x,
+                 Position.anchoredPosition.y + speedTranslateUp * Time.deltaTime);
+            
             if (opacity <= 0f)
             {
                 disappearBool = false;

@@ -20,6 +20,7 @@ public class SpawnRaccourci : MonoBehaviour
     public Transform _Talkie;
     public Transform _Stadium;
     public PauseMenu pm;
+    public CheatManager CheatManager;
 
     private void Start()
     {
@@ -29,36 +30,35 @@ public class SpawnRaccourci : MonoBehaviour
 
     void Update()
     {
-        //if( Input.GetKeyDown(KeyCode.F5)) SceneManager.LoadScene("test");
         //téléportations aux points de la liste
-        if(Input.GetButtonDown("CheatSpawn") && pm.canCheat && !pm.isMenu)
+        if(Input.GetButtonDown("CheatSpawn") && CheatManager.canCheat && !pm.isMenu)
         {
             Parapluie.GetComponent<Player>().Flap();
             Parapluie.GetComponent<CapsuleCollider>().enabled = false;
-            //Parapluie.GetComponent<player>().colliderParapluie.SetActive(false);
+            //Parapluie.GetComponent<Parapluie>().colliderParapluie.SetActive(false);
             Parapluie.GetComponent<Player>().Collision = false;
             Parapluie.transform.position = Ateliers[AtelierTeleport].transform.position;
             AtelierTeleport += 1;
             if(AtelierTeleport > Ateliers.Count-1) AtelierTeleport = 0;
-            //Parapluie.GetComponent<player>().Collision = true;
-            //Parapluie.GetComponent<player>().colliderParapluie.SetActive(true);
+            //Parapluie.GetComponent<Parapluie>().Collision = true;
+            //Parapluie.GetComponent<Parapluie>().colliderParapluie.SetActive(true);
             Parapluie.GetComponent<CapsuleCollider>().enabled = true;
-            //Parapluie.GetComponent<player>().CDtpClose = true;
+            //Parapluie.GetComponent<Parapluie>().CDtpClose = true;
         }
         /*
         if(Input.GetKeyDown(KeyCode.U))
         {
-            Parapluie.GetComponent<player>().flap();
-            Parapluie.GetComponent<player>().Collision = false;
-            Parapluie.GetComponent<player>().colliderParapluie.SetActive(false);
+            Parapluie.GetComponent<Parapluie>().flap();
+            Parapluie.GetComponent<Parapluie>().Collision = false;
+            Parapluie.GetComponent<Parapluie>().colliderParapluie.SetActive(false);
             Parapluie.GetComponent<CapsuleCollider>().enabled = false;
             Parapluie.transform.position = Ateliers[AtelierTeleport].transform.position;
             AtelierTeleport -= 1;
-            Parapluie.GetComponent<player>().FlapingNumber = Parapluie.GetComponent<player>().NombreFlap;
+            Parapluie.GetComponent<Parapluie>().FlapingNumber = Parapluie.GetComponent<Parapluie>().NombreFlap;
             if(AtelierTeleport <= -1) AtelierTeleport = Ateliers.Count-1;
             Parapluie.GetComponent<CapsuleCollider>().enabled = true;
-            Parapluie.GetComponent<player>().colliderParapluie.SetActive(true);
-            Parapluie.GetComponent<player>().Collision = true;
+            Parapluie.GetComponent<Parapluie>().colliderParapluie.SetActive(true);
+            Parapluie.GetComponent<Parapluie>().Collision = true;
 
         }*/
     }
@@ -106,11 +106,11 @@ public class SpawnRaccourci : MonoBehaviour
         //Parapluie.transform.Translate(T.position,Space.Self);
         Parapluie.GetComponent<Player>().Flap();
         Parapluie.GetComponent<CapsuleCollider>().enabled = false;
-        Parapluie.GetComponent<Player>().colliderParapluie.SetActive(false);
+        Parapluie.GetComponent<Player>().colliderContactParapluie.SetActive(false);
         Parapluie.GetComponent<Player>().Collision = false;
         Parapluie.transform.position = T.transform.position;
         Parapluie.GetComponent<Player>().Collision = true;
-        Parapluie.GetComponent<Player>().colliderParapluie.SetActive(true);
+        Parapluie.GetComponent<Player>().colliderContactParapluie.SetActive(true);
         Parapluie.GetComponent<CapsuleCollider>().enabled = true;
     }
 }

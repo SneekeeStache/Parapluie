@@ -18,7 +18,7 @@ public class DirectionIndicator : MonoBehaviour
     [Header("ajouter si centre est cocher")]
     // prend la position du joueur
     [SerializeField] Transform player;
-    [Header("script du player")]
+    [Header("script du Parapluie")]
     [SerializeField] Player playerScript;
     // Start is called before the first frame update
     void Start()

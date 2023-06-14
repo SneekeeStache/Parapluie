@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Titre : MonoBehaviour
 {
-    private bool yes;
+    private bool Diseappear;
     public float speedDispear = 0.5f;
     public float TimeBeforeDisapear = 0f;
     private float TimeBeforeDisapear2;
@@ -28,7 +28,7 @@ public class Titre : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
-        if (yes && clic)
+        if (Diseappear && clic)
         {
             gameObject.GetComponent<CanvasGroup>().alpha -= speedDispear * Time.deltaTime;
 
@@ -40,14 +40,14 @@ public class Titre : MonoBehaviour
     }
     public void OnClick()
     {
-        yes = true;
+        Diseappear = true;
     }
 
     public void ResetTitre()
     {
         TimeBeforeDisapear2 = TimeBeforeDisapear;
         gameObject.SetActive(true);
-        yes = false;
+        Diseappear = false;
         gameObject.GetComponent<CanvasGroup>().alpha = 1;
     }
 }

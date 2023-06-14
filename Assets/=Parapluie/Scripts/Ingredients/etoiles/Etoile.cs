@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class Etoile : MonoBehaviour
 {
-    private EtoilesScore ES;
+    private EtoilesScoreManager ES;
     public GameObject TextTP;
     public GameObject ImageFrise;
     public float affichageFriseSpeed;
-    private bool afficheFrise, once;
+    public bool afficheFrise, once;
     public CanvasGroup frise;
     private BoxCollider bc;
     public ParticleSystem explodeParticleRenderer;
@@ -18,7 +18,7 @@ public class Etoile : MonoBehaviour
     private void Start()
     {
         eventEmitter = gameObject.GetComponent<FMODUnity.StudioEventEmitter>();
-        ES = GetComponentInParent<EtoilesScore>();
+        ES = GetComponentInParent<EtoilesScoreManager>();
         bc = gameObject.GetComponent<BoxCollider>();
     }
     private void Update()

@@ -43,23 +43,23 @@ public class MenuController : MonoBehaviour
 
     public void NewGameDialogYes()
     {
-        SceneManager.LoadScene(_newGameLevel1);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(_newGameLevel1);
     }
     public void LoadLevel1()
     {
-        SceneManager.LoadScene(_newGameLevel1);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(_newGameLevel1);
     }
     public void LoadLevel2()
     {
-        SceneManager.LoadScene(_newGameLevel2);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(_newGameLevel2);
     }
     public void LoadLevel3()
     {
-        SceneManager.LoadScene(_newGameLevel3);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(_newGameLevel3);
     }
     public void LoadLevel4()
     {
-        SceneManager.LoadScene(_newGameLevel4);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(_newGameLevel4);
     }
     // Start is called before the first frame update
     public void LoadGameDialogYes()
@@ -67,7 +67,7 @@ public class MenuController : MonoBehaviour
         if(PlayerPrefs.HasKey("SavedLevel"))
         {
             levelToLoad = PlayerPrefs.GetString("SavedLevel1");
-            SceneManager.LoadScene(levelToLoad);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(levelToLoad);
         }
         else
         {

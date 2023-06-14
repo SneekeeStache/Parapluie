@@ -60,11 +60,7 @@ public class CameraRotate : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F5))
-        {
-            MasterBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            SceneManager.LoadScene("Level 2");
-        }
+
         /*if (Input.GetKeyDown(KeyCode.F6)) SceneManager.LoadScene("Level 0");
         if (Input.GetKeyDown(KeyCode.F7)) SceneManager.LoadScene("Level 1");
         if (Input.GetKeyDown(KeyCode.F8)) SceneManager.LoadScene("test");*/

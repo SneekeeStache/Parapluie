@@ -51,6 +51,7 @@ public class PauseMenu : MonoBehaviour
             frise.SetActive(true);
             frise.GetComponent<CanvasGroup>().alpha = 1.0f;
             PauseMenuContainer.SetActive(true);
+            Debug.Log(PauseMenuContainer.activeSelf);
             Time.timeScale = 0.0f;
             Cursor.lockState = CursorLockMode.None;
         }

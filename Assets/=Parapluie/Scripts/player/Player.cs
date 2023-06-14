@@ -353,7 +353,7 @@ public class Player : MonoBehaviour
              (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <= 3)))
         {
             rb.AddForce((OrietationJump.transform.position - transform.position) * (ForceJump+ForceBonusJump), ForceMode.Impulse);
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Parapluie/player_action/perfect_normal");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Parapluie/player_action/flap_perfect");
             OnPerfectFlap.Invoke();
         }
         else 

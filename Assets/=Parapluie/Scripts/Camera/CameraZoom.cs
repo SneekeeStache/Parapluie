@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CameraZoom : MonoBehaviour
 {
     public GameObject CameraController;
     public Player parapluie;
-    public float minC, maxC, minMaxC, maxMaxC;
-    public float Cvalue;
+    public float minC, maxC, minMaxC, maxMaxC; //caméra qui avance et recule toute seule + molette
+    public float Distancevalue;
 
     public float smooth=10;
     Vector3 dollyDir;

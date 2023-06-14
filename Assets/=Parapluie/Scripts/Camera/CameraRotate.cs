@@ -9,16 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class CameraRotate : MonoBehaviour
 {
-    public TextMeshProUGUI CameraDefinition;
-    public GameObject camSigne1;
-    public GameObject camSigne2;
-    public GameObject camSigne3;
-    public int CameraControl = 0;
-    // 0 = Camera auto focus
-    // 1 = Camera libre
-    // 2 = camera fige
-    private Animator animator;
-    
+
     [Header("souris")]
     [SerializeField] private float mouseSFDP = 50f;
     [SerializeField] private float minC = -70f, maxC = 80f;
@@ -28,42 +19,40 @@ public class CameraRotate : MonoBehaviour
     public Transform FocusTransform;
     public GameObject cameraFDP;
     public GameObject JumpOrientation;
-
-    private CharacterController charController;
-    private float xRotation = 0f;
-    private Vector3 playerVelo;
-    FMOD.Studio.Bus MasterBus;
     
-    [Header("Réglages camera")]
+
+    [Header("Réglages camera automatique")]
     public float CameraRotationAutoHaut = 0.5f;
     public float CameraRotationAutobas = 1f;
-
+    
     public Transform rotationReference;
     public float speedRotationHorizontale;
     public float TimerAvantRotation;
     private float TimerRotation;
     public float TimerAvantRotationVerticale;
     private float TimerRotationVerticale;
-    public float upRotation;
-    public float distanceGroundCheck;
+    public float distanceGroundCheck; 
+    private float xRotation = 0f;
+    
+    [Header("Réglages camera")]
+    public int CameraControl = 0;
+    // 0 = Camera auto focus
+    // 1 = Camera libre
+    // 2 = camera focus
+
+    public bool CanChangeCamera = true;
     public bool canFocus;
     
 
     void Start()
     {
-        MasterBus = FMODUnity.RuntimeManager.GetBus("Bus:/");
-        animator = gameObject.GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
         TimerRotation = TimerAvantRotation;
-        //CameraDefinition = GameObject.Find("CamDefinition").GetComponent<Text>();
+        gameObject.transform.position = JumpOrientation.transform.position;
     }
 
     void Update()
     {
-
-        /*if (Input.GetKeyDown(KeyCode.F6)) SceneManager.LoadScene("Level 0");
-        if (Input.GetKeyDown(KeyCode.F7)) SceneManager.LoadScene("Level 1");
-        if (Input.GetKeyDown(KeyCode.F8)) SceneManager.LoadScene("test");*/
 
         //fait bouger le cam automatiquement en fonction du Parapluie
         if (TimerRotationVerticale <= 0f && CameraControl == 0)
@@ -107,6 +96,8 @@ public class CameraRotate : MonoBehaviour
             }
             //Debug.Log(transform.rotation.eulerAngles.x);
         }*/
+        
+        
         //fait bouger le cam avec input
         float mouseX = Input.GetAxis("Mouse X") * mouseSFDP * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSFDP * Time.deltaTime;
@@ -151,10 +142,10 @@ public class CameraRotate : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speedRotationHorizontale);
         }
 
-        if (Input.GetButtonDown("ChangeCamera"))
+        if (Input.GetButtonDown("ChangeCamera") && CanChangeCamera)
         {
             CameraControl++;
-            CameraDefinition.gameObject.GetComponent<CanvasGroup>().alpha = 1f;
+
             if (CameraControl >= 2 && !canFocus)
             {
                 CameraControl = 0;
@@ -164,29 +155,6 @@ public class CameraRotate : MonoBehaviour
                 CameraControl = 0;
             }
         }
-
-        if (CameraControl == 0)
-        {
-            camSigne1.SetActive(true);
-            camSigne2.SetActive(false);
-            camSigne3.SetActive(false);
-            CameraDefinition.text = "Camera fixe";
-        }
-        if (CameraControl == 1)
-        {
-            camSigne1.SetActive(false);
-            camSigne2.SetActive(true);
-            camSigne3.SetActive(false);
-            CameraDefinition.text = "Camera libre";
-        }
-        if (CameraControl == 2)
-        {
-            camSigne1.SetActive(false);
-            camSigne2.SetActive(false);
-            camSigne3.SetActive(true);
-            CameraDefinition.text = "Camera focus";
-        }
-
         //tentative de look horizontal
         /*Vector3 direction = rotationReference.position - transform.position;
         Quaternion toRotation = Quaternion.FromToRotation(transform.forward, direction);
@@ -196,10 +164,5 @@ public class CameraRotate : MonoBehaviour
     private void OnDrawGizmos() {
         Gizmos.color=Color.red;
         Gizmos.DrawRay(cameraFDP.transform.position,-cameraFDP.transform.up*distanceGroundCheck);
-    }
-    public void DisableAnimator()
-    {
-        animator.enabled = false;
-        //cameraZoom.CamReset();
     }
 }

@@ -10059,10 +10059,10 @@ MonoBehaviour:
   defaultSen: 4
   mainControllerSen: 4
   comfirmationPrompt: {fileID: 646903122}
-  _newGameLevel1: Level 2
-  _newGameLevel2: Level 0
-  _newGameLevel3: test
-  _newGameLevel4: Level 1
+  _newGameLevel1: Niveau1-Londres
+  _newGameLevel2: 
+  _newGameLevel3: 
+  _newGameLevel4: 
   noSavedGameDialog: {fileID: 349843240}
 --- !u!4 &1652459910
 Transform:

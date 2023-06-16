@@ -35,6 +35,7 @@ public class CameraRotate : MonoBehaviour
     private float xRotation = 0f;
     
     [Header("Réglages camera")]
+    public float TimeFollowParapluie = 0.5f;
     public int CameraControl = 0;
     // 0 = Camera auto focus
     // 1 = Camera libre
@@ -106,7 +107,7 @@ public class CameraRotate : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(xRotation, transform.localRotation.eulerAngles.y, 0);
         transform.Rotate(Vector3.up * mouseX);
-        transform.DOMove(ParapluieTransform.position, 0.5f);
+        transform.DOMove(ParapluieTransform.position, TimeFollowParapluie);
 
         if (mouseX != 0f || mouseY != 0f)
         {

@@ -1885,7 +1885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6579589897218210444, guid: d185a6f0559d6364ca48a99efe71d9c3, type: 3}
       propertyPath: dragFermer
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6579589897218210444, guid: d185a6f0559d6364ca48a99efe71d9c3, type: 3}
       propertyPath: CostMegaFlap
@@ -1905,6 +1905,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6579589897218210444, guid: d185a6f0559d6364ca48a99efe71d9c3, type: 3}
       propertyPath: timerBeforeOpenMegaFlap
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6579589897218210444, guid: d185a6f0559d6364ca48a99efe71d9c3, type: 3}
+      propertyPath: ImpulseOrientationPlayer
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -229,9 +229,8 @@ public class Player : MonoBehaviour
             Fermeture();
         }
         
-        
         if (ActiveTimer) timer -= Time.deltaTime;
-        if (timer <= 0f)
+        if (timer <= 0f && ActiveTimer)
         {
             parapluieFerme.SetActive(false);
             parapluieOuvert.SetActive(true);
@@ -430,11 +429,11 @@ public class Player : MonoBehaviour
 
         else
         {
+            parapluieFerme.SetActive(false);
+            parapluieOuvert.SetActive(true);
             FMODUnity.RuntimeManager.PlayOneShot("event:/Parapluie/player_action/open");
             chuteFMOD.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             flyFMOD.start();
-            parapluieFerme.SetActive(false);
-            parapluieOuvert.SetActive(true);
         }
         
     }

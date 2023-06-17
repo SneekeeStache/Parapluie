@@ -6,6 +6,7 @@ using UnityEngine;
 public class Etoile : MonoBehaviour
 {
     private EtoilesScoreManager ES;
+    private MeshRenderer meshRenderer;
     public GameObject TextTP;
     public GameObject ImageFrise;
     public float affichageFriseSpeed;
@@ -17,6 +18,8 @@ public class Etoile : MonoBehaviour
 
     private void Start()
     {
+        meshRenderer = gameObject.GetComponent<MeshRenderer>();
+        meshRenderer.enabled = false;
         eventEmitter = gameObject.GetComponent<FMODUnity.StudioEventEmitter>();
         ES = GetComponentInParent<EtoilesScoreManager>();
         bc = gameObject.GetComponent<BoxCollider>();

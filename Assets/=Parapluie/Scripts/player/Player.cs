@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     public ConvertTriggerToButton triggerConvertToButton;
     public CameraRotate CR;
     public Transform CameraTransform;
-    public GameObject OrietationJump;
+    public GameObject OrientationJump;
     
     public bool Collision = false;
     public bool fermer = false;
@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
     [SerializeField] public float ForceJump;
     [SerializeField] float ForceMegaJump;
     [SerializeField] float ForceBonusJump;
+    [SerializeField] float VitessePlanage;
     [SerializeField] float drag = 7;
     [SerializeField] float recoverDragSpeed = 7;
     private float ActualDrag;
@@ -76,6 +77,8 @@ public class Player : MonoBehaviour
     [Header("Variables ne pas changer, se fait automatiquement !!")]
 
     public GameObject colliderContactParapluie;
+
+    public bool CanFlap;
     public bool DisableMove = false;
     private FMOD.Studio.EventInstance chuteFMOD;
     private FMOD.Studio.EventInstance flyFMOD;
@@ -211,7 +214,7 @@ public class Player : MonoBehaviour
         else if (((Input.GetButtonDown("Flap")||triggerConvertToButton.triggerR) && fermer) || ((Input.GetButtonDown("Flap")||triggerConvertToButton.triggerR) && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/Parapluie/noflap");
         
         //flap
-        if ((Input.GetButtonDown("Flap")||triggerConvertToButton.triggerR) && !EnergieDown && !fermer)
+        if ((Input.GetButtonDown("Flap")||triggerConvertToButton.triggerR) && !EnergieDown && !fermer && !ActiveTimer)
         {
             Flap();
         }
@@ -220,7 +223,7 @@ public class Player : MonoBehaviour
         if (((Input.GetButtonDown("Megaflap")||triggerConvertToButton.triggerL) && fermer) || ((Input.GetButtonDown("Megaflap")||triggerConvertToButton.triggerL) && EnergieDown)) FMODUnity.RuntimeManager.PlayOneShot("event:/Parapluie/noflap");
         
         //Méga flap
-        if ((Input.GetButtonDown("Megaflap")||triggerConvertToButton.triggerL) &&!EnergieDown && !fermer)
+        if ((Input.GetButtonDown("Megaflap")||triggerConvertToButton.triggerL) &&!EnergieDown && !fermer && !ActiveTimer)
         {
             MegaFlap();
         }
@@ -271,7 +274,10 @@ public class Player : MonoBehaviour
         orientationAnim = OrientationVent + CameraTransform.right * Input.GetAxis("Horizontal") + CameraTransform.forward * Input.GetAxis("Vertical");
 
         
+        Vector3 reference = new Vector3(OrientationJump.transform.position.x, transform.position.y, OrientationJump.transform.position.z);
+
         //la rotation du Parapluie le fait chuter
+        //le drag du parapluie selon la fermetur ou l'ouverture
         if (ActiveTimer)
         {
             ActualDrag = dragFermer;
@@ -285,13 +291,17 @@ public class Player : MonoBehaviour
         }
         else if ((gameObject.transform.rotation.eulerAngles.x >= 40f && gameObject.transform.rotation.eulerAngles.x <= 320f) || (gameObject.transform.rotation.eulerAngles.z >= 40f && gameObject.transform.rotation.eulerAngles.z <= 320f) /*|| gameObject.transform.localRotation.eulerAngles.z >= 40f || gameObject.transform.localRotation.eulerAngles.z <= -40f*/)
         {
+            //si le parapluie est trop penché
             rb.drag = ActualDrag / 2;
+            rb.velocity += (reference-transform.position) * (VitessePlanage/100) ;
         }
         else
         {
+            rb.velocity += (reference-transform.position) * (VitessePlanage/10) ;
             rb.drag = ActualDrag;
             //rb.AddForce(orientationModif, ForceMode.Impulse);
         }
+
 
         if (!fermer && ActualDrag < drag)
         {
@@ -303,6 +313,9 @@ public class Player : MonoBehaviour
             rb.freezeRotation = false;
             //FlapingNumber = NombreFlap;
         }
+
+
+        
         else
         {
             rb.freezeRotation = true;
@@ -365,14 +378,14 @@ public class Player : MonoBehaviour
              (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <= 3)))
         {
             rb.velocity = new Vector3(0,0,0);
-            rb.AddForce((OrietationJump.transform.position - transform.position) * (ForceJump+ForceBonusJump), ForceMode.Impulse);
+            rb.AddForce((OrientationJump.transform.position - transform.position) * (ForceJump+ForceBonusJump), ForceMode.Impulse);
             FMODUnity.RuntimeManager.PlayOneShot("event:/Parapluie/player_action/flap_perfect");
             OnPerfectFlap.Invoke();
         }
         else 
         {
             OnFlap.Invoke();
-            rb.AddForce((OrietationJump.transform.position - transform.position) * ForceJump, ForceMode.Impulse);
+            rb.AddForce((OrientationJump.transform.position - transform.position) * ForceJump, ForceMode.Impulse);
         }
         EnergieRW = EnergieFlap - CostFlap + 5f;
         onGround = false;
@@ -402,13 +415,13 @@ public class Player : MonoBehaviour
              (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <= 3)))
         {
             rb.velocity = new Vector3(0,0,0);
-            rb.AddForce((OrietationJump.transform.position - transform.position) * (ForceMegaJump+ForceBonusJump), ForceMode.Impulse);
+            rb.AddForce((OrientationJump.transform.position - transform.position) * (ForceMegaJump+ForceBonusJump), ForceMode.Impulse);
             FMODUnity.RuntimeManager.PlayOneShot("event:/Parapluie/player_action/perfect_puissant");
             OnMegaPerfectFlap.Invoke();
         }
         else
         {
-            rb.AddForce((OrietationJump.transform.position - transform.position) * ForceMegaJump, ForceMode.Impulse);
+            rb.AddForce((OrientationJump.transform.position - transform.position) * ForceMegaJump, ForceMode.Impulse);
             OnMegaFlap.Invoke();
         }
 

@@ -45,6 +45,8 @@ public class Player : MonoBehaviour
     [SerializeField] float ForceMegaJump;
     [SerializeField] float ForceBonusJump;
     [SerializeField] float drag = 7;
+    [SerializeField] float recoverDragSpeed = 7;
+    private float ActualDrag;
     [SerializeField] float dragFermer = 0;
     [SerializeField] float ImpulseOrientationPlayer;
     [SerializeField] float forceOrientationAnimation;
@@ -270,19 +272,30 @@ public class Player : MonoBehaviour
 
         
         //la rotation du Parapluie le fait chuter
-        if (ActiveTimer) rb.drag = drag;
+        if (ActiveTimer)
+        {
+            ActualDrag = dragFermer;
+            rb.drag = ActualDrag;
+        }
         else if (fermer)
         {
-            rb.drag = dragFermer;
+            ActualDrag = dragFermer;
+            rb.drag = ActualDrag;
+            
         }
         else if ((gameObject.transform.rotation.eulerAngles.x >= 40f && gameObject.transform.rotation.eulerAngles.x <= 320f) || (gameObject.transform.rotation.eulerAngles.z >= 40f && gameObject.transform.rotation.eulerAngles.z <= 320f) /*|| gameObject.transform.localRotation.eulerAngles.z >= 40f || gameObject.transform.localRotation.eulerAngles.z <= -40f*/)
         {
-            rb.drag = drag / 2;
+            rb.drag = ActualDrag / 2;
         }
         else
         {
-            rb.drag = drag;
+            rb.drag = ActualDrag;
             //rb.AddForce(orientationModif, ForceMode.Impulse);
+        }
+
+        if (!fermer && ActualDrag < drag)
+        {
+            ActualDrag += recoverDragSpeed * Time.deltaTime;
         }
 
         if (Collision)
@@ -351,6 +364,7 @@ public class Player : MonoBehaviour
         if ((EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 3) ||
              (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <= 3)))
         {
+            rb.velocity = new Vector3(0,0,0);
             rb.AddForce((OrietationJump.transform.position - transform.position) * (ForceJump+ForceBonusJump), ForceMode.Impulse);
             FMODUnity.RuntimeManager.PlayOneShot("event:/Parapluie/player_action/flap_perfect");
             OnPerfectFlap.Invoke();
@@ -387,6 +401,7 @@ public class Player : MonoBehaviour
         if ((EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 3) ||
              (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <= 3)))
         {
+            rb.velocity = new Vector3(0,0,0);
             rb.AddForce((OrietationJump.transform.position - transform.position) * (ForceMegaJump+ForceBonusJump), ForceMode.Impulse);
             FMODUnity.RuntimeManager.PlayOneShot("event:/Parapluie/player_action/perfect_puissant");
             OnMegaPerfectFlap.Invoke();

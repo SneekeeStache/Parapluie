@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 using TMPro;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -42,6 +43,7 @@ public class CameraRotate : MonoBehaviour
     // 2 = camera focus
 
     public bool CanChangeCamera = true;
+    public UnityEvent CameraChange = new UnityEvent();
     public bool canFocus;
     
 
@@ -146,6 +148,7 @@ public class CameraRotate : MonoBehaviour
         if (Input.GetButtonDown("ChangeCamera") && CanChangeCamera)
         {
             CameraControl++;
+            CameraChange.Invoke();
 
             if (CameraControl >= 2 && !canFocus)
             {

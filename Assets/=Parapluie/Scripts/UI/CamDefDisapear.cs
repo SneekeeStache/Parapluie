@@ -15,10 +15,6 @@ public class CamDefDisapear : MonoBehaviour
     public GameObject camSigne2;
     public GameObject camSigne3;
     public CameraRotate CameraController;
-    void Start()
-    {
-        TextCamDefDisappear = gameObject.GetComponent<CanvasGroup>();
-    }
 
 
     void Update()

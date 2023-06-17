@@ -27,6 +27,8 @@ public class WindRendererParameters : MonoBehaviour
 
     private void Update()
     {
+        if (Application.isPlaying) return;
+        
         if (!paramChanged && !transform.hasChanged) return;
 
         //UnityEditor.Undo.RecordObject(particles.gameObject, "Edit wind particles");

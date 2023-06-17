@@ -159,7 +159,9 @@ public class Player : MonoBehaviour
         
         if (!onGround)
         {
-            rb.AddForce(OrientationVent,ForceMode.Impulse);
+            if(!fermer && !ActiveTimer /*&& (ActualDrag == drag)*/)rb.AddForce(OrientationVent,ForceMode.Impulse);
+            else rb.AddForce(OrientationVent /20,ForceMode.Impulse);
+
         }
         if (DisableMove)
         {
@@ -306,6 +308,7 @@ public class Player : MonoBehaviour
         if (!fermer && ActualDrag < drag)
         {
             ActualDrag += recoverDragSpeed * Time.deltaTime;
+            if (ActualDrag >= drag) ActualDrag = drag;
         }
 
         if (Collision)

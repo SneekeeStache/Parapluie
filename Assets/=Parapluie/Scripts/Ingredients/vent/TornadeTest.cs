@@ -21,17 +21,17 @@ public class TornadeTest : MonoBehaviour
         if (x)
         {
             xT = (Mathf.Repeat(Time.time * speed, limX*2)) - (limX);
-            ventScript.ajoutVent.x = xT;
+            ventScript.AjoutVent.x = xT;
         }
         if (y)
         {
             yT = (Mathf.Repeat(Time.time * speed, limY * 2)) - (limY);
-            ventScript.ajoutVent.y = yT;
+            ventScript.AjoutVent.y = yT;
         }
         if (z)
         {
             zT = (Mathf.Repeat(Time.time * speed, limZ * 2)) - (limZ);
-            ventScript.ajoutVent.z = zT;
+            ventScript.AjoutVent.z = zT;
         }
     }
 }

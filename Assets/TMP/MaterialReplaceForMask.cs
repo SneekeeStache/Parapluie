@@ -21,6 +21,14 @@ public class MaterialReplaceForMask : MonoBehaviour
 
     public void SwitchToBaseMaterial()
     {
+        /*int materialCount = _renderer.materials.Length;
+
+        for (int i = 0; i < materialCount; ++i)
+        {
+                _renderer.materials[i] = baseMaterial;
+        }*/
+
         _renderer.material = baseMaterial;
+        
     }
 }

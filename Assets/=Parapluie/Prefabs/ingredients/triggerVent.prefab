@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d7aa7785bad77b88be10fc40ba981f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ajoutVent: {x: 0, y: 1, z: 0}
+  ajoutVent: {x: 0, y: 0, z: 0}
   vent: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
   PlayerScript: {fileID: 0}

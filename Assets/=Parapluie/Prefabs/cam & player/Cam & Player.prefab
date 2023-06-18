@@ -208,16 +208,36 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
+      propertyPath: drag
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
       propertyPath: trigger
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
+      propertyPath: CostFlap
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
       propertyPath: SliderBG
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
+      propertyPath: ForceJump
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
       propertyPath: VentDebug
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
+      propertyPath: dragFermer
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
+      propertyPath: CostMegaFlap
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
       propertyPath: perfectTextD
@@ -228,16 +248,36 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
+      propertyPath: ForceMegaJump
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
       propertyPath: sliderEnergie
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
+      propertyPath: ForceBonusJump
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
+      propertyPath: VitessePlanage
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
       propertyPath: CameraTransform
       value: 
       objectReference: {fileID: 6579589897622506638}
     - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
+      propertyPath: OrientationJump
+      value: 
+      objectReference: {fileID: 6579589896657373884}
+    - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
       propertyPath: SliderEnergieRW
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
+      propertyPath: recoverDragSpeed
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
       propertyPath: colliderParapluie
@@ -320,6 +360,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a246b3b51b65614781473f08276abce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6579589896657373884 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1399291024322726658, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
+  m_PrefabInstance: {fileID: 5198317129876963774}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6579589897218210444 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}

@@ -151,7 +151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 160360648418329445, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 52.8
       objectReference: {fileID: 0}
     - target: {fileID: 160360648418329445, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
       propertyPath: m_LocalPosition.z
@@ -189,8 +189,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wind
       objectReference: {fileID: 0}
+    - target: {fileID: 160360648418329449, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 156539901}
+    - target: {fileID: 160360648418329449, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
+      propertyPath: PlayerScript
+      value: 
+      objectReference: {fileID: 485087930}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2009c7d7d8ac73484a78d7d64665f220, type: 3}
+--- !u!1 &156539901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6579589897218210446, guid: d185a6f0559d6364ca48a99efe71d9c3, type: 3}
+  m_PrefabInstance: {fileID: 1321439235}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &176783208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -571,6 +584,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6579589897218210447, guid: d185a6f0559d6364ca48a99efe71d9c3, type: 3}
   m_PrefabInstance: {fileID: 1321439235}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &485087930 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6579589897218210444, guid: d185a6f0559d6364ca48a99efe71d9c3, type: 3}
+  m_PrefabInstance: {fileID: 1321439235}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156539901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38189f57323c978179bfc7f785d9123d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &658549893
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,14 +742,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6579589896923391594, guid: d185a6f0559d6364ca48a99efe71d9c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6579589897218210444, guid: d185a6f0559d6364ca48a99efe71d9c3, type: 3}
-      propertyPath: CostFlap
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6579589897218210444, guid: d185a6f0559d6364ca48a99efe71d9c3, type: 3}
-      propertyPath: CostMegaFlap
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

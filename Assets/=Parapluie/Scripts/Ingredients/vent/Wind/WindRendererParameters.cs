@@ -39,11 +39,11 @@ public class WindRendererParameters : MonoBehaviour
         ParticleSystem.EmissionModule emission = particles.emission;
         ParticleSystem.VelocityOverLifetimeModule velocity = particles.velocityOverLifetime;
 
-        main.startLifetime = ((transform.localScale.z / 10f) * 2f) / force;
-        trails.lifetime = (2f / transform.localScale.z) ;
+        main.startLifetime = ((transform.localScale.z / 100f) * 2f) / (force / 2f);
+        trails.lifetime = (10f / transform.localScale.z) ;
         shape.scale = new Vector3(0, transform.localScale.y, transform.localScale.x);
-        emission.rateOverTime = transform.localScale.x * transform.localScale.y * density;
-        velocity.speedModifier = force;
+        emission.rateOverTime = transform.localScale.x * transform.localScale.y * (density / 100f);
+        velocity.speedModifier = force / 2f;
         
         PrefabUtility.RecordPrefabInstancePropertyModifications(particles.gameObject);
 

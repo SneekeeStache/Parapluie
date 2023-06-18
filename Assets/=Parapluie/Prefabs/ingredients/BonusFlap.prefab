@@ -2349,7 +2349,7 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 1.5
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -7535,7 +7535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ParticleSystemWind: {fileID: 4549379898279394288}
   Parapluie: {fileID: 0}
-  parapluieFeedBack: {fileID: 0}
+  ParapluieFeedBack: {fileID: 0}
   TimerReloadBonusReset: 5
   distance: 0
   distancePourDisparaitre: 1700

@@ -122,7 +122,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6579589896923391589}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 520.5, y: 88.399994, z: -1404.75}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.79999995, z: 0.79999995}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -209,7 +209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
       propertyPath: drag
-      value: 4
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
       propertyPath: trigger
@@ -225,7 +225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
       propertyPath: ForceJump
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
       propertyPath: VentDebug
@@ -249,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
       propertyPath: ForceMegaJump
-      value: 15
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
       propertyPath: sliderEnergie
@@ -257,11 +257,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
       propertyPath: ForceBonusJump
-      value: 3
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
       propertyPath: VitessePlanage
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
       propertyPath: CameraTransform
@@ -277,16 +277,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
       propertyPath: recoverDragSpeed
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
       propertyPath: colliderParapluie
       value: 
       objectReference: {fileID: 6579589897218210446}
     - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
+      propertyPath: timerBeforeOpenFlap
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
       propertyPath: triggerConvertToButton
       value: 
       objectReference: {fileID: 1133014757019756091}
+    - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
+      propertyPath: timerBeforeOpenMegaFlap
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 1399291024879500082, guid: 83321dc4d89b7df4fab3d8bddeca9905, type: 3}
       propertyPath: tyrolienneBoolCantMonve
       value: 
@@ -431,6 +439,34 @@ PrefabInstance:
       propertyPath: ParapluieTransform
       value: 
       objectReference: {fileID: 6579589897218210447}
+    - target: {fileID: 852520449031259557, guid: e03b18681cc52de4181d8690a485e279, type: 3}
+      propertyPath: TimeFollowParapluie
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 852520449031259557, guid: e03b18681cc52de4181d8690a485e279, type: 3}
+      propertyPath: CameraChange.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 852520449031259557, guid: e03b18681cc52de4181d8690a485e279, type: 3}
+      propertyPath: CameraChange.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 852520449031259557, guid: e03b18681cc52de4181d8690a485e279, type: 3}
+      propertyPath: CameraChange.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 852520449031259557, guid: e03b18681cc52de4181d8690a485e279, type: 3}
+      propertyPath: CameraChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeCam
+      objectReference: {fileID: 0}
+    - target: {fileID: 852520449031259557, guid: e03b18681cc52de4181d8690a485e279, type: 3}
+      propertyPath: CameraChange.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CamDefDisapear, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 852520449031259557, guid: e03b18681cc52de4181d8690a485e279, type: 3}
+      propertyPath: CameraChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 852520449031259558, guid: e03b18681cc52de4181d8690a485e279, type: 3}
       propertyPath: m_Name
       value: CameraController
@@ -501,7 +537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 852520449373575718, guid: e03b18681cc52de4181d8690a485e279, type: 3}
       propertyPath: maxMaxC
-      value: 170
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 852520449373575718, guid: e03b18681cc52de4181d8690a485e279, type: 3}
       propertyPath: minMaxC

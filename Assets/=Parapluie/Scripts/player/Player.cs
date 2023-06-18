@@ -246,15 +246,13 @@ public class Player : MonoBehaviour
         }
         
 
-        if (!fermer)
+        if (EnergieFlap<100)
         {
             EnergieFlap += SpeedResetFlap * Time.deltaTime;
         }
+       
+        
         else
-        {
-            EnergieFlap += SpeedResetFlap * 5 * Time.deltaTime;
-        }
-        if (EnergieFlap >= 100)
         {
             EnergieDown = false;
             

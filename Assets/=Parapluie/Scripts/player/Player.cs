@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
     [SerializeField] public float ForceJump;
     [SerializeField] float ForceMegaJump;
     [SerializeField] float ForceBonusJump;
+    private float actualForce;
     [SerializeField] float VitessePlanage;
     [SerializeField] float drag = 7;
     [SerializeField] float recoverDragSpeed = 7;
@@ -282,6 +283,7 @@ public class Player : MonoBehaviour
         //le drag du parapluie selon la fermetur ou l'ouverture
         if (ActiveTimer)
         {
+            rb.AddForce((OrientationJump.transform.position - transform.position) * actualForce /10, ForceMode.Impulse);
             ActualDrag = dragFermer;
             rb.drag = ActualDrag;
         }
@@ -381,14 +383,14 @@ public class Player : MonoBehaviour
              (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <= 3)))
         {
             rb.velocity = new Vector3(0,0,0);
-            rb.AddForce((OrientationJump.transform.position - transform.position) * (ForceJump+ForceBonusJump), ForceMode.Impulse);
+            actualForce = ForceJump + ForceBonusJump;
             FMODUnity.RuntimeManager.PlayOneShot("event:/Parapluie/player_action/flap_perfect");
             OnPerfectFlap.Invoke();
         }
         else 
         {
             OnFlap.Invoke();
-            rb.AddForce((OrientationJump.transform.position - transform.position) * ForceJump, ForceMode.Impulse);
+            actualForce = ForceJump;
         }
         EnergieRW = EnergieFlap - CostFlap + 5f;
         onGround = false;
@@ -418,13 +420,13 @@ public class Player : MonoBehaviour
              (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <= 3)))
         {
             rb.velocity = new Vector3(0,0,0);
-            rb.AddForce((OrientationJump.transform.position - transform.position) * (ForceMegaJump+ForceBonusJump), ForceMode.Impulse);
+            actualForce = ForceMegaJump + ForceBonusJump;
             FMODUnity.RuntimeManager.PlayOneShot("event:/Parapluie/player_action/perfect_puissant");
             OnMegaPerfectFlap.Invoke();
         }
         else
         {
-            rb.AddForce((OrientationJump.transform.position - transform.position) * ForceMegaJump, ForceMode.Impulse);
+            actualForce = ForceMegaJump; 
             OnMegaFlap.Invoke();
         }
 

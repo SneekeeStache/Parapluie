@@ -17,6 +17,7 @@ public class Vent : MonoBehaviour
     [SerializeField] float timerResetValueMin, timerResetValueMax;
     [SerializeField] bool ventContinue = false;
     [SerializeField] private bool directionLocal = false;
+    [SerializeField] private bool tornade = false;
 
     [SerializeField] float multiplicateurFlap;
     [SerializeField] float multiplicateurVent;
@@ -35,18 +36,24 @@ public class Vent : MonoBehaviour
     private void Start()
     {
         MR = GetComponent<MeshRenderer>();
-        MR.enabled = false;
+        //MR.enabled = false;
         timerImpulseVent = Random.Range(timerImpulseVentMin, timerImpulseVentMax);
         timerResetValue = Random.Range(timerResetValueMin, timerResetValueMax);
-        vent = AjoutVent;
 
+        vent = AjoutVent;
         AjoutVent = transform.forward * force;
+
 
         windParticles = GetComponent<WindRendererParameters>();
     }
 
     private void OnTriggerStay(Collider other)
     {
+        if (tornade && directionLocal)
+        {
+            vent = AjoutVent;
+            AjoutVent = transform.forward * force;
+        }
         //print(PlayerScript.OrientationVent);
         
         if (other.CompareTag("Player"))
@@ -212,11 +219,9 @@ public class Vent : MonoBehaviour
                             timerImpulseVent = Random.Range(timerImpulseVentMin, timerImpulseVentMax);
                             timerResetValue = Random.Range(timerResetValueMin, timerResetValueMax);
                         }
-                        
                     }
                 }
             }
-
         }
     }
 

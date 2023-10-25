@@ -417,7 +417,8 @@ public class Player : MonoBehaviour
         if ((EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 3) ||
              (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <= 3)))
         {
-            rb.velocity = new Vector3(0,0,0);
+            rb.velocity = (rb.velocity / 3);
+            //rb.velocity = new Vector3(0,0,0);
             actualForce = ForceMegaJump + ForceBonusJump;
             FMODUnity.RuntimeManager.PlayOneShot("event:/Parapluie/player_action/perfect_puissant");
             OnMegaPerfectFlap.Invoke();

@@ -12,6 +12,9 @@ public class EnergySlider : MonoBehaviour
     public float lerpTimer;
     public float chipSpeed;
 
+    public Color Up;
+    public Color Down;
+
     
     [Header("Alpha of Energy bar")]
     public CanvasGroup CG;
@@ -40,6 +43,7 @@ public class EnergySlider : MonoBehaviour
             percentComplete = percentComplete * percentComplete;
             SelfImage.fillAmount = Mathf.Lerp(SelfImage.fillAmount, EnegergyFraction, percentComplete);
             if (SelfImage.fillAmount == FillAmount) lerpTimer = 0f;
+            EnergyRealImage.color = Up;
         }
         else if (SelfImage.fillAmount > Player.EnergieFlap / 100 * FillAmount)
         {
@@ -52,6 +56,10 @@ public class EnergySlider : MonoBehaviour
         {
             lerpTimer = 0f;
             SelfImage.fillAmount = Player.EnergieFlap/100 * FillAmount;
+        }
+        if (Player.EnergieDown)
+        {
+            EnergyRealImage.color = Down;
         }
 
         if (Player.EnergieFlap == 100f)

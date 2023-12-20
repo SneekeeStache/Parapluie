@@ -124,6 +124,7 @@ MonoBehaviour:
   timerResetValueMax: 0
   ventContinue: 0
   directionLocal: 0
+  tornade: 0
   multiplicateurFlap: 0
   multiplicateurVent: 0
   addedForward: 0
@@ -142,8 +143,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f97ddc96ed6bb40823efcb55acaf5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  density: 0.2
+  density: 0.1
+  maxWindRenderingDistance: 1000
+  densityDampCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.004852103
+      value: 0.99971646
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1.0242605
+      value: -0.0024629831
+      inSlope: -1.6730084
+      outSlope: -1.6730084
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.2491595
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   particles: {fileID: 4017968216816162746}
+  player: {fileID: 0}
 --- !u!1 &3522089640357891834
 GameObject:
   m_ObjectHideFlags: 0

@@ -36,7 +36,7 @@ public class Vent : MonoBehaviour
     private void Start()
     {
         MR = GetComponent<MeshRenderer>();
-        //MR.enabled = false;
+        MR.enabled = false;
         timerImpulseVent = Random.Range(timerImpulseVentMin, timerImpulseVentMax);
         timerResetValue = Random.Range(timerResetValueMin, timerResetValueMax);
 

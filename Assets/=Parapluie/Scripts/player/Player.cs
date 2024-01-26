@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.Serialization;
@@ -79,6 +80,7 @@ public class Player : MonoBehaviour
 
     public GameObject colliderContactParapluie;
 
+    public bool CHEAT;
     public bool CanFlap;
     public bool DisableMove = false;
     private FMOD.Studio.EventInstance chuteFMOD;
@@ -380,7 +382,7 @@ public class Player : MonoBehaviour
         if ((EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 3) ||
              (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <= 3)))
         {
-            rb.velocity = new Vector3(0,0,0);
+            if(!CHEAT) rb.velocity = new Vector3(0,0,0);
             actualForce = ForceJump + ForceBonusJump;
             FMODUnity.RuntimeManager.PlayOneShot("event:/Parapluie/player_action/flap_perfect");
             OnPerfectFlap.Invoke();
@@ -417,7 +419,8 @@ public class Player : MonoBehaviour
         if ((EnergieFlap == EnergieRW || (EnergieFlap < EnergieRW && EnergieRW - EnergieFlap <= 3) ||
              (EnergieFlap > EnergieRW && EnergieFlap - EnergieRW <= 3)))
         {
-            rb.velocity = (rb.velocity / 3);
+            if(!CHEAT) rb.velocity = (rb.velocity / 3);
+            
             //rb.velocity = new Vector3(0,0,0);
             actualForce = ForceMegaJump + ForceBonusJump;
             FMODUnity.RuntimeManager.PlayOneShot("event:/Parapluie/player_action/perfect_puissant");

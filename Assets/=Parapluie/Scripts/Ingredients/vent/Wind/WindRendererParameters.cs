@@ -8,6 +8,8 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class WindRendererParameters : MonoBehaviour
 {
+    public bool DontResize;
+    
     [SerializeField] [Min(0f)] private float density;
     [SerializeField] [Min(0f)] private float maxWindRenderingDistance;
     [SerializeField] [Min(0f)] private AnimationCurve densityDampCurve;
@@ -45,12 +47,16 @@ public class WindRendererParameters : MonoBehaviour
         float dampedDensity = density * densityDampCurve.Evaluate(Mathf.Min(distanceToPlayer / maxWindRenderingDistance, 1f));
         if (distanceToPlayer >= maxWindRenderingDistance) return;
 
-        
-        main.startLifetime = ((transform.localScale.z / 100f) * 2f) / (force/1.3f);
-        trails.lifetime = (10f / transform.localScale.z) ;
-        shape.scale = new Vector3(0, transform.localScale.y, transform.localScale.x);
-        emission.rateOverTime = transform.localScale.x * transform.localScale.y * (dampedDensity / 100f);
-        velocity.speedModifier = force/1.3f;
+
+        if(!DontResize)
+        {
+            main.startLifetime = ((transform.localScale.z / 100f) * 2f) / (force/1.3f);
+            trails.lifetime = (10f / transform.localScale.z) ;
+            shape.scale = new Vector3(0, transform.localScale.y, transform.localScale.x);
+            emission.rateOverTime = transform.localScale.x * transform.localScale.y * (dampedDensity / 100f);
+            velocity.speedModifier = force/1.3f;
+        }
+
         
         PrefabUtility.RecordPrefabInstancePropertyModifications(particles.gameObject);
 

@@ -16,6 +16,11 @@ public class CheatManager : MonoBehaviour
         {
             Parapluie.EnergieFlap = 100f;
         }
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            Cheat();
+        }
     }
 
     public void Cheat()
@@ -24,11 +29,13 @@ public class CheatManager : MonoBehaviour
         {
             canCheat = false;
             cheatActive.text = "Cheats désactivés";
+            Parapluie.CHEAT = false;
         }
         else
         {
             canCheat = true;
             cheatActive.text = "Cheats activés";
+            Parapluie.CHEAT = true;
         }
         
     }
